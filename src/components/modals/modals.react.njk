@@ -1,0 +1,12 @@
+import React from 'react';
+import Modal from './Modal';
+
+export default function ModalExample(props) {
+  return (
+    <Modal
+      title={props.modals.title}
+      visible>
+      {props.modals.content}
+    </Modal>
+  );
+}
