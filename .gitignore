@@ -2,3 +2,4 @@
 .babelcache
 dist/output
 *.njk.jsx
+node_modules

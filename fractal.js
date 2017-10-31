@@ -18,20 +18,19 @@ fractal.set('project.title', 'Vets.gov Design Standards');
 const components = fractal.components;
 components.set('ext', '.njk');
 components.set('path', 'src/components');
-components.set('default.preview', '@preview');
+components.set('default.preview', '@uswds');
 components.set('default.context', context);
 
-// use Nunjucks as the templating engine
-// components.engine(require('@frctl/nunjucks')({
-//   filters: {
-//     jsonify: d => JSON.stringify(d, null, '  '),
-//   },
-//   paths: [
-//     'src/components',
-//   ]
-// }));
-const reactAdapter = require('./lib/frctl-react-adapter');
-fractal.components.engine(reactAdapter);
+const vetsAdapter = require('./lib/vets-adapter')({
+  filters: {
+    jsonify: d => JSON.stringify(d, null, '  '),
+  },
+  paths: [
+    'src/components',
+  ]
+});
+
+fractal.components.engine(vetsAdapter);
 
 const docs = fractal.docs;
 docs.set('path', 'docs');
