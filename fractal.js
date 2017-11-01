@@ -1,6 +1,7 @@
 'use strict';
 const pkg = require('./package.json');
 const path = require('path');
+const fs = require('fs');
 const fractal = require('@frctl/fractal').create();
 
 const context = {
@@ -12,6 +13,19 @@ const context = {
     path: '../../dist',
   },
 };
+
+function generateProps(entity) {
+  const viewPath = entity.viewPath;
+  if (entity.isComponent) {
+    const srcPath = entity.variants().items()[0].context.componentSourcePath;
+    const fullPath = path.join(path.dirname(entity.viewPath), srcPath);
+    const reactDocs = require('react-docgen');
+
+    return reactDocs.parse(fs.readFileSync(fullPath)).props;
+  }
+
+  return {};
+}
 
 fractal.set('project.title', 'Vets.gov Design Standards');
 
@@ -37,7 +51,7 @@ docs.set('path', 'docs');
 
 const web = fractal.web;
 
-web.theme(require('@frctl/mandelbrot')({
+const theme = require('@frctl/mandelbrot')({
   lang: 'en-US',
   skin: 'white',
   // display context data in YAML
@@ -50,8 +64,17 @@ web.theme(require('@frctl/mandelbrot')({
     'context',
     'resources',
     'info',
+    'props'
   ],
-}));
+});
+
+theme.addLoadPath(__dirname + '/theme-overrides');
+
+theme.on('init', (env, app) => {
+  env.engine.addFilter('generateProps', generateProps);
+});
+
+web.theme(theme);
 
 web.set('static.path', 'dist');
 web.set('static.mount', 'dist');

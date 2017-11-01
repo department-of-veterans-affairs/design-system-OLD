@@ -7,6 +7,7 @@
     "@frctl/nunjucks": "^1.0.3",
     "foundation-sites": "^6.4.1",
     "nunjucks": "^3.0.1",
+    "react-docgen": "^2.19.0",
     "uswds": "^1.2.1"
   },
   "devDependencies": {

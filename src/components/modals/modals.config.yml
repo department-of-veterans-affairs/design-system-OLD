@@ -2,6 +2,7 @@ label: Modals
 status: wip
 
 context:
+  componentSourcePath: 'Modal.js'
   modals:
     id: default
     title: 'Default Modal'
