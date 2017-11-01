@@ -18,10 +18,14 @@ function generateProps(entity) {
   const viewPath = entity.viewPath;
   if (entity.isComponent) {
     const srcPath = entity.variants().items()[0].context.componentSourcePath;
-    const fullPath = path.join(path.dirname(entity.viewPath), srcPath);
-    const reactDocs = require('react-docgen');
+    if (srcPath) {
+      const fullPath = path.join(path.dirname(entity.viewPath), srcPath);
+      const reactDocs = require('react-docgen');
 
-    return reactDocs.parse(fs.readFileSync(fullPath)).props;
+      return reactDocs.parse(fs.readFileSync(fullPath)).props;
+    }
+
+    return {};
   }
 
   return {};
