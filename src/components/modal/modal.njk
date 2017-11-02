@@ -4,10 +4,10 @@ import Modal from './Modal';
 export default function ModalExample(props) {
   return (
     <Modal
-      title={props.modals.title}
-      id="modalId"
+      title={props.title}
+      id={props.id}
       visible>
-      {props.modals.content}
+      {props.content}
     </Modal>
   );
 }

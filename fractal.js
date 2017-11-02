@@ -4,6 +4,7 @@ const path = require('path');
 const fs = require('fs');
 const fractal = require('@frctl/fractal').create();
 const generatePropDocs = require('./lib/helpers/generatePropDocs');
+const createWebpackBundle = require('./createWebpackBundle');
 
 const context = {
   'package': {
@@ -60,6 +61,10 @@ theme.addLoadPath(__dirname + '/theme-overrides');
 
 theme.on('init', (env, app) => {
   env.engine.addFilter('generateProps', generatePropDocs);
+});
+
+fractal.components.on('loaded', () => {
+  createWebpackBundle(fractal.components);
 });
 
 web.theme(theme);

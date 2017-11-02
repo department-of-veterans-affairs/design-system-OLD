@@ -5,10 +5,12 @@
     "@frctl/fractal": "^1.1.5",
     "@frctl/mandelbrot": "^1.1.0",
     "@frctl/nunjucks": "^1.0.3",
+    "babel-loader": "^7.1.2",
     "foundation-sites": "^6.4.1",
     "nunjucks": "^3.0.1",
     "react-docgen": "^2.19.0",
-    "uswds": "^1.2.1"
+    "uswds": "^1.2.1",
+    "webpack": "^3.8.1"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
