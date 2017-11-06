@@ -6,22 +6,33 @@
     "@frctl/mandelbrot": "^1.1.0",
     "@frctl/nunjucks": "^1.0.3",
     "babel-loader": "^7.1.2",
+    "chai-enzyme-axe": "^1.0.2",
     "foundation-sites": "^6.4.1",
     "nunjucks": "^3.0.1",
     "react-docgen": "^2.19.0",
-    "uswds": "^1.2.1",
-    "webpack": "^3.8.1"
+    "uswds": "^1.2.1"
   },
   "devDependencies": {
+    "axe-core": "^2.4.2",
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "babel-register": "^6.26.0",
+    "chai": "^4.1.2",
     "classnames": "^2.2.5",
+    "enzyme": "^3.1.0",
+    "enzyme-adapter-react-15": "^1.0.4",
+    "karma": "1.6",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-mocha": "^1.3.0",
+    "karma-webpack": "^2.0.5",
+    "mocha": "^4.0.1",
     "node-sass": "^4.5.3",
     "prop-types": "^15.6.0",
     "react": "^15.6.2",
-    "react-dom": "^15.6.2"
+    "react-dom": "^15.6.2",
+    "react-test-renderer": "^15.5.0",
+    "webpack": "2"
   }
 }
