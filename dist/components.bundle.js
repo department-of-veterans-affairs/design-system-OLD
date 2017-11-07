@@ -22288,7 +22288,7 @@ Modal.propTypes = {
    */
   onClose: _propTypes2.default.func.isRequired,
   /**
-   * Contents of modal when displayed. You can also pass the contents as children, which is better
+   * Contents of modal when displayed. You can also pass the contents as children, which is preferred
    */
   contents: _propTypes2.default.node,
   /**

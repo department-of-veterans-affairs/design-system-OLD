@@ -103,7 +103,7 @@ Modal.propTypes = {
    */
   onClose: PropTypes.func.isRequired,
   /**
-   * Contents of modal when displayed. You can also pass the contents as children, which is better
+   * Contents of modal when displayed. You can also pass the contents as children, which is preferred
    */
   contents: PropTypes.node,
   /**
