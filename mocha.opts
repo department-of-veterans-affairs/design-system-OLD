@@ -1,3 +1,0 @@
---require ./lib/testing/*.js
---prof
---reporter dot
