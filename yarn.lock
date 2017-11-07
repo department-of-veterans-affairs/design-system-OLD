@@ -6,7 +6,7 @@
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@allmarkedup/fang/-/fang-1.0.0.tgz#20aa2ea365c57b0a28e6b563613270f5630d6883"
 
-"@frctl/fractal@^1.0.0", "@frctl/fractal@^1.0.0-rc.1", "@frctl/fractal@^1.1.0-alpha.0", "@frctl/fractal@^1.1.5":
+"@frctl/fractal@^1.0.0", "@frctl/fractal@^1.0.0-rc.1", "@frctl/fractal@^1.1.0-alpha.0", "@frctl/fractal@^1.1.7":
   version "1.1.7"
   resolved "https://registry.yarnpkg.com/@frctl/fractal/-/fractal-1.1.7.tgz#7f2e0874ef88b0f611a8d594965e3510f8c9ada3"
   dependencies:
