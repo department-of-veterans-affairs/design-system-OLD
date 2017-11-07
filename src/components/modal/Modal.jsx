@@ -98,7 +98,7 @@ Modal.propTypes = {
   cssClass: PropTypes.string,
   id: PropTypes.string,
   onClose: PropTypes.func.isRequired,
-  title: PropTypes.string,
+  title: PropTypes.string.isRequired,
   visible: PropTypes.bool.isRequired,
   test: PropTypes.arrayOf(PropTypes.shape({
     testing1: PropTypes.string

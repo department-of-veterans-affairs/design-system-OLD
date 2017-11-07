@@ -7,11 +7,11 @@ import Modal from './Modal.jsx';
 
 describe('<Modal/>', () => {
   it('should render', () => {
-    const tree = mount(<Modal/>);
+    const tree = shallow(<Modal id="modal" title="Modal title" visible>Modal contents</Modal>);
+    expect(tree.text()).to.contain('Modal contents');
   });
 
-  it('should run aXe check', (done) => {
-    const tree = mount(<Modal/>);
-    axeCheck(done);
-  }).timeout(5000);
+  it('should pass aXe check', () => {
+    return axeCheck(<Modal id="modal" title="Modal title" visible/>);
+  });
 });

@@ -6,7 +6,6 @@
     "@frctl/mandelbrot": "^1.1.0",
     "@frctl/nunjucks": "^1.0.3",
     "babel-loader": "^7.1.2",
-    "chai-enzyme-axe": "^1.0.2",
     "foundation-sites": "^6.4.1",
     "nunjucks": "^3.0.1",
     "react-docgen": "^2.19.0",
