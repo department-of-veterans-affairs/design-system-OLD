@@ -7,7 +7,9 @@
   },
   "main": "dist/js/components",
   "scripts": {
-    "export-components": "node src/js/export-components.js"
+    "export-components": "node src/js/export-components.js",
+    "test": "karma start --single-run",
+    "test-debug": "karma start"
   },
   "dependencies": {
     "@frctl/fractal": "^1.1.7",
