@@ -9,7 +9,7 @@
   "scripts": {
     "export-components": "node src/js/export-components.js",
     "test": "karma start --single-run",
-    "test-debug": "karma start"
+    "test-debug": "karma start --browsers Chrome"
   },
   "dependencies": {
     "classnames": "^2.2.5",
