@@ -54,15 +54,5 @@
     "svg-url-loader": "^2.3.0",
     "url-loader": "^0.6.2",
     "webpack": "2"
-  },
-  "description": "Stable URL: https://department-of-veterans-affairs.github.io/design-system",
-  "bugs": {
-    "url": "https://github.com/department-of-veterans-affairs/design-system/issues"
-  },
-  "homepage": "https://github.com/department-of-veterans-affairs/design-system#readme",
-  "directories": {
-    "doc": "docs"
-  },
-  "author": "",
-  "license": "ISC"
+  }
 }
