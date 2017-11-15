@@ -20,7 +20,7 @@ export default function SegmentedProgressBar({ current, total }) {
 
 SegmentedProgressBar.propTypes = {
   /**
-   * The urrent segment in progress
+   * The current segment in progress
    */
   current: PropTypes.number.isRequired,
   /**
