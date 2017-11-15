@@ -13,7 +13,6 @@
     "test-debug": "karma start --browsers Chrome"
   },
   "dependencies": {
-    "@frctl/fractal": "^1.1.7",
     "classnames": "^2.2.5",
     "font-awesome": "4",
     "foundation-sites": "5",
