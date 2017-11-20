@@ -1,0 +1,6 @@
+build/*
+coverage/*
+dist/*
+node_modules/*
+VETS-ONLY/*
+src/js/*
