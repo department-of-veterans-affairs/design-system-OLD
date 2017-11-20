@@ -7,6 +7,7 @@
   },
   "main": "dist/js/components",
   "scripts": {
+    "prestart": "node prebuild.js",
     "export-components": "node src/js/export-components.js",
     "start": "fractal start --sync",
     "test": "karma start --single-run",
