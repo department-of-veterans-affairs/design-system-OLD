@@ -39,6 +39,12 @@ function SegmentedProgressBar(_ref) {
 }
 
 SegmentedProgressBar.propTypes = {
+  /**
+   * The current segment in progress
+   */
   current: _propTypes2.default.number.isRequired,
+  /**
+   * The total number of segments in the progress bar
+   */
   total: _propTypes2.default.number.isRequired
 };

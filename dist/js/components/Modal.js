@@ -181,7 +181,7 @@ Modal.propTypes = {
    */
   hideCloseButton: _propTypes2.default.bool,
   /**
-   * Selector to use to find elements to focus on when the 
+   * Selector to use to find elements to focus on when the
    * modal is opened
    */
   focusSelector: _propTypes2.default.string
