@@ -9,7 +9,7 @@
   "scripts": {
     "prestart": "node prebuild.js",
     "export-components": "node src/js/export-components.js",
-    "start": "watch",
+    "start": "fractal watch",
     "test": "karma start --single-run",
     "site": "fractal build-site; gh-pages -d build",
     "lint:js": "eslint --quiet --ext .js --ext .jsx .",
