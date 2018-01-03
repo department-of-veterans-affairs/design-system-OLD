@@ -9,9 +9,9 @@
   "scripts": {
     "prestart": "node prebuild.js",
     "export-components": "node src/js/export-components.js",
-    "start": "fractal start --sync",
+    "start": "watch",
     "test": "karma start --single-run",
-    "build-site": "fractal build; gh-pages -d build",
+    "site": "fractal build-site; gh-pages -d build",
     "lint:js": "eslint --quiet --ext .js --ext .jsx .",
     "test-debug": "karma start --browsers Chrome"
   },
