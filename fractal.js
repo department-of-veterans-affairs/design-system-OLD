@@ -68,6 +68,5 @@ web.set('static.path', 'dist');
 web.set('static.mount', 'dist');
 // output files to /build
 web.set('builder.dest', 'build');
-web.set('server.sync', true);
 
 module.exports = fractal;

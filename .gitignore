@@ -2,7 +2,3 @@
 node_modules
 fractalEntry.js
 .babelcache
-dist/*.ttf
-dist/*.woff2
-dist/*.woff
-dist/*.eot
