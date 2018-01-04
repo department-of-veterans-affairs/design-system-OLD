@@ -12,10 +12,12 @@
     "start": "fractal watch",
     "test": "karma start --single-run",
     "site": "fractal build-site; gh-pages -d build",
+    "test-watch": "karma start --auto-watch",
     "lint:js": "eslint --quiet --ext .js --ext .jsx .",
     "test-debug": "karma start --browsers Chrome"
   },
   "dependencies": {
+    "chai-as-promised": "^7.1.1",
     "classnames": "^2.2.5",
     "font-awesome": "4",
     "foundation-sites": "5",
