@@ -1,4 +1,3 @@
-/* eslint-enable no-console */
 const webpack = require('webpack');
 const path = require('path');
 const fs = require('fs');
