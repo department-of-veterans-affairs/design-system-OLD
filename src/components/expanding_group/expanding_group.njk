@@ -1,0 +1,12 @@
+import React from 'react';
+import ExpandingGroup from './ExpandingGroup';
+
+export default function ExpandingGroupExample(props) {
+  return (
+          <ExpandingGroup
+            {...props}>
+            <div>visible child</div>
+            <div>hidden child</div>
+          </ExpandingGroup>
+  );
+}
