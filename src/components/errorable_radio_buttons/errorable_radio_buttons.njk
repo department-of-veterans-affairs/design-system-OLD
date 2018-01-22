@@ -1,0 +1,10 @@
+import React from 'react';
+import ErrorableRadioButtons from './ErrorableRadioButtons';
+
+export default function ErrorableRadioButtonsExample(props) {
+  return (
+          <ErrorableRadioButtons
+            onValueChange={({value}) => { console.log(value);}}
+            {...props}/>
+  );
+}
