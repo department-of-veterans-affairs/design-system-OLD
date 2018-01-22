@@ -123,7 +123,7 @@ class ErrorableRadioButtons extends React.Component {
         output = (
           <ExpandingGroup
             additionalClass="form-expanding-group-active-radio"
-            open={checked}
+            open={!!checked}
             key={index}>
             {radioButton}
             <div>{optionAdditional}</div>

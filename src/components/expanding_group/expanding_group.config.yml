@@ -4,6 +4,4 @@ notes: Expects two child components.
 
 context:
   componentSourcePath: './ExpandingGroup.jsx'
-  open: false
-  key: 5
-  showPlus: true
+  open: true

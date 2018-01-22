@@ -10,9 +10,9 @@ context:
     - 'option 1'
     - 'option 2'
     - label: 'option 3 label'
-      value: 'option 3 value'
-      addtional: 'option 3 addtional'
+      value: 'expanding option 3'
+      additional: 'expanded option 3'
   value:
-    - value: 'option 2'
-    - dirty: false
+    value: 'option 2'
+    dirty: false
   required: false
