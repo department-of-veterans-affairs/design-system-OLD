@@ -13,7 +13,8 @@ class StateWrapper extends React.Component {
           onValueChange={({value}) => {
             this.setState({value:{value, dirty: true}});
           }}
-          {...this.state}/>
+          {...this.state}
+          />
         );
   }
 }
