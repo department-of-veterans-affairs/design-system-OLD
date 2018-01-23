@@ -3,8 +3,8 @@ import React from 'react';
 import _ from 'lodash';
 import classNames from 'classnames';
 
-import ToolTip from '../tooltip/Tooltip';
-import ExpandingGroup from '../expanding_group/ExpandingGroup';
+import ToolTip from '../tooltip/Tooltip.jsx';
+import ExpandingGroup from '../expanding_group/ExpandingGroup.jsx';
 
 import { makeField } from '../../model/fields.js';
 
@@ -46,8 +46,8 @@ class ErrorableRadioButtons extends React.Component {
     return null;
   }
 
-  handleChange(domEvent) {
-    this.props.onValueChange(makeField(domEvent.target.value, true));
+  handleChange(value) {
+    this.props.onValueChange(makeField(value, true));
   }
 
   render() {
@@ -107,7 +107,7 @@ class ErrorableRadioButtons extends React.Component {
             name={this.props.name}
             type="radio"
             value={optionValue}
-            onChange={this.handleChange}/>
+            onChange={() => this.handleChange(optionValue)} />
           <label
             name={`${this.props.name}-${index}-label`}
             htmlFor={`${this.inputId}-${index}`}>
@@ -204,11 +204,11 @@ ErrorableRadioButtons.propTypes = {
         label: PropTypes.oneOfType([
           PropTypes.string,
           PropTypes.element,
-        ]),
+        ]).isRequired,
         value: PropTypes.oneOfType([
           PropTypes.string,
           PropTypes.bool
-        ]),
+        ]).isRequired,
         additional: PropTypes.oneOfType([
           PropTypes.string,
           PropTypes.element
