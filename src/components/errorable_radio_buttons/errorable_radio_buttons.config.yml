@@ -3,7 +3,8 @@ status: wip
 
 context:
   componentSourcePath: './ErrorableRadioButtons.jsx'
-  id: default
+  id: 'defaultId'
+  name: 'defaultName'
   errorMessage: 'Radio Button errorMessage'
   label: 'Errorable Radio Buttons'
   options:
