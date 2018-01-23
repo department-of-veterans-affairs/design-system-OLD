@@ -8,7 +8,7 @@ import { expect } from 'chai';
 import ErrorableTextInput from './ErrorableTextInput.jsx';
 import { makeField } from '../../model/fields.js';
 
-describe.only('<ErrorableTextInput>', () => {
+describe('<ErrorableTextInput>', () => {
   it('calls onValueChange with input value and dirty state', () => {
     let valueChanged;
     // shallowly render component with callback that alters valueChanged with passed argument
