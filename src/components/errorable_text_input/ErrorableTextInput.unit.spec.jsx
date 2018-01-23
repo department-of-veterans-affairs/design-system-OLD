@@ -1,116 +1,192 @@
 import React from 'react';
-import ReactTestUtils from 'react-dom/test-utils';
-import SkinDeep from 'skin-deep';
-import chaiAsPromised from 'chai-as-promised';
-import chai, { expect } from 'chai';
+import {
+  shallow,
+  mount
+} from 'enzyme';
+import { axeCheck } from '../../../lib/testing/helpers';
+import { expect } from 'chai';
+import ErrorableTextInput from './ErrorableTextInput.jsx';
+import { makeField } from '../../model/fields.js';
 
-import ErrorableTextInput from '../../../../src/js/common/components/form-elements/ErrorableTextInput';
-import { makeField } from '../../../../src/js/common/model/fields';
+describe.only('<ErrorableTextInput>', () => {
+  it('calls onValueChange with input value and dirty state', () => {
+    let valueChanged;
+    // shallowly render component with callback that alters valueChanged with passed argument
+    const wrapper = mount(<ErrorableTextInput
+      field={makeField('')}
+      label="test"
+      onValueChange={(value) => valueChanged = value}/>
+    );
 
-chai.use(chaiAsPromised);
-
-describe('<ErrorableTextInput>', () => {
-  it('ensure value changes propagate', () => {
-    let errorableInput;
-
-    const updatePromise = new Promise((resolve, _reject) => {
-      errorableInput = ReactTestUtils.renderIntoDocument(
-        <ErrorableTextInput field={makeField(1)} label="test" onValueChange={(update) => { resolve(update); }}/>
-      );
-    });
-
-    const input = ReactTestUtils.findRenderedDOMComponentWithTag(errorableInput, 'input');
-    input.value = 'newValue';
-    ReactTestUtils.Simulate.change(input);
-
-    return expect(updatePromise).to.eventually.eql(makeField('newValue', false));
+    wrapper.find('input').first().simulate('change', {target: {value: 'hello'}});
+    expect(valueChanged.value).to.eql('hello');
+    expect(valueChanged.dirty).to.eql(false);
   });
 
-  it('ensure blur makes field dirty', () => {
-    let errorableInput;
+  it('calls onValueChange with dirty state on blur', () => {
+    let valueChanged;
+    // shallowly render component with callback that alters valueChanged with passed argument
+    const wrapper = mount(<ErrorableTextInput
+      field={makeField('')}
+      label="test"
+      onValueChange={(value) => valueChanged = value}/>
+    );
 
-    const updatePromise = new Promise((resolve, _reject) => {
-      errorableInput = ReactTestUtils.renderIntoDocument(
-        <ErrorableTextInput field={makeField(1)} label="test" onValueChange={(update) => { resolve(update); }}/>
-      );
-    });
-
-    const input = ReactTestUtils.findRenderedDOMComponentWithTag(errorableInput, 'input');
-    ReactTestUtils.Simulate.blur(input);
-
-    return expect(updatePromise).to.eventually.eql(makeField(1, true));
+    wrapper.find('input').first().simulate('blur');
+    expect(valueChanged.dirty).to.eql(true);
   });
 
-  it('no error styles when errorMessage undefined', () => {
-    const tree = SkinDeep.shallowRender(
-      <ErrorableTextInput field={makeField(1)} label="my label" onValueChange={(_update) => {}}/>);
+  it('renders a label and a placeholder', () => {
+    const wrapper = shallow(<ErrorableTextInput
+      field={makeField('')}
+      label="test"
+      placeholder="Placeholder"
+      onValueChange={(value) => value}/>
+    );
 
-    // No error classes.
-    expect(tree.everySubTree('.usa-input-error')).to.have.lengthOf(0);
-    expect(tree.everySubTree('.usa-input-error-label')).to.have.lengthOf(0);
-    expect(tree.everySubTree('.usa-input-error-message')).to.have.lengthOf(0);
+    const label = wrapper.find('label');
+    const input = wrapper.find('input');
 
-    // Ensure no unnecessary class names on label w/o error..
-    const labels = tree.everySubTree('label');
-    expect(labels).to.have.lengthOf(1);
-    expect(labels[0].props.className).to.be.undefined;
+    expect(label.first().text()).to.eql('test');
+    expect(input.first().prop('placeholder')).to.eql('Placeholder');
 
-    // No error means no aria-describedby to not confuse screen readers.
-    const inputs = tree.everySubTree('input');
-    expect(inputs).to.have.lengthOf(1);
-    expect(inputs[0].props['aria-describedby']).to.be.undefined;
   });
 
-  it('has error styles when errorMessage is set', () => {
-    const tree = SkinDeep.shallowRender(
-      <ErrorableTextInput field={makeField(1)} label="my label" errorMessage="error message" onValueChange={(_update) => {}}/>);
+  it('renders error styling when errorMessage attribute is present', () => {
+    const wrapper = shallow(<ErrorableTextInput
+      field={makeField('')}
+      label="test"
+      errorMessage="errorMessage"
+      onValueChange={(value) => value}/>
+    );
 
-    // Ensure all error classes set.
-    expect(tree.everySubTree('.usa-input-error')).to.have.lengthOf(1);
-
-    const labels = tree.everySubTree('.usa-input-error-label');
-    expect(labels).to.have.lengthOf(1);
-    expect(labels[0].text()).to.equal('my label');
-
-    const errorMessages = tree.everySubTree('.usa-input-error-message');
-    expect(errorMessages).to.have.lengthOf(1);
-    expect(errorMessages[0].text()).to.equal('Error error message');
-
-    // No error means no aria-describedby to not confuse screen readers.
-    const inputs = tree.everySubTree('input');
-    expect(inputs).to.have.lengthOf(1);
-    expect(inputs[0].props['aria-describedby']).to.not.be.undefined;
-    expect(inputs[0].props['aria-describedby']).to.equal(errorMessages[0].props.id);
+    const errorStyles = [
+      '.usa-input-error-label',
+      '.usa-input-error',
+      '.usa-input-error-message'
+    ];
+    // assert that each error style corresponds to one component
+    errorStyles.forEach((style) =>
+      expect(wrapper.find(style)).to.have.lengthOf(1));
   });
 
-  it('required=false does not have required asterisk', () => {
-    const tree = SkinDeep.shallowRender(
-      <ErrorableTextInput field={makeField(1)} label="my label" onValueChange={(_update) => {}}/>);
+  it('renders aria-describedby attribute when errorMessage attribute is present', () => {
+    const wrapper = shallow(<ErrorableTextInput
+      field={makeField('')}
+      label="test"
+      errorMessage="errorMessage"
+      onValueChange={(value) => value}/>
+    );
 
-    expect(tree.everySubTree('label')[0].text()).to.equal('my label');
+    const input = wrapper.find('input');
+    const errorMessageId = wrapper.find('.usa-input-error-message').first().prop('id');
+    expect(input.prop('aria-describedby')).to.eql(errorMessageId);;
   });
 
-  it('required=true has required asterisk', () => {
-    const tree = SkinDeep.shallowRender(
-      <ErrorableTextInput field={makeField(1)} label="my label" required onValueChange={(_update) => {}}/>);
+  it('renders an error message when errorMessage attribute is present', () => {
+    const wrapper = shallow(<ErrorableTextInput
+      field={makeField('')}
+      label="test"
+      errorMessage="errorMessage"
+      onValueChange={(value) => value}/>
+    );
 
-    const label = tree.everySubTree('label');
-    expect(label[0].text()).to.equal('my label*');
+    const errorMessage = wrapper.find('.usa-input-error-message');
+    expect(errorMessage).to.have.lengthOf(1);
+    expect(errorMessage.text()).to.eql('Error errorMessage');
   });
 
-  it('label attribute propagates', () => {
-    const tree = SkinDeep.shallowRender(
-      <ErrorableTextInput field={makeField(1)} label="my label" onValueChange={(_update) => {}}/>);
+  it('renders no error styling when errorMessage attribute is not present', () => {
+    const wrapper = shallow(<ErrorableTextInput
+      field={makeField('')}
+      label="test"
+      onValueChange={(value) => value}/>
+    );
 
-    // Ensure label text is correct.
-    const labels = tree.everySubTree('label');
-    expect(labels).to.have.lengthOf(1);
-    expect(labels[0].text()).to.equal('my label');
+    const errorStyles = [
+      '.usa-input-error-label',
+      '.usa-input-error',
+      '.usa-input-error-message'
+    ];
+    // assert that each error style corresponds to one component
+    errorStyles.forEach((style) =>
+      expect(wrapper.find(style)).to.have.lengthOf(0));
+  });
 
-    // Ensure label htmlFor is attached to input id.
-    const inputs = tree.everySubTree('input');
-    expect(inputs).to.have.lengthOf(1);
-    expect(inputs[0].props.id).to.not.be.undefined;
-    expect(inputs[0].props.id).to.equal(labels[0].props.htmlFor);
+  it('renders no aria-describedby attribute when errorMessage attribute is not present', () => {
+    const wrapper = shallow(<ErrorableTextInput
+      field={makeField('')}
+      label="test"
+      onValueChange={(value) => value}/>
+    );
+
+    expect(wrapper.find('input').prop('aria-describedby')).to.not.exist;
+  });
+
+  it('renders no error message when errorMessage attribute is not present', () => {
+    const wrapper = shallow(<ErrorableTextInput
+      field={makeField('')}
+      label="test"
+      onValueChange={(value) => value}/>
+    );
+
+    expect(wrapper.find('.usa-input-error-message')).to.have.lengthOf(0);
+  });
+
+  it('renders a required asterick when required is true', () => {
+    const wrapper = shallow(<ErrorableTextInput
+      field={makeField('')}
+      label="test"
+      required
+      onValueChange={(value) => value}/>
+    );
+
+    expect(wrapper.find('label').text()).to.eql('test*');
+  });
+
+  it('renders no required asterick when required is false', () => {
+    const wrapper = shallow(<ErrorableTextInput
+      field={makeField('')}
+      label="test"
+      onValueChange={(value) => value}/>
+    );
+
+    expect(wrapper.find('label').text()).to.eql('test');
+  });
+
+  it('renders the input id as label\'s for attribute value', () => {
+    const wrapper = shallow(<ErrorableTextInput
+      field={makeField('')}
+      label="test"
+      onValueChange={(value) => value}/>
+    );
+
+    const inputId = wrapper.find('input').first().prop('id');
+    const labelFor = wrapper.find('label').first().prop('htmlFor');
+    expect(inputId).to.eql(labelFor);
+  });
+
+
+  it('passes aXe check when no error present', () => {
+    const check = axeCheck(<ErrorableTextInput
+      field={makeField('')}
+      label="test"
+      placeholder="Placeholder"
+      onValueChange={(value) => value}/>
+    );
+
+    return check;
+  });
+
+  it('passes aXe check when error present', () => {
+    const check = axeCheck(<ErrorableTextInput
+      field={makeField('')}
+      label="test"
+      placeholder="Placeholder"
+      errorMessage="error"
+      onValueChange={(value) => value}/>
+    );
+
+    return check;
   });
 });
