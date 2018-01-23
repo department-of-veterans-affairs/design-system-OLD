@@ -7,8 +7,6 @@ context:
   label: 'Label'
   placeholder: 'Placeholder'
   name: 'Name'
-  required: false,
   field:
-    - value: ''
-    - dirty: false
+    dirty: false
   charMax: 255

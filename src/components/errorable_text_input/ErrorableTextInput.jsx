@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import _ from 'lodash';
 
-import ToolTip from '../tooltip/ToolTip';
+import ToolTip from '../tooltip/ToolTip.jsx';
 
 import { makeField } from '../../model/fields.js';
 
@@ -114,19 +114,52 @@ class ErrorableTextInput extends React.Component {
 }
 
 ErrorableTextInput.propTypes = {
+  /**
+   * display error message for input that indicates a validation error
+   */
   errorMessage: PropTypes.string,
+  /**
+   * label for input field
+   */
   label: PropTypes.any.isRequired,
+  /**
+   * text displayed when input has no user provided value
+   */
   placeholder: PropTypes.string,
+  /**
+   * input name attribute
+   */
   name: PropTypes.string,
+  /**
+   * input autocomplete attribute
+   */
   autocomplete: PropTypes.string,
+  /**
+   * render marker indicating field is required
+   */
   required: PropTypes.bool,
+  /**
+   * value of the input field and if its dirty status
+   */
   field: PropTypes.shape({
     value: PropTypes.string,
     dirty: PropTypes.bool
   }).isRequired,
+  /**
+   * extra attribute for use by CSS selector, specifically by tests
+   */
   additionalClass: PropTypes.string,
+  /**
+   * maximum permitted input length
+   */
   charMax: PropTypes.number,
+  /**
+   * called when input value is changed
+   */
   onValueChange: PropTypes.func.isRequired,
+  /**
+   * type attribute for ijput field
+   */
   type: PropTypes.string
 };
 
