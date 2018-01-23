@@ -46,8 +46,8 @@ class ErrorableRadioButtons extends React.Component {
     return null;
   }
 
-  handleChange(value) {
-    this.props.onValueChange(makeField(value, true));
+  handleChange(domEvent) {
+    this.props.onValueChange(makeField(domEvent.target.value, true));
   }
 
   render() {
@@ -107,7 +107,7 @@ class ErrorableRadioButtons extends React.Component {
             name={this.props.name}
             type="radio"
             value={optionValue}
-            onChange={() => this.handleChange(optionValue)} />
+            onChange={this.handleChange}/>
           <label
             name={`${this.props.name}-${index}-label`}
             htmlFor={`${this.inputId}-${index}`}>

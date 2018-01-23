@@ -1,6 +1,9 @@
 import React from 'react';
 import { expect } from 'chai';
-import { shallow } from 'enzyme';
+import {
+  shallow,
+  mount
+} from 'enzyme';
 import { axeCheck } from '../../../lib/testing/helpers';
 import ErrorableRadioButtons from './ErrorableRadioButtons.jsx';
 import { makeField } from '../../model/fields.js';
@@ -13,7 +16,7 @@ describe('<ErrorableRadioButtons>', () => {
   it('calls onValueChange with value and dirty state', () => {
     let valueChanged;
     // shallowly render component with callback that alters valueChanged with passed argument
-    const wrapper = shallow(<ErrorableRadioButtons label="test" options={nonExpandingOptions} value={makeField('test')} onValueChange={(value) => {valueChanged = value;}}/>);
+    const wrapper = mount(<ErrorableRadioButtons label="test" options={nonExpandingOptions} value={makeField('test')} onValueChange={(value) => {valueChanged = value;}}/>);
 
     // simulate change event on first input
     wrapper.find('input').first().simulate('change');
@@ -27,13 +30,11 @@ describe('<ErrorableRadioButtons>', () => {
     const wrapper = shallow(<ErrorableRadioButtons label="test" options={nonExpandingOptions} value={makeField('test')} onValueChange={(value) =>  value}/>);
 
     // gather input id and label for attributes from render component
-    const inputIds = []
-    const labelFors = [];
-    wrapper.find('input').forEach((inputId) => inputIds.push(inputId.prop('id')));
-    wrapper.find('label').forEach((labelFor) => labelFors.push(labelFor.prop('htmlFor')));
+    const inputIds = wrapper.find('input').map((inputId) => inputId.prop('id'));
+    const labelFors = wrapper.find('label').map((labelFor) => labelFor.prop('htmlFor'));
 
     // assert each input id attribute value matches respective label for attribute value
-    inputIds.map((inputId, index) => expect(inputId).to.eql(labelFors[index]));
+    inputIds.forEach((inputId, index) => expect(inputId).to.eql(labelFors[index]));
   });
 
   it('renders a legend tag with the label attribute', () => {
