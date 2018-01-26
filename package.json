@@ -1,6 +1,7 @@
 {
-  "name": "vets.gov-design-system",
-  "version": "0.1.0",
+  "name": "vets.gov-jean-pants",
+  "version": "1.0.0",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/department-of-veterans-affairs/design-system.git"
@@ -53,6 +54,7 @@
     "karma-mocha": "^1.3.0",
     "karma-webpack": "^2.0.5",
     "lodash": "^4.5.1",
+    "mkdirp": "^0.5.1",
     "mocha": "^4.0.1",
     "ncp": "^2.0.0",
     "node-sass": "^4.6.0",
@@ -61,6 +63,7 @@
     "react-docgen": "^2.19.0",
     "react-dom": "^15.6.2",
     "react-test-renderer": "^15.5.0",
+    "recursive-readdir": "^2.2.1",
     "resolve-url-loader": "^2.2.0",
     "sass-loader": "^6.0.6",
     "sinon": "^4.1.6",
