@@ -4,24 +4,12 @@ const mkdirp = require('mkdirp');
 const recursiveReadDir = require('recursive-readdir');
 const babel = require("babel-core");
 
-
 function maybeMakeDirectories(directories = []) {
   directories.forEach((directory) => {
     if(!fs.existsSync(directory)) {
       mkdirp.sync(directory);
       console.log(`${directory} directory created`);
     }
-  });
-}
-
-function exportFiles(sourceFiles = [], destinationDirectory = '/dist') {
-  sourceFiles.forEach((fileName) => {
-    babel.transformFile(fileName, (err, result) => {
-      const componentName = fileName.slice(fileName.lastIndexOf('/') + 1, fileName.indexOf('.'));
-      const newFileName = `${destinationDirectory}/${componentName}.js`;
-
-      fs.writeFile(newFileName, result.code);
-    });
   });
 }
 
