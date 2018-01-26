@@ -26,7 +26,7 @@ function getComponentsPaths(componentsDirectory) {
 function transformJSFiles(filePaths = []) {
   return Promise.resolve(filePaths.map((filePath) =>
     ({
-      name: path.basename(filePath).slice(0, -1),
+      name: path.basename(filePath).slice(0, -1), // remove the x from jsx
       code: babel.transformFileSync(filePath).code
     })
   ));
