@@ -19,6 +19,7 @@
     'func-names': 2,
     'no-console': 2,
     'no-negated-condition': 0,  // Sometimes negated conditions are easier to understand.
+    'no-unused-expressions': 0, //This conflicts with Chai assertions
     'no-unused-vars': [2, {'args': 'after-used', 'argsIgnorePattern': '^_', 'vars': 'local'}],
     'prefer-rest-params': 2,
     'quote-props': [2, 'as-needed', { 'keywords': true }],
