@@ -63,15 +63,15 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 88);
+/******/ 	return __webpack_require__(__webpack_require__.s = 124);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 88:
+/***/ 124:
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed: ModuleBuildError: Module build failed: Error: Module did not self-register.\n    at Error (native)\n    at Object.Module._extensions..node (module.js:597:18)\n    at Module.load (module.js:487:32)\n    at tryModuleLoad (module.js:446:12)\n    at Function.Module._load (module.js:438:3)\n    at Module.require (module.js:497:17)\n    at require (internal/module.js:20:19)\n    at module.exports (/Users/vacokainia/Desktop/coding/design-system/node_modules/node-sass/lib/binding.js:19:10)\n    at Object.<anonymous> (/Users/vacokainia/Desktop/coding/design-system/node_modules/node-sass/lib/index.js:14:35)\n    at Module._compile (module.js:570:32)\n    at Module._extensions..js (module.js:579:10)\n    at Object.require.extensions.(anonymous function) [as .js] (/Users/vacokainia/Desktop/coding/design-system/node_modules/babel-register/lib/node.js:152:7)\n    at Module.load (module.js:487:32)\n    at tryModuleLoad (module.js:446:12)\n    at Function.Module._load (module.js:438:3)\n    at Module.require (module.js:497:17)\n    at runLoaders (/Users/vacokainia/Desktop/coding/design-system/node_modules/webpack/lib/NormalModule.js:192:19)\n    at /Users/vacokainia/Desktop/coding/design-system/node_modules/loader-runner/lib/LoaderRunner.js:364:11\n    at /Users/vacokainia/Desktop/coding/design-system/node_modules/loader-runner/lib/LoaderRunner.js:170:18\n    at loadLoader (/Users/vacokainia/Desktop/coding/design-system/node_modules/loader-runner/lib/loadLoader.js:27:11)\n    at iteratePitchingLoaders (/Users/vacokainia/Desktop/coding/design-system/node_modules/loader-runner/lib/LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (/Users/vacokainia/Desktop/coding/design-system/node_modules/loader-runner/lib/LoaderRunner.js:165:10)\n    at /Users/vacokainia/Desktop/coding/design-system/node_modules/loader-runner/lib/LoaderRunner.js:173:18\n    at loadLoader (/Users/vacokainia/Desktop/coding/design-system/node_modules/loader-runner/lib/loadLoader.js:36:3)\n    at iteratePitchingLoaders (/Users/vacokainia/Desktop/coding/design-system/node_modules/loader-runner/lib/LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (/Users/vacokainia/Desktop/coding/design-system/node_modules/loader-runner/lib/LoaderRunner.js:165:10)\n    at /Users/vacokainia/Desktop/coding/design-system/node_modules/loader-runner/lib/LoaderRunner.js:173:18\n    at loadLoader (/Users/vacokainia/Desktop/coding/design-system/node_modules/loader-runner/lib/loadLoader.js:36:3)\n    at iteratePitchingLoaders (/Users/vacokainia/Desktop/coding/design-system/node_modules/loader-runner/lib/LoaderRunner.js:169:2)\n    at runLoaders (/Users/vacokainia/Desktop/coding/design-system/node_modules/loader-runner/lib/LoaderRunner.js:362:2)\n    at NormalModule.doBuild (/Users/vacokainia/Desktop/coding/design-system/node_modules/webpack/lib/NormalModule.js:179:3)\n    at NormalModule.build (/Users/vacokainia/Desktop/coding/design-system/node_modules/webpack/lib/NormalModule.js:268:15)");
+// removed by extract-text-webpack-plugin
 
 /***/ })
 
