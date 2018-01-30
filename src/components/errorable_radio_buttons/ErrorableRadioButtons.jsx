@@ -3,8 +3,8 @@ import React from 'react';
 import _ from 'lodash';
 import classNames from 'classnames';
 
-import ToolTip from '../tooltip/ToolTip.jsx';
-import ExpandingGroup from '../expanding_group/ExpandingGroup.jsx';
+import ToolTip from '../tooltip/ToolTip';
+import ExpandingGroup from '../expanding_group/ExpandingGroup';
 
 import { makeField } from '../../helpers/fields.js';
 

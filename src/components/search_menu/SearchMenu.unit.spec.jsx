@@ -3,7 +3,7 @@ import { mount } from 'enzyme';
 import { expect } from 'chai';
 import { axeCheck } from '../../../lib/testing/helpers';
 
-import SearchMenu from './SearchMenu.jsx';
+import SearchMenu from './SearchMenu';
 
 describe('<SearchMenu/>', () => {
   it('should render', () => {

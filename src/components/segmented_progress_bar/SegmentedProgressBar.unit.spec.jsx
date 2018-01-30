@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import { expect } from 'chai';
 import { axeCheck } from '../../../lib/testing/helpers';
 
-import SegmentedProgressBar from './SegmentedProgressBar.jsx';
+import SegmentedProgressBar from './SegmentedProgressBar';
 
 describe('<SegmentedProgressBar/>', () => {
   it('should render', () => {

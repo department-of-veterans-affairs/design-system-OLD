@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import { expect } from 'chai';
 import { axeCheck } from '../../../lib/testing/helpers';
 
-import Modal from './Modal.jsx';
+import Modal from './Modal';
 
 describe('<Modal/>', () => {
   it('should render', () => {

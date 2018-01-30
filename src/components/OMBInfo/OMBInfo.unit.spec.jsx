@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import { expect } from 'chai';
 import { axeCheck } from '../../../lib/testing/helpers';
 
-import OMBInfo from './OMBInfo.jsx';
+import OMBInfo from './OMBInfo';
 
 describe('<OMBInfo/>', () => {
   it('should render', () => {

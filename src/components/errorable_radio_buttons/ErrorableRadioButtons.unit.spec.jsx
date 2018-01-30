@@ -5,7 +5,7 @@ import {
   mount
 } from 'enzyme';
 import { axeCheck } from '../../../lib/testing/helpers';
-import ErrorableRadioButtons from './ErrorableRadioButtons.jsx';
+import ErrorableRadioButtons from './ErrorableRadioButtons';
 import { makeField } from '../../helpers/fields.js';
 
 describe('<ErrorableRadioButtons>', () => {

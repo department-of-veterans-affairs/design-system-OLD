@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import { axeCheck } from '../../../../lib/testing/helpers';
 import { expect } from 'chai';
 
-import AlertBox from './AlertBox.jsx';
+import AlertBox from './AlertBox';
 
 // Placeholder for required "content" element
 const Content = (<p/>);

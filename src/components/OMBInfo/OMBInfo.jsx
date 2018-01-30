@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import Modal from '../modal/Modal.jsx';
-// tests will fail if .jsx is not included above
+import Modal from '../modal/Modal';
 
 const modalContents = (minutes) => (
   <div>

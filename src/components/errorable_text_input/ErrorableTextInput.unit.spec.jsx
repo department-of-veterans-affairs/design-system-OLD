@@ -5,7 +5,7 @@ import {
 } from 'enzyme';
 import { axeCheck } from '../../../lib/testing/helpers';
 import { expect } from 'chai';
-import ErrorableTextInput from './ErrorableTextInput.jsx';
+import ErrorableTextInput from './ErrorableTextInput';
 import { makeField } from '../../helpers/fields.js';
 
 describe('<ErrorableTextInput>', () => {
