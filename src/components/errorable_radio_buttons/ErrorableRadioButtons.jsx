@@ -6,7 +6,7 @@ import classNames from 'classnames';
 import ToolTip from '../tooltip/ToolTip.jsx';
 import ExpandingGroup from '../expanding_group/ExpandingGroup.jsx';
 
-import { makeField } from '../../model/fields.js';
+import { makeField } from '../../helpers/fields.js';
 
 /**
  * A radio button group with a label.
