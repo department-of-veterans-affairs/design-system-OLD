@@ -9,7 +9,7 @@
   "main": "dist/js/components",
   "scripts": {
     "prestart": "node prebuild.js",
-    "export-components": "node src/js/export-components.js",
+    "export-components": "babel src/components --out-dir dist/js/components --ignore .spec.jsx,.njk,.yml",
     "start": "fractal watch",
     "test": "karma start --single-run",
     "site": "fractal build-site && gh-pages -d build",
@@ -30,6 +30,7 @@
     "@frctl/mandelbrot": "^1.2.0",
     "@frctl/nunjucks": "^1.0.3",
     "axe-core": "^2.4.2",
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.0.2",
     "babel-loader": "^7.1.2",
