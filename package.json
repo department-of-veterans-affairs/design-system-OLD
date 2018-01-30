@@ -6,13 +6,13 @@
     "type": "git",
     "url": "git+https://github.com/department-of-veterans-affairs/design-system.git"
   },
-  "main": "dist/js",
   "scripts": {
-    "export-components": "rimraf dist/js && babel src/components --out-dir dist/js/components --ignore .spec.jsx,.njk,.yml && babel src/helpers --out-dir dist/js/helpers",
+    "export-components": "rimraf dist/jean-pants && babel src/components --out-dir dist/jean-pants/components --ignore .spec.jsx,.njk,.yml && babel src/helpers --out-dir dist/jean-pants/helpers",
     "prestart": "node prebuild.js",
     "start": "fractal watch",
     "site": "fractal build-site && gh-pages -d build",
     "test": "karma start --single-run",
+    "test-publish": "cp package.json dist/jean-pants/package.json && cd dist/jean-pants && yalc publish && cd ../../",
     "test-watch": "karma start --auto-watch",
     "lint:js": "eslint --quiet --ext .js --ext .jsx .",
     "test-debug": "karma start --browsers Chrome"
