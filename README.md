@@ -203,6 +203,7 @@ Follow these [instructions](https://docs.npmjs.com/getting-started/publishing-np
 
 * Update package version number
 
+`npm version patch` - for bug fixes and minor changes
 `npm version minor` - for new features that don't break current features
 `npm version major` - for backwards breaking changes
 
