@@ -189,7 +189,7 @@ Builds all JSX files in `src/components` and all js files in `src/helpers` and a
 
 Copies `package.json` to the `dist/jean-pants` directory and publishes the exported components to the local yalc directory as a `@department-of-veteran-affairs/jean-pants` module.
 
-* In the `vets-website` project, run `yalc add @department-of-veteran-affairs/jean-pants` and subsequently `yalc update`
+* In the `vets-website` project, run `yalc link @department-of-veteran-affairs/jean-pants` and subsequently `yalc update`
 
 Installs `jean-pants` to `node_modules` making it available for importing and testing locally.
 
