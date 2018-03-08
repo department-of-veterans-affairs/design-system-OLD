@@ -193,6 +193,8 @@ Copies `package.json` to the `dist/jean-pants` directory and publishes the expor
 
 Installs `jean-pants` to `node_modules` making it available for importing and testing locally.
 
+See yalc documentation for advanced usage such as automatic updating on publish
+
 3. Update version and merge PR
 
 Preprequsite: you must be [registered](https://docs.npmjs.com/getting-started/publishing-npm-packages) with npm to publish or update the module. Verify that you are logged in correctly by running `npm whoami`.
