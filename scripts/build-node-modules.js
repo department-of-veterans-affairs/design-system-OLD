@@ -8,7 +8,7 @@ const path = require('path');
 const colors = require('colors');
 
 console.log('Starting build'.blue);
-console.log('Cleaing old build'.white);
+console.log('Cleaning old build'.white);
 rimraf.sync('./dist/jean-pants');
 mkdirp.sync('./dist/jean-pants');
 
