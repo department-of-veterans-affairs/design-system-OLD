@@ -7,10 +7,11 @@
     "type": "git",
     "url": "git+https://github.com/department-of-veterans-affairs/design-system.git"
   },
-  "main": "dist/jeanpants",
+  "main": "dist/jean-pants",
   "scripts": {
     "prestart": "node prebuild.js",
     "export-components": "node ./scripts/build-node-modules.js",
+    "pre-publish": "cp package.json dist/jean-pants/package.json && echo '\\033[36mChange directory to dist/jean-pants\nVerify package.json\nRun command: npm publish'",
     "start": "fractal watch",
     "test": "karma start --single-run",
     "site": "fractal build-site && gh-pages -d build",

@@ -91,4 +91,6 @@ Verify that you have the new version number locally in `package.json`
 
 * Publish changes
 
-`npm publish`
+`npm run pre-publish`
+
+Follow instructions
