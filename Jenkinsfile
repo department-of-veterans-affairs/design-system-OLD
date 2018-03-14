@@ -1,7 +1,6 @@
 pipeline {
   agent {
-    docker {
-      image 'node:6'
+    dockerfile {
       label 'vetsgov-general-purpose'
     }
   }
