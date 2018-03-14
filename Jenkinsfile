@@ -17,10 +17,10 @@ pipeline {
       steps {
         parallel (
           'lint': {
-            'npm run lint:js'
+            sh 'npm run lint:js'
           },
           'test': {
-            'npm run test'
+            sh 'npm run test'
           }
         )
       }
