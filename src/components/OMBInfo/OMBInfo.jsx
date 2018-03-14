@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import Modal from '../modal/Modal.jsx';
+import Modal from '../modal/Modal';
 // tests will fail if .jsx is not included above
 
 const modalContents = (minutes) => (
@@ -34,7 +34,7 @@ class OMBInfo extends React.Component {
         <div>Respondent burden: <strong>{resBurden} minutes</strong></div>
         <div>OMB Control #: <strong>{ombNumber}</strong></div>
         <div>Expiration date: <strong>{expDate}</strong></div>
-        <div><button className={'va-button-link'} onClick={this.openModal}>Privacy Act Statement</button></div>
+        <div><button className="va-button-link" onClick={this.openModal}>Privacy Act Statement</button></div>
         <Modal
           cssClass="va-modal-large"
           contents={modalContents(resBurden)}
