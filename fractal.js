@@ -9,7 +9,8 @@ const context = {
   'package': {
     name: pkg.name.replace('@', ''), // fractal interprets @ as component references when its injected into their contexts
     version: pkg.version,
-  }
+  },
+  assetPath: process.env.NODE_ENV === 'production' ? '/design-system/' : '/'
 };
 
 fractal.set('project.title', 'Vets.gov Design Standards');
