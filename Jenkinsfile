@@ -2,7 +2,6 @@ pipeline {
   agent {
     docker {
       image 'node:6'
-      args '-v ${PWD}:/app'
       // label 'vetsgov-general-purpose'
     }
   }
@@ -10,8 +9,7 @@ pipeline {
   stages {
     stage('setup') {
       steps {
-        sh 'cd /app && yarn install'
-        sh 'sleep 600'
+        sh 'yarn install'
       }
     }
 
