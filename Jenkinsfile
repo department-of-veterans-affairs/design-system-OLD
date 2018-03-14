@@ -2,7 +2,7 @@ pipeline {
   agent {
     docker {
       image 'node:6'
-      // label 'vetsgov-general-purpose'
+      label 'vetsgov-general-purpose'
     }
   }
 
@@ -13,15 +13,23 @@ pipeline {
       }
     }
 
-    stage('test') {
+    stage('lint and test') {
       steps {
-        sh 'uname -a'
+        parallel (
+          'lint': {
+            'npm run lint:js'
+          },
+          'test': {
+            'npm run test'
+          }
+        )
       }
     }
 
     stage('build and publish') {
+      when { branch 'master' }
       steps {
-        sh 'uname -a'
+        sh 'npm run site'
       }
     }
   }
