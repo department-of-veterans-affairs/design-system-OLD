@@ -9,15 +9,21 @@ pipeline {
 
   stages {
     stage('setup') {
-      sh 'cd /app && yarn install'
+      steps {
+        sh 'cd /app && yarn install'
+      }
     }
 
     stage('test') {
-      sh 'uname -a'
+      steps {
+        sh 'uname -a'
+      }
     }
 
     stage('build and publish') {
-      sh 'uname -a'
+      steps {
+        sh 'uname -a'
+      }
     }
   }
 }
