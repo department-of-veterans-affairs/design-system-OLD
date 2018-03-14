@@ -11,6 +11,7 @@ pipeline {
     stage('setup') {
       steps {
         sh 'cd /app && yarn install'
+        sh 'sleep 600'
       }
     }
 
