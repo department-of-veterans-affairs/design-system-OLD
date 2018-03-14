@@ -2,7 +2,7 @@ pipeline {
   agent {
     docker {
       image 'node:6'
-      args '-v ${WORKSPACE}:/app'
+      args '-v ${PWD}:/app'
       // label 'vetsgov-general-purpose'
     }
   }
