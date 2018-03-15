@@ -26,9 +26,9 @@ pipeline {
     }
 
     stage('build and publish') {
-      when { branch 'master' }
+      when { branch 'ww-jenkinsfile-publish-fix' }
       steps {
-        sh 'npm run site'
+        sh 'npm run build-site'
       }
     }
   }
