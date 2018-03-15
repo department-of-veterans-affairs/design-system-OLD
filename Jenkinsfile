@@ -4,6 +4,9 @@ pipeline {
       label 'vetsgov-general-purpose'
     }
   }
+  environment {
+    'BABEL_CACHE_PATH' = env.WORKSPACE
+  }
 
   stages {
     stage('setup') {
