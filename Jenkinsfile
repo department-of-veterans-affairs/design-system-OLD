@@ -31,6 +31,7 @@ pipeline {
     stage('build and publish') {
       when { branch 'ww-jenkinsfile-publish-fix' }
       steps {
+        sh 'mkdir dist'
         sh 'npm run build-site'
       }
     }
