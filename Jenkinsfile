@@ -31,6 +31,8 @@ pipeline {
     stage('build and publish') {
       when { branch 'ww-jenkinsfile-publish-fix' }
       steps {
+        sh 'git config --global user.email va-bot@vetsgov'
+        sh 'git config --global user.name VA Bot'
         sh 'npm run site'
       }
     }
