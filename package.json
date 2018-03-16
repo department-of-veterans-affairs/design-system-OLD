@@ -16,7 +16,7 @@
     "site": "fractal build-site && gh-pages -d build",
     "test-publish": "cp package.json dist/jean-pants/package.json && cd dist/jean-pants && yalc publish && cd ../../",
     "test-watch": "karma start --auto-watch",
-    "lint:js": "eslint --fix --quiet --ext .js --ext .jsx .",
+    "lint:js": "eslint --quiet --ext .js --ext .jsx .",
     "test-debug": "karma start --browsers Chrome"
   },
   "dependencies": {
