@@ -29,7 +29,7 @@ pipeline {
     }
 
     stage('build and publish') {
-      when { branch 'ww-jenkinsfile-publish-fix' }
+      when { branch 'master' }
       steps {
         sh 'git config --global user.email james.kassemi+vabot@adhocteam.us'
         sh 'git config --global user.name va-bot'
