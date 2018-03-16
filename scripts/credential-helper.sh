@@ -1,3 +1,3 @@
 #!/bin/bash
-username=$GIT_USERNAME
-password=$GIT_PASSWORD
+echo username=$GIT_USERNAME
+echo password=$GIT_PASSWORD
