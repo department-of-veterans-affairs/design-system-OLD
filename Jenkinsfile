@@ -40,6 +40,7 @@ pipeline {
           usernameVariable: 'GIT_USERNAME',
           passwordVariable: 'GIT_PASSWORD'
         ]]) {
+          sh 'echo $GIT_USERNAME'
           sh 'npm run site'
         }
       }
