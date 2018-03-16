@@ -33,7 +33,15 @@ pipeline {
       steps {
         sh 'git config --global user.email va-bot@vetsgov'
         sh 'git config --global user.name VA Bot'
-        sh 'npm run site'
+        sh 'git config credential.helper "/bin/bash ' + env.WORKSPACE + '/scripts/credential-helper.sh"'
+        withCredentials([[
+          $class: 'UsernamePasswordMultiBinding',
+          credentialsId: 'va-bot',
+          usernameVariable: 'GIT_USERNAME',
+          passwordVariable: 'GIT_PASSWORD'
+        ]]) {
+          sh 'npm run site'
+        }
       }
     }
   }
