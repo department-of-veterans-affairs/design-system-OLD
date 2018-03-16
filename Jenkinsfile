@@ -31,8 +31,8 @@ pipeline {
     stage('build and publish') {
       when { branch 'ww-jenkinsfile-publish-fix' }
       steps {
-        sh 'git config --global user.email va-bot@vetsgov'
-        sh 'git config --global user.name VA Bot'
+        sh 'git config --global user.email james.kassemi+vabot@adhocteam.us'
+        sh 'git config --global user.name va-bot'
         sh 'git config --global credential.helper "/bin/bash ' + env.WORKSPACE + '/scripts/credential-helper.sh"'
         withCredentials([[
           $class: 'UsernamePasswordMultiBinding',
