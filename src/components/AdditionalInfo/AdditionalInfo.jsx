@@ -37,7 +37,9 @@ export default class AdditionalInfo extends React.Component {
     );
 
     return (
-      <ExpandingGroup open expandedContentId={this.expandedContentId}>
+      <ExpandingGroup
+        open={this.state.open}
+        expandedContentId={this.expandedContentId}>
         {trigger}
         <div className="additional-info-content">{children}</div>
       </ExpandingGroup>
@@ -46,5 +48,6 @@ export default class AdditionalInfo extends React.Component {
 }
 
 AdditionalInfo.propTypes = {
-  triggerText: PropTypes.string
+  // this is the text displayed for AdditionalInfo link or button
+  triggerText: PropTypes.string.isRequired
 };
