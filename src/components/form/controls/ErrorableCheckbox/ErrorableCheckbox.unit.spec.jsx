@@ -4,6 +4,7 @@ import chaiAsPromised from 'chai-as-promised';
 import { shallow } from 'enzyme';
 import { axeCheck } from '../../../../../lib/testing/helpers';
 import ErrorableCheckbox from './ErrorableCheckbox.jsx';
+import sinon from 'sinon';
 
 chai.use(chaiAsPromised);
 const { expect } = chai;
@@ -12,7 +13,13 @@ describe('<ErrorableCheckbox/>', () => {
   it('should render', () => {
     let tree;
     const updatePromise = new Promise((resolve, _reject) => {
-      tree = shallow(<ErrorableCheckbox label="test" onChange={(update) => { resolve(update); }}/>);
+      tree = shallow(
+        <ErrorableCheckbox
+          label="test"
+          onValueChange={update => {
+            resolve(update);
+          }}/>
+      );
     });
     expect(tree.text()).to.contain('test');
   });
@@ -20,24 +27,34 @@ describe('<ErrorableCheckbox/>', () => {
   it('should pass aXe check', () => {
     let check;
     const updatePromise = new Promise((resolve, _reject) => {
-      check = axeCheck(<ErrorableCheckbox label="test" onChange={(update) => { resolve(update); }}/>);
+      check = axeCheck(
+        <ErrorableCheckbox
+          label="test"
+          onValueChange={update => {
+            resolve(update);
+          }}/>
+      );
     });
     return check;
   });
   it('ensure checked changes propagate', () => {
-    let tree;
+    const handleChangeSpy = sinon.spy(
+      ErrorableCheckbox.prototype,
+      'handleChange'
+    );
+    const tree = shallow(
+      <ErrorableCheckbox label="test" onValueChange={() => {}}/>
+    );
+    const event = { target: { checked: true } };
 
-    const updatePromise = new Promise((resolve, _reject) => {
-      tree = shallow(<ErrorableCheckbox label="test" onChange={(update) => { resolve(update.target.checked); }}/>);
-    });
-
-    expect(tree.find('[type="checkbox"][checked="checked"]')).to.have.length(0);
-    tree.find('[type="checkbox"]').simulate('change', { target: { checked: true } });
-    return expect(updatePromise).to.eventually.eql(true);
+    const checkBox = () => tree.find('[type="checkbox"]');
+    checkBox().simulate('change', event);
+    expect(handleChangeSpy.calledOnce).to.equal(true);
   });
-
   it('no error styles when errorMessage undefined', () => {
-    const tree = shallow(<ErrorableCheckbox label="my label" onChange={(_update) => {}}/>);
+    const tree = shallow(
+      <ErrorableCheckbox label="my label" onValueChange={_update => {}}/>
+    );
 
     // No error classes.
     expect(tree.children('.usa-input-error')).to.have.lengthOf(0);
@@ -47,16 +64,27 @@ describe('<ErrorableCheckbox/>', () => {
     // Ensure no unnecessary class names on label w/o error..
     const labels = tree.children('label');
     expect(labels).to.have.lengthOf(1);
-    expect(labels.prop('className')).to.be.equal(undefined, 'Unnecessary class names on label without error');
+    expect(labels.prop('className')).to.be.equal(
+      undefined,
+      'Unnecessary class names on label without error'
+    );
 
     // No error means no aria-describedby to not confuse screen readers.
     const inputs = tree.find('input');
     expect(inputs).to.have.lengthOf(1);
-    expect(inputs.prop('aria-describedby')).to.be.equal(undefined, 'Unnecessary aria-describedby');
+    expect(inputs.prop('aria-describedby')).to.be.equal(
+      undefined,
+      'Unnecessary aria-describedby'
+    );
   });
 
   it('has error styles when errorMessage is set', () => {
-    const tree = shallow(<ErrorableCheckbox label="my label" errorMessage="error message" onChange={(_update) => {}}/>);
+    const tree = shallow(
+      <ErrorableCheckbox
+        label="my label"
+        errorMessage="error message"
+        onValueChange={_update => {}}/>
+    );
 
     // Ensure all error classes set.
     expect(tree.find('.usa-input-error')).to.have.lengthOf(1);
@@ -66,7 +94,7 @@ describe('<ErrorableCheckbox/>', () => {
 
     const errorMessages = tree.find('.usa-input-error-message');
     expect(errorMessages).to.have.lengthOf(1);
-    expect(errorMessages.text()).to.equal('error message');
+    expect(errorMessages.text()).to.equal('Error error message');
 
     // No error means no aria-describedby to not confuse screen readers.
     const inputs = tree.find('input');
@@ -76,20 +104,29 @@ describe('<ErrorableCheckbox/>', () => {
   });
 
   it('required=false does not have required asterisk', () => {
-    const tree = shallow(<ErrorableCheckbox label="my label" onChange={(_update) => {}}/>);
+    const tree = shallow(
+      <ErrorableCheckbox label="my label" onValueChange={_update => {}}/>
+    );
 
     expect(tree.find('label').text()).to.equal('my label');
   });
 
   it('required=true has required asterisk', () => {
-    const tree = shallow(<ErrorableCheckbox label="my label" required onChange={(_update) => {}}/>);
+    const tree = shallow(
+      <ErrorableCheckbox
+        label="my label"
+        required
+        onValueChange={_update => {}}/>
+    );
 
     const label = tree.find('label');
     expect(label.text()).to.equal('my label*');
   });
 
   it('label attribute propagates', () => {
-    const tree = shallow(<ErrorableCheckbox label="my label" onChange={(_update) => {}}/>);
+    const tree = shallow(
+      <ErrorableCheckbox label="my label" onValueChange={_update => {}}/>
+    );
 
     // Ensure label text is correct.
     const labels = tree.find('label');
@@ -103,5 +140,5 @@ describe('<ErrorableCheckbox/>', () => {
     expect(inputs.prop('id')).to.equal(labels.prop('htmlFor'));
   });
 
-/* eslint-enable no-unused-vars */
+  /* eslint-enable no-unused-vars */
 });
