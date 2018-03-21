@@ -24,7 +24,7 @@ describe('<AdditionalInfo/>', () => {
   });
   it('renders both children when open is true', () => {
     const first = wrapper.find('ExpandingGroup').props();
-    expect(first.open).to.eql(true);
+    expect(first.open).to.be.true;
     return axeCheck(
       <ExpandingGroup open={first.open}>
         <child1/>
