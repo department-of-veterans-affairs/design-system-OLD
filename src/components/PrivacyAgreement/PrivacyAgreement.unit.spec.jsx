@@ -1,13 +1,9 @@
 import React from 'react';
-import chai from 'chai';
-import chaiAsPromised from 'chai-as-promised';
+import { expect } from 'chai';
 import { mount } from 'enzyme';
 import { axeCheck } from '../../../lib/testing/helpers';
 import PrivacyAgreement from './PrivacyAgreement.jsx';
 
-chai.use(chaiAsPromised);
-const { expect } = chai;
-/* eslint-disable no-unused-vars */
 describe('<PrivacyAgreement/>', () => {
   let wrapper;
   beforeEach(() => {
@@ -31,12 +27,22 @@ describe('<PrivacyAgreement/>', () => {
     expect(checkBox.checked).to.be.true;
     expect(checkBox.onChange).to.be.a('function');
   });
-
+  it('should show errorMessage when its passed as a prop', () => {
+    wrapper.setProps({ checked: false, showError: true });
+    const checkBox = wrapper.find('ErrorableCheckbox');
+    expect(checkBox.prop('errorMessage')).to.eql(
+      'You must accept the privacy policy before continuing'
+    );
+    // should have error classes
+    expect(checkBox.find('.usa-input-error')).to.have.lengthOf(1);
+    expect(checkBox.find('.usa-input-error-label')).to.have.lengthOf(1);
+    expect(checkBox.find('.usa-input-error-message')).to.have.lengthOf(1);
+  });
   it('no error styles when errorMessage undefined', () => {
     // No error classes.
-    expect(wrapper.children('.usa-input-error')).to.have.lengthOf(0);
-    expect(wrapper.children('.usa-input-error-label')).to.have.lengthOf(0);
-    expect(wrapper.children('.usa-input-error-message')).to.have.lengthOf(0);
+    const checkBox = wrapper.find('ErrorableCheckbox');
+    expect(checkBox.find('.usa-input-error')).to.have.lengthOf(0);
+    expect(checkBox.find('.usa-input-error-label')).to.have.lengthOf(0);
+    expect(checkBox.find('.usa-input-error-message')).to.have.lengthOf(0);
   });
-  /* eslint-enable no-unused-vars */
 });

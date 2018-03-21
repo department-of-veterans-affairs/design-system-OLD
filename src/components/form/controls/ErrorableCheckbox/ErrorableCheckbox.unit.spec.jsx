@@ -1,41 +1,22 @@
 import React from 'react';
-import chai from 'chai';
-import chaiAsPromised from 'chai-as-promised';
+import { expect } from 'chai';
 import { shallow } from 'enzyme';
 import { axeCheck } from '../../../../../lib/testing/helpers';
 import ErrorableCheckbox from './ErrorableCheckbox.jsx';
 import sinon from 'sinon';
 
-chai.use(chaiAsPromised);
-const { expect } = chai;
-/* eslint-disable no-unused-vars */
 describe('<ErrorableCheckbox/>', () => {
   it('should render', () => {
-    let tree;
-    const updatePromise = new Promise((resolve, _reject) => {
-      tree = shallow(
-        <ErrorableCheckbox
-          label="test"
-          onValueChange={update => {
-            resolve(update);
-          }}/>
-      );
-    });
+    const tree = shallow(
+      <ErrorableCheckbox label="test" onValueChange={() => {}}/>
+    );
     expect(tree.text()).to.contain('test');
   });
 
   it('should pass aXe check', () => {
-    let check;
-    const updatePromise = new Promise((resolve, _reject) => {
-      check = axeCheck(
-        <ErrorableCheckbox
-          label="test"
-          onValueChange={update => {
-            resolve(update);
-          }}/>
-      );
-    });
-    return check;
+    return axeCheck(
+      <ErrorableCheckbox label="test" onValueChange={() => {}}/>
+    );
   });
   it('ensure checked changes propagate', () => {
     const handleChangeSpy = sinon.spy(
@@ -49,7 +30,7 @@ describe('<ErrorableCheckbox/>', () => {
 
     const checkBox = () => tree.find('[type="checkbox"]');
     checkBox().simulate('change', event);
-    expect(handleChangeSpy.calledOnce).to.equal(true);
+    expect(handleChangeSpy.calledOnce).to.be.true;
   });
   it('no error styles when errorMessage undefined', () => {
     const tree = shallow(
@@ -139,6 +120,4 @@ describe('<ErrorableCheckbox/>', () => {
     expect(inputs.prop('id')).to.not.be.equal(undefined);
     expect(inputs.prop('id')).to.equal(labels.prop('htmlFor'));
   });
-
-  /* eslint-enable no-unused-vars */
 });

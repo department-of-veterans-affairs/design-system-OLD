@@ -28,6 +28,12 @@ export default function PrivacyAgreement({ onChange, checked, showError }) {
 }
 
 PrivacyAgreement.propTypes = {
+  /**
+   * Handler for when the checkbox is changed
+   */
   onChange: PropTypes.func.isRequired,
+  /**
+   * If the checkbox is checked or not
+   */
   checked: PropTypes.bool.isRequired
 };

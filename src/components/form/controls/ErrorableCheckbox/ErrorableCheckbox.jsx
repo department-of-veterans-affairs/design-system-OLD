@@ -96,11 +96,29 @@ class ErrorableCheckbox extends React.Component {
 }
 
 ErrorableCheckbox.propTypes = {
+  /**
+   * If the checkbox is checked or not
+   */
   checked: PropTypes.bool,
+  /**
+   * Error message for the modal
+   */
   errorMessage: PropTypes.string,
+  /**
+   * Name for the modal
+   */
   name: PropTypes.string,
+  /**
+   * Label for the checkbox
+   */
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
+  /**
+   * Handler for when the checkbox is changed
+   */
   onValueChange: PropTypes.func.isRequired,
+  /**
+   * If the checkbox is required or not
+   */
   required: PropTypes.bool
 };
 
