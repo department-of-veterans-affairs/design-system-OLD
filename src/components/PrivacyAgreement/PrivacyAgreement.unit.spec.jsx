@@ -37,6 +37,9 @@ describe('<PrivacyAgreement/>', () => {
     expect(checkBox.find('.usa-input-error')).to.have.lengthOf(1);
     expect(checkBox.find('.usa-input-error-label')).to.have.lengthOf(1);
     expect(checkBox.find('.usa-input-error-message')).to.have.lengthOf(1);
+    return axeCheck(
+      <PrivacyAgreement showError checked={false} onChange={() => {}}/>
+    );
   });
   it('no error styles when errorMessage undefined', () => {
     // No error classes.
