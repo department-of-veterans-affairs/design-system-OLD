@@ -53,7 +53,6 @@
 @import "~uswds/src/stylesheets/components/navigation";
 @import "~uswds/src/stylesheets/components/sidenav";
 
-
 // ----- VA BASE (VARIABLES/HELPERS) ---- //
 @import "base/b-element-overrides";
 @import "base/b-mixins";
@@ -87,4 +86,10 @@
 @import "modules/m-additional-info";
 @import "modules/m-accept-terms";
 
-// ----- VA SHAME ---- // @import "shame";
+// ----- VA SHAME ---- //
+
+@import "shame";
+
+// ----- Fractal-specific ---- //
+
+@import "fractal";
