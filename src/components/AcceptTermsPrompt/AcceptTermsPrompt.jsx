@@ -1,7 +1,5 @@
 import React from 'react';
 import classNames from 'classnames';
-// commented out for design system
-// import { browserHistory } from 'react-router';
 import PropTypes from 'prop-types';
 
 class AcceptTermsPrompt extends React.Component {
@@ -16,17 +14,6 @@ class AcceptTermsPrompt extends React.Component {
   componentDidMount() {
     window.dataLayer.push({ event: 'terms-shown' });
     window.scrollTo(0, 0);
-  }
-
-  onCancel(e) {
-    e.preventDefault();
-    if (document.referrer !== '' && !this.props.isInModal) {
-      // commented out for design system
-      // browserHistory.goBack();
-    } else {
-      // commented out for design system
-      // browserHistory.push(this.props.cancelPath);
-    }
   }
 
   handleSubmit() {
@@ -54,7 +41,7 @@ class AcceptTermsPrompt extends React.Component {
 
   render() {
     // loading state for terms content is handled by parent component
-    const { terms } = this.props;
+    const { terms, onCancel } = this.props;
 
     if (!terms.termsContent) {
       return <div/>;
@@ -127,7 +114,7 @@ class AcceptTermsPrompt extends React.Component {
             {submitButton}
             <button
               className="usa-button usa-button-secondary"
-              onClick={this.onCancel}>
+              onClick={onCancel}>
               Cancel
             </button>
           </div>
@@ -140,7 +127,10 @@ class AcceptTermsPrompt extends React.Component {
 }
 
 AcceptTermsPrompt.propTypes = {
-  /* panel label */
-  terms: PropTypes.object
+  /* content shown as the actual terms and conditions */
+  terms: PropTypes.object,
+
+  /* cancel button click handler */
+  onCancel: PropTypes.func.isRequired
 };
 export default AcceptTermsPrompt;

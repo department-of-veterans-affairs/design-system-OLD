@@ -13,7 +13,8 @@ const defaultProps = {
     yesContent: 'yes content',
     title: 'Terms and Conditions'
   },
-  onAccept: sinon.spy()
+  onAccept: sinon.spy(),
+  onCancel: sinon.spy()
 };
 describe('<AcceptTermsPrompt/>', () => {
   let wrapper;
@@ -36,7 +37,9 @@ describe('<AcceptTermsPrompt/>', () => {
     );
   });
   it('should pass aXe check', () => {
-    return axeCheck(<AcceptTermsPrompt terms={{}}/>);
+    return axeCheck(
+      <AcceptTermsPrompt terms={{}} onAccept={() => {}} onCancel={() => {}}/>
+    );
   });
   it('should pass aXe check with default props', () => {
     return axeCheck(<AcceptTermsPrompt {...defaultProps}/>);
@@ -61,5 +64,10 @@ describe('<AcceptTermsPrompt/>', () => {
     const submitButton = wrapper.find('.submit-button');
     submitButton.simulate('click');
     expect(defaultProps.onAccept.calledWith('mhvac')).to.be.true;
+  });
+  it('should call onCancel correctly', () => {
+    const cancelButton = wrapper.find('.usa-button-secondary');
+    cancelButton.simulate('click');
+    expect(defaultProps.onCancel.calledOnce).to.be.true;
   });
 });
