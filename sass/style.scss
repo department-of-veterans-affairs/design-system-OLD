@@ -17,8 +17,8 @@
 @font-face {
   font-family: "FontAwesome";
   src: url("~font-awesome/fonts/fontawesome-webfont.woff2") format("woff2"),
-       url("~font-awesome/fonts/fontawesome-webfont.woff") format("woff"),
-       url("~font-awesome/fonts/fontawesome-webfont.eot") format("eot");
+    url("~font-awesome/fonts/fontawesome-webfont.woff") format("woff"),
+    url("~font-awesome/fonts/fontawesome-webfont.eot") format("eot");
   font-weight: normal;
   font-style: normal;
 }
@@ -80,7 +80,6 @@
 @import "modules/m-education-wizard";
 @import "modules/m-applications";
 @import "modules/m-additional-info";
+@import "modules/m-accept-terms";
 
-// ----- VA SHAME ---- //
-
-@import "shame";
+// ----- VA SHAME ---- // @import "shame";
