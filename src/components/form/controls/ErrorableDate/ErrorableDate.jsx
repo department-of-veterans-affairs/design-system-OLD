@@ -8,7 +8,7 @@ import moment from 'moment';
 import ErrorableSelect from '../ErrorableSelect/ErrorableSelect';
 import ErrorableNumberInput from '../ErrorableNumberInput/ErrorableNumberInput';
 
-import ToolTip from '../../../tooltip/Tooltip';
+import ToolTip from '../../../Tooltip/Tooltip';
 
 import {
   isDirtyDate,
