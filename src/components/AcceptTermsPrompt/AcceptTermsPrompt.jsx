@@ -131,6 +131,6 @@ AcceptTermsPrompt.propTypes = {
   terms: PropTypes.object,
 
   /* cancel button click handler */
-  onCancel: PropTypes.func.isRequired
+  onCancel: PropTypes.func
 };
 export default AcceptTermsPrompt;
