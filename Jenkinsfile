@@ -41,7 +41,7 @@ pipeline {
           usernameVariable: 'GIT_USERNAME',
           passwordVariable: 'GIT_PASSWORD'
         ]]) {
-          sh 'NODE_ENV=production npm run site'
+          sh 'npm run site'
         }
       }
     }
