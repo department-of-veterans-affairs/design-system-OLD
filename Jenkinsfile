@@ -5,7 +5,8 @@ pipeline {
     }
   }
   environment {
-    BABEL_CACHE_PATH = '${env.WORKSPACE}'
+    BABEL_CACHE_PATH = '${env.WORKSPACE}',
+    NODE_ENV = 'production'
   }
 
   stages {
