@@ -12,7 +12,7 @@ pipeline {
   stages {
     stage('setup') {
       steps {
-        sh 'yarn install'
+        sh 'yarn install --production=false'
       }
     }
 
