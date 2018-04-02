@@ -14,7 +14,7 @@ const context = {
   isProduction: process.env.NODE_ENV === 'production'
 };
 
-fractal.set('project.title', 'Jean Pants');
+fractal.set('project.title', 'Vets.gov Design Standards');
 
 const { components, docs, web } = fractal;
 
@@ -41,7 +41,7 @@ components.set('statuses', {
   deprecated: {
     label: 'Deprecated',
     description: 'We\'re removing this component from Vets.gov.',
-    color: '#323a45'
+    color: '#cd2026'
   }
 });
 
@@ -60,7 +60,7 @@ docs.set('path', 'docs');
 
 const theme = require('@frctl/mandelbrot')({
   lang: 'en-US',
-  skin: 'navy',
+  skin: 'white',
   // reorder navigation
   nav: ['docs', 'components'],
   // display context data in YAML
@@ -74,10 +74,6 @@ const theme = require('@frctl/mandelbrot')({
     'context',
     'resources',
     'info'
-  ],
-  styles: [
-    'default',
-    '/fractal.css'
   ],
 });
 

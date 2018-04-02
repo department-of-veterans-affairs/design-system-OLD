@@ -2,7 +2,6 @@ label: Color palette
 status: wip
 collated: true
 order: 0
-preview: '@uswds-framed'
 
 context:
   family:

@@ -1,8 +1,7 @@
 label: Buttons
-status: wip
+status: ready
 collated: true
 default: primary
-preview: '@uswds-framed'
 order: 3
 
 variants:
