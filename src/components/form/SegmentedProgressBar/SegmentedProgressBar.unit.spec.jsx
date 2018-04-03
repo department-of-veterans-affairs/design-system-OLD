@@ -5,7 +5,7 @@ import { axeCheck } from '../../../../lib/testing/helpers';
 
 import SegmentedProgressBar from './SegmentedProgressBar.jsx';
 
-describe.only('<SegmentedProgressBar/>', () => {
+describe('<SegmentedProgressBar/>', () => {
   it('should render', () => {
     const tree = shallow(<SegmentedProgressBar current={2} total={5}/>);
     expect(tree.find('.progress-segment')).to.have.length(5);
