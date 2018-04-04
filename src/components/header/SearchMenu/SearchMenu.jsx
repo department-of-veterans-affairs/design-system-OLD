@@ -6,21 +6,15 @@ import IconSearch from '../../svgicons/IconSearch/IconSearch';
 import DropDown from '../../form/controls/dropdown/DropDown';
 
 class SearchMenu extends React.Component {
-  constructor(props) {
-    super(props);
-    this.makeForm = this.makeForm.bind(this);
-    this.toggleSearchForm = this.toggleSearchForm.bind(this);
-  }
-
   componentDidUpdate() {
     this.refs.searchField.focus();
   }
 
-  toggleSearchForm() {
+  toggleSearchForm = () => {
     this.props.clickHandler();
-  }
+  };
 
-  makeForm() {
+  makeForm = () => {
     return (
       <form
         acceptCharset="UTF-8"
@@ -54,7 +48,7 @@ class SearchMenu extends React.Component {
         </div>
       </form>
     );
-  }
+  };
 
   render() {
     const buttonClasses = classNames(
