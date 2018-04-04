@@ -160,7 +160,7 @@ Modal.propTypes = {
     action: PropTypes.func.isRequired,
   }),
   /*
-   * Style of modeal alert
+   * Style of modal alert
    */
   status: PropTypes.oneOf([
     'info',
