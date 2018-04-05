@@ -12,7 +12,7 @@ export default class ErrorableCurrentOrPastDateExample extends React.Component {
 
   handleChange = (value) => {
     this.setState({
-      day: value.month.day,
+      day: value.day.value,
       month: value.month.value,
       year: value.year.value
     })
@@ -20,13 +20,14 @@ export default class ErrorableCurrentOrPastDateExample extends React.Component {
 
   render() {
     const date = {
-      day: makeField(this.state.day),
-      month: makeField(this.state.month),
-      year: makeField(this.state.year)
+      day: makeField(this.state.day.toString()),
+      month: makeField(this.state.month.toString()),
+      year: makeField(this.state.year.toString())
     };
     return (
       <ErrorableCurrentOrPastDate
         date={date}
-        onValueChange={handleChange} />);
+        name={this.props.name}
+        onValueChange={this.handleChange} />);
   }
 };
