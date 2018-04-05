@@ -1,0 +1,8 @@
+label: ErrorableCurrentOrPastDate
+status: wip
+
+context:
+  componentSourcePath: './ErrorableCurrentOrPastDate.jsx'
+  day: 5
+  month: 8
+  year: 1980
