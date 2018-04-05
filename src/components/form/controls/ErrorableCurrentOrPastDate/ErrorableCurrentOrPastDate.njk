@@ -1,0 +1,32 @@
+import React from 'react';
+import ErrorableCurrentOrPastDate from './ErrorableCurrentOrPastDate';
+import { makeField } from '../../../../helpers/fields.js';
+
+export default class ErrorableCurrentOrPastDateExample extends React.Component {
+
+  constructor(props) {
+    super();
+
+    this.state = props;
+  }
+
+  handleChange = (value) => {
+    this.setState({
+      day: value.month.day,
+      month: value.month.value,
+      year: value.year.value
+    })
+  }
+
+  render() {
+    const date = {
+      day: makeField(this.state.day),
+      month: makeField(this.state.month),
+      year: makeField(this.state.year)
+    };
+    return (
+      <ErrorableCurrentOrPastDate
+        date={date}
+        onValueChange={handleChange} />);
+  }
+};
