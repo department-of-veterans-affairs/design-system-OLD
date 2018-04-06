@@ -103,5 +103,16 @@ describe('<ErrorableMonthYear>', () => {
       <ErrorableMonthYear date={date} onValueChange={(_update) => {}}/>
     );
   });
+  it('should pass aXe check with error displayed', () => {
+    const date = {
+      month: makeField('12'),
+      year: makeField('')
+    };
+    date.year.dirty = true;
+    date.month.dirty = true;
+    return axeCheck(
+      <ErrorableMonthYear date={date} onValueChange={(_update) => {}}/>
+    );
+  });
 });
 

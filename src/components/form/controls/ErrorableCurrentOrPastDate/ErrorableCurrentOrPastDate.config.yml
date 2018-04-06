@@ -1,8 +1,0 @@
-label: ErrorableCurrentOrPastDate
-status: wip
-
-context:
-  day: 5
-  month: 8
-  year: 2080
-  name: 'ErrorableCurrentOrPastDate'
