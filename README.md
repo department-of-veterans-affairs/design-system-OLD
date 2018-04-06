@@ -68,7 +68,7 @@ Follow these [instructions](https://docs.npmjs.com/getting-started/publishing-np
 
 If you are unsure of which to use, do a major version update.
 
-* Update (module-readme.md)
+* Update [npm module readme](module-readme.md)
 
 4. Pull master and publish
 
