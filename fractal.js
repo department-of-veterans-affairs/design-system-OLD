@@ -93,13 +93,6 @@ fractal.cli.command('watch', () => {
   });
   server.on('error', err => logger.error(err.message));
 
-  // ncp('./src/img', './dist/img', (err) => {
-  //   if (err) {
-  //     logger.error(`Failed to copy images: ${err}`);
-  //   }
-  //
-  // });
-
   return server.start().then(() => {
     logger.success(`Fractal server is now running at ${server.url}`);
     createWebpackBundle(logger, fractal.components);
@@ -122,14 +115,6 @@ fractal.cli.command('build-site', (args, done) => {
     createWebpackBundle(logger, fractal.components, false);
 
     done();
-    // ncp('./src/img', './dist/img', (err) => {
-    //   if (err) {
-    //     logger.error(`Failed to copy images: ${err}`);
-    //     throw new Error(err);
-    //   }
-    //
-    //   done();
-    // });
   });
 });
 
