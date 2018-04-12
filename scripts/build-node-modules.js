@@ -60,7 +60,7 @@ fileNames.forEach(fileName => {
   console.log(`${newFileName} built`);
 });
 
-ncp('./sass', './dist/jean-pants/sass', (err) => {
+ncp('./src/sass', './dist/jean-pants/sass', (err) => {
   if (err) {
     throw new Error(`Failed to copy styles: ${err}`);
   }
