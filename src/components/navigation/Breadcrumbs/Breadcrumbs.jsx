@@ -3,24 +3,35 @@ import React from 'react';
 
 class Breadcrumbs extends React.Component {
   render() {
-    const crumbs = this.props.crumbs;
+    const { crumbs, id } = this.props;
     return (
-      <nav className="va-nav-breadcrumbs">
-        <ul className="row va-nav-breadcrumbs-list columns" role="menubar" aria-label="Primary">
-          {crumbs.map((c) => {
-            return <li key={c.key}><a href={c.link}>{c.label}</a></li>;
+      <nav
+        aria-label="Breadcrumb"
+        className="va-nav-breadcrumbs"
+        id={id}>
+        <ol className="row va-nav-breadcrumbs-list columns" id={`${id}-list`}>
+          {crumbs.map(c => {
+            return (
+              <li key={c.key}>
+                <a
+                  aria-current={c.ariaCurrent ? 'page' : null}
+                  href={c.link}>
+                  {c.label}
+                </a>
+              </li>
+            );
           })}
-        </ul>
+        </ol>
       </nav>
     );
   }
 }
 
 Breadcrumbs.propTypes = {
-
   // array should contain objects that contain each breadcrumb's
   // key, href, and plain-text label
-  crumbs: PropTypes.arrayOf(PropTypes.object).isRequired
+  crumbs: PropTypes.arrayOf(PropTypes.object).isRequired,
+  id: PropTypes.string
 };
 
 export default Breadcrumbs;
