@@ -31,6 +31,9 @@ Breadcrumbs.propTypes = {
   // array should contain objects that contain each breadcrumb's
   // key, href, and plain-text label
   crumbs: PropTypes.arrayOf(PropTypes.object).isRequired,
+  // Passing a prop `id='STRING'` into the `<Breadcrumb>` component
+  // will append that ID to the `<nav>` element, and concatenate the
+  // ID plus `-list` to the `<ol>` element.
   id: PropTypes.string
 };
 
