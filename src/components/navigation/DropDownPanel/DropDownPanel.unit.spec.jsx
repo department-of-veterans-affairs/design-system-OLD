@@ -44,6 +44,7 @@ describe('<DropDownPanel>', () => {
 
   it('should render', () => {
     expect(dropDown.find('.va-dropdown-panel').text()).to.equal('Hi');
+    expect(dropDown.find('.va-dropdown-trigger').text()).to.equal('Button text');
   });
 
   it('should register event listeners on the parent element', () => {
