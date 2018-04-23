@@ -91,17 +91,8 @@ function createWebpackBundle(logger, fractalComponents, watch = true) {
             fallback: 'style-loader',
             use: [
               { loader: 'css-loader' },
-              { loader: 'resolve-url-loader' },
-              {
-                loader: 'sass-loader',
-                options: {
-                  includePaths: [
-                    '~/uswds/src/stylesheets&sourceMap'
-                  ],
-                  sourceMap: true,
-                }
-              }
-            ],
+              { loader: 'sass-loader' }
+            ]
           })
         },
         {
@@ -110,17 +101,8 @@ function createWebpackBundle(logger, fractalComponents, watch = true) {
             fallback: 'style-loader',
             use: [
               { loader: 'css-loader' },
-              { loader: 'resolve-url-loader' },
-              {
-                loader: 'sass-loader',
-                options: {
-                  includePaths: [
-                    '~/uswds/src/stylesheets&sourceMap'
-                  ],
-                  sourceMap: true,
-                }
-              }
-            ],
+              { loader: 'sass-loader' }
+            ]
           })
         },
         {
