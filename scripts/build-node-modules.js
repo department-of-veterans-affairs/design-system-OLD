@@ -62,7 +62,7 @@ fileNames.forEach(fileName => {
 
 ncp('./src/sass',
   './dist/jean-pants/sass',
-  { filter: (filename) => filename.includes('/site/') },
+  { filter: (filename) => !filename.includes('/site') },
   (err) => {
     if (err) {
       throw new Error(`Failed to copy styles: ${err}`);
