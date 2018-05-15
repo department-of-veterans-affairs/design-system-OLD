@@ -98,7 +98,7 @@ class ErrorableRadioButtons extends React.Component {
         <div
           key={optionAdditional ? undefined : optionIndex}
           className="form-radio-buttons">
-          <div className="errable-radio-button">
+          <div className="errorable-radio-button">
             <input
               autoComplete="false"
               checked={checked}
