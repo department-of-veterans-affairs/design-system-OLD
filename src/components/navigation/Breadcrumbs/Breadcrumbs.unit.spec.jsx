@@ -1,39 +1,193 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { Link } from 'react-router';
+import { shallow, mount } from 'enzyme';
 import { axeCheck } from '../../../../lib/testing/helpers';
 import { expect } from 'chai';
 
 import Breadcrumbs from './Breadcrumbs.jsx';
 
-const crumbs = [{ link: '#1', key: 'key1', label: 'link1' },
-  { link: '#2', key: 'key2', label: 'link2' },
-  { link: '#3', key: 'key3', label: 'link3' }];
+const crumbs = [
+  <a href="/" key="1">Link 1</a>,
+  <a href="/test1" key="2">Link 2</a>,
+  <a href="/test2" key="3">Link 3</a>
+];
+
+const routerCrumbs = [
+  <Link to="/" key="1">Link 1</Link>,
+  <Link to="/test1" key="2">Link 2</Link>,
+  <Link to="/test2" key="3">Link 3</Link>,
+];
 
 describe('<Breadcrumbs>', () => {
-  it('should render three items', () => {
-    const tree = shallow(<Breadcrumbs
-      crumbs={crumbs}/>);
+  it('should render', () => {
+    const tree = shallow(
+      <Breadcrumbs>
+        {crumbs}
+      </Breadcrumbs>
+    );
 
-    expect(tree.find('li')).to.have.lengthOf(3);
+    expect(tree).to.not.be.undefined;
   });
 
-  it('should contain link elements', () => {
-    const tree = shallow(<Breadcrumbs
-      crumbs={crumbs}/>);
+  it('should render custom props', () => {
+    const tree = shallow(
+      <Breadcrumbs
+        id="foo"
+        listId="foo-list"
+        mobileWidth="375">
+        {crumbs}
+      </Breadcrumbs>
+    );
 
-    expect(tree.find('a')).to.have.lengthOf(3);
+    const navElem = tree.find('nav');
+    const listElem = tree.find('ul');
+
+    expect(navElem.find({ id: 'foo' })).to.have.length(1);
+    expect(navElem.find({ 'data-id': '375' })).to.have.length(1);
+    expect(listElem.find({ id: 'foo-list' })).to.have.length(1);
   });
 
-  it('should have plain-text labels', () => {
-    const tree = shallow(<Breadcrumbs
-      crumbs={crumbs}/>);
+  it('should render exactly one nav', () => {
+    const tree = shallow(
+      <Breadcrumbs>
+        {crumbs}
+      </Breadcrumbs>
+    );
 
-    expect(tree.find('a').first().text()).to.equal('link1');
-    expect(tree.find('a').last().text()).to.equal('link3');
+    const navElem = tree.find('nav');
+
+    expect(navElem.length).to.equal(1);
+  });
+
+  it('should render correct nav props', () => {
+    const tree = shallow(
+      <Breadcrumbs>
+        {crumbs}
+      </Breadcrumbs>
+    );
+
+    const navElem = tree.find('nav');
+
+    expect(navElem.find({ className: 'va-nav-breadcrumbs' })).to.have.length(1);
+    expect(navElem.find({ 'aria-label': 'Breadcrumb' })).to.have.length(1);
+    expect(navElem.find({ 'aria-live': 'polite' })).to.have.length(1);
+  });
+
+  it('should render exactly one unordered list', () => {
+    const tree = shallow(
+      <Breadcrumbs>
+        {crumbs}
+      </Breadcrumbs>
+    );
+
+    const listElem = tree.find('ul');
+
+    expect(listElem.length).to.equal(1);
+  });
+
+  it('should render correct unordered list props', () => {
+    const tree = shallow(
+      <Breadcrumbs>
+        {crumbs}
+      </Breadcrumbs>
+    );
+
+    const listElem = tree.find('ul');
+
+    expect(listElem.find({ className: 'row va-nav-breadcrumbs-list columns' })).to.have.length(1);
+  });
+
+  it('should render exactly three list items', () => {
+    const tree = shallow(
+      <Breadcrumbs>
+        {crumbs}
+      </Breadcrumbs>
+    );
+
+    const listItemElem = tree.find('li');
+
+    expect(listItemElem).to.have.length(3);
+  });
+
+  it('should render exactly three link elements', () => {
+    const tree = shallow(
+      <Breadcrumbs>
+        {crumbs}
+      </Breadcrumbs>
+    );
+
+    const linkElem = tree.find('a');
+
+    expect(linkElem).to.have.length(3);
+  });
+
+  it('should have the correct text labels', () => {
+    const tree = shallow(
+      <Breadcrumbs>
+        {crumbs}
+      </Breadcrumbs>
+    );
+
+    tree.find('a').forEach((node, i) => {
+      expect(node.text()).to.equal(`Link ${i + 1}`);
+    });
+  });
+
+  it('should render the correct link props', () => {
+    const tree = shallow(
+      <Breadcrumbs>
+        {crumbs}
+      </Breadcrumbs>
+    );
+
+    const linkElem = tree.find('a');
+
+    expect(linkElem.at(0).props()['aria-current']).to.be.undefined;
+    expect(linkElem.at(1).props()['aria-current']).to.be.undefined;
+    expect(linkElem.at(2).props()['aria-current']).to.equal('page');
+  });
+
+  it('should render individual children correctly', () => {
+    const tree = shallow(
+      <Breadcrumbs>
+        <a href="/" key="1">Link 1</a>
+        <a href="/test1" key="2">Link 2</a>
+        <a href="/test2" key="3">Link 3</a>
+      </Breadcrumbs>
+    );
+
+    const linkElem = tree.find('a');
+
+    linkElem.forEach((node, i) => {
+      expect(node.text()).to.equal(`Link ${i + 1}`);
+    });
+
+    expect(linkElem).to.not.be.undefined;
+    expect(linkElem.length).to.equal(3);
+  });
+
+  it('should render React Router 3 Links correctly', () => {
+    const tree = mount(
+      <Breadcrumbs>
+        {routerCrumbs}
+      </Breadcrumbs>
+    );
+
+    const linkElem = tree.find('a');
+
+    linkElem.forEach((node, i) => {
+      expect(node.text()).to.equal(`Link ${i + 1}`);
+    });
+
+    expect(linkElem).to.not.be.undefined;
+    expect(linkElem.length).to.equal(3);
   });
 
   it('should pass aXe check', () => {
-    return axeCheck(<Breadcrumbs
-      crumbs={crumbs}/>);
+    return axeCheck(
+      <Breadcrumbs>
+        {crumbs}
+      </Breadcrumbs>
+    );
   });
 });
