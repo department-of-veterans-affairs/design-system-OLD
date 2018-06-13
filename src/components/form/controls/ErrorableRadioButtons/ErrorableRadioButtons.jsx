@@ -3,7 +3,6 @@ import React from 'react';
 import _ from 'lodash';
 import classNames from 'classnames';
 
-import ToolTip from '../../../Tooltip/Tooltip';
 import ExpandingGroup from '../ExpandingGroup/ExpandingGroup';
 
 import { makeField } from '../../../../helpers/fields';
@@ -18,7 +17,6 @@ import { makeField } from '../../../../helpers/fields';
  * `errorMessage' - String Error message for the radio button group
  * `label` - String for the group field label.
  * `name` - String for the name attribute.
- * `toolTipText` - String with help text for user.
  * `tabIndex` - Number for keyboard tab order.
  * `options` - Array of options to populate group.
  * `required` - is this field required.
@@ -68,16 +66,6 @@ class ErrorableRadioButtons extends React.Component {
       );
     }
 
-    // Addes ToolTip if text is provided.
-    let toolTip;
-    if (this.props.toolTipText) {
-      toolTip = (
-        <ToolTip
-          tabIndex={this.props.tabIndex}
-          toolTipText={this.props.toolTipText}/>
-      );
-    }
-
     // Calculate required.
     let requiredSpan = undefined;
     if (this.props.required) {
@@ -105,27 +93,32 @@ class ErrorableRadioButtons extends React.Component {
         optionValue === storedValue,
         optionValue
       );
+
       const radioButton = (
         <div
           key={optionAdditional ? undefined : optionIndex}
           className="form-radio-buttons">
-          <input
-            autoComplete="false"
-            checked={checked}
-            id={`${this.inputId}-${optionIndex}`}
-            name={this.props.name}
-            type="radio"
-            onMouseDown={this.props.onMouseDown}
-            onKeyDown={this.props.onKeyDown}
-            value={optionValue}
-            onChange={this.handleChange}/>
-          <label
-            name={`${this.props.name}-${optionIndex}-label`}
-            htmlFor={`${this.inputId}-${optionIndex}`}>
-            {optionLabel}
-          </label>
-          {matchingSubSection}
-          {option.content}
+          <div className="errorable-radio-button">
+            <input
+              autoComplete="false"
+              checked={checked}
+              id={`${this.inputId}-${optionIndex}`}
+              name={this.props.name}
+              type="radio"
+              onMouseDown={this.props.onMouseDown}
+              onKeyDown={this.props.onKeyDown}
+              value={optionValue}
+              onChange={this.handleChange}/>
+
+            <label
+              name={`${this.props.name}-${optionIndex}-label`}
+              htmlFor={`${this.inputId}-${optionIndex}`}>
+
+              {optionLabel}
+            </label>
+            {matchingSubSection}
+            {option.content}
+          </div>
         </div>
       );
 
@@ -165,7 +158,6 @@ class ErrorableRadioButtons extends React.Component {
         </legend>
         {errorSpan}
         {optionElements}
-        {toolTip}
       </fieldset>
     );
   }
@@ -193,10 +185,6 @@ ErrorableRadioButtons.propTypes = {
    */
   name: PropTypes.string,
   id: PropTypes.string,
-  /**
-   * help text for user
-   */
-  toolTipText: PropTypes.string,
   /**
    * keyboard tab order for radio button group
    */
