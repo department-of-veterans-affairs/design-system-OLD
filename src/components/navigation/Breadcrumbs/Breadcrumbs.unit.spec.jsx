@@ -32,9 +32,10 @@ describe('<Breadcrumbs>', () => {
   it('should render custom props', () => {
     const tree = shallow(
       <Breadcrumbs
+        customClasses="foo test"
         id="foo"
         listId="foo-list"
-        mobileWidth="375">
+        mobileWidth={375}>
         {crumbs}
       </Breadcrumbs>
     );
@@ -42,8 +43,10 @@ describe('<Breadcrumbs>', () => {
     const navElem = tree.find('nav');
     const listElem = tree.find('ul');
 
+    expect(navElem.props().className).to.include('va-nav-breadcrumbs');
+    expect(navElem.props().className).to.include('foo test');
     expect(navElem.props().id).to.equal('foo');
-    expect(navElem.props()['data-mobile-width']).to.equal('375');
+    expect(navElem.props()['data-mobile-width']).to.equal(375);
     expect(listElem.props().id).to.equal('foo-list');
   });
 

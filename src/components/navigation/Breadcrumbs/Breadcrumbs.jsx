@@ -30,6 +30,9 @@ class Breadcrumbs extends React.Component {
     this.toggleDisplay(mobileWidth);
   }, 500);
 
+  /**
+   * Provide a means to add overriding classes
+   */
   classNames() {
     const customClass = this.props.customClasses;
 
@@ -39,6 +42,10 @@ class Breadcrumbs extends React.Component {
     );
   }
 
+  /**
+   * Manage state to show all breadcrumb links or
+   * just the mobile "Back by one" link
+   */
   toggleDisplay = breakpoint => {
     if (window.innerWidth <= breakpoint) {
       this.setState({ mobileShow: true });
@@ -47,6 +54,10 @@ class Breadcrumbs extends React.Component {
     }
   }
 
+  /**
+   * Build the breadcrumb links. Check the array length
+   * and add an `aria-current` attribute to the last link.
+   */
   renderBreadcrumbLinks = () => {
     return React.Children.map(this.props.children, (child, i) => {
       if (i === this.props.children.length - 1) {
@@ -61,9 +72,11 @@ class Breadcrumbs extends React.Component {
     });
   }
 
+  /**
+   * The second to last link being sliced from the crumbs array
+   * prop to create the "Back by one" mobile breadcrumb link
+   */
   renderMobileLink = () => {
-    // The second to last link being sliced from the crumbs array
-    // prop to create the "Back by one" mobile breadcrumb link
     return React.Children.map(this.props.children, (child, i) => {
       if (i === this.props.children.length - 2) {
         return (
@@ -103,7 +116,7 @@ class Breadcrumbs extends React.Component {
 
     return (
       <nav
-        aria-label="Breadcrumb"
+        aria-label={this.props.ariaLabel}
         aria-live="polite"
         className={this.classNames()}
         data-mobile-width={this.props.mobileWidth}
@@ -115,10 +128,13 @@ class Breadcrumbs extends React.Component {
 }
 
 Breadcrumbs.defaultProps = {
+  ariaLabel: 'Breadcrumb',
   mobileWidth: 481,
 };
 
 Breadcrumbs.propTypes = {
+  ariaLabel: PropTypes.string.isRequired,
+  customClasses: PropTypes.string,
   id: PropTypes.string,
   listId: PropTypes.string,
   mobileWidth: PropTypes.number.isRequired,

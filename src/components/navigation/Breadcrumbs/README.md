@@ -19,17 +19,25 @@ The breadcrumb component switches to a single previous step link when the screen
 
 ## Optional Props
 
+### ariaLabel (STRING)
+
+Passing prop `ariaLabel="<STRING>"` to the `<Breadcrumbs />` component will override the default `aria-label="Breadcrumb"` declaration. If you plan to add a unique aria-label, please consider testing with one or more assistive devices to ensure proper context.
+
+### customClasses (STRING)
+
+Passing prop `customClasses="<STRING STRING>"` to the `<Breadcrumbs />` component will append your space-separated classes to the `<nav class="va-nav-breadcrumbs">` class list.
+
 ### id (STRING)
 
-Passing prop `id='<STRING>'` to the `<Breadcrumb>` component will append that ID to the `<nav>` element. If no `id` is passed, a unique id will be created by concatnating the string `va-breadcrumbs-` with a string returned by `lodash.uniqueid`.
+Passing prop `id="<STRING>"` to the `<Breadcrumbs />` component will append that ID to the `<nav>` element. If no `id` is passed, a unique id will be created by concatnating the string `va-breadcrumbs-` with a string returned by `lodash.uniqueid`.
 
 ### listId (STRING)
 
-Passing prop `listId='<STRING>'` to the `<Breadcrumb>` component will append that list ID to the `<ul>` element. If no `listId` is passed, a unique id will be created by concatnating the string `va-breadcrumbs-list-` with a string returned by `lodash.uniqueid`.
+Passing prop `listId="<STRING>"` to the `<Breadcrumbs />` component will append that list ID to the `<ul>` element. If no `listId` is passed, a unique id will be created by concatnating the string `va-breadcrumbs-list-` with a string returned by `lodash.uniqueid`.
 
 ### mobileWidth (NUMBER)
 
-Passing prop `mobileWidth='<NUMBER>'` to the `<Breadcrumb>` component will modify the breakpoint width for swapping the full breadcrumb with the mobile "back by one" breadcrumb link. For instance, passing `mobileWidth="375"` to the Breadcrumb will trigger the mobile breadcrumb when a user resizes their window width to 375px or less.
+Passing prop `mobileWidth={NUMBER}` to the `<Breadcrumbs />` component will modify the breakpoint width for swapping the full breadcrumb with the mobile "back by one" breadcrumb link. For instance, passing `mobileWidth="375"` to the Breadcrumb will trigger the mobile breadcrumb when a user resizes their window width to 375px or less.
 
 Zooming will also trigger the mobile breadcrumb. If a user zooms their window to 400% at 1200px wide, the mobile breadcrumb would be triggered, because 1200/4 = 300px.
 
@@ -43,6 +51,10 @@ The `<Breadcrumbs />` component has been tested for accessibility. It is fully k
 * Windows 7/10 + Firefox + NVDA
 * Windows 7/10 + IE11 + JAWS
 
+### aria-label (ATTRIBUTE)
+
+The `<Breadcrumbs />` component automatically adds an `aria-label="Breadcrumb"` attribute to the containing `<nav>` element. This will be read out as "Breadcrumb" to assistive devices like JAWS, NVDA, and VoiceOver. The label can be changed to fit your needs by passing a custom string to the `ariaLabel` prop.
+
 ### aria-current (ATTRIBUTE)
 
-The `<Breadcrumbs />` component automatically adds an `[aria-current="page"]` attribute to the last link rendered by the full breadcrumb list. This attribute triggers an `a[aria-current="page"]` CSS selector, makes the link bold, removes the underline, and changes it to a black text color. Current [WAI-ARIA authoring practices](https://www.w3.org/TR/2017/NOTE-wai-aria-practices-1.1-20171214/examples/breadcrumb/index.html) recommend this `aria-current="page"` attribute for screen reader context.
+The `<Breadcrumbs />` component automatically adds an `aria-current="page"` attribute to the last link rendered by the full breadcrumb list. This attribute triggers an `a[aria-current="page"]` CSS selector, makes the link bold, removes the underline, and changes it to a black text color. Current [WAI-ARIA authoring practices](https://www.w3.org/TR/2017/NOTE-wai-aria-practices-1.1-20171214/examples/breadcrumb/index.html) recommend this `aria-current="page"` attribute for screen reader context.
