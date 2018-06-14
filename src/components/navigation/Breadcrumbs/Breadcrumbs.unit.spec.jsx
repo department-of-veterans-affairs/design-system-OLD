@@ -26,7 +26,7 @@ describe('<Breadcrumbs>', () => {
       </Breadcrumbs>
     );
 
-    expect(tree).to.not.be.undefined;
+    expect(tree).to.exist;
   });
 
   it('should render custom props', () => {
@@ -42,9 +42,9 @@ describe('<Breadcrumbs>', () => {
     const navElem = tree.find('nav');
     const listElem = tree.find('ul');
 
-    expect(navElem.find({ id: 'foo' })).to.have.length(1);
-    expect(navElem.find({ 'data-id': '375' })).to.have.length(1);
-    expect(listElem.find({ id: 'foo-list' })).to.have.length(1);
+    expect(navElem.props().id).to.equal('foo');
+    expect(navElem.props()['data-mobile-width']).to.equal('375');
+    expect(listElem.props().id).to.equal('foo-list');
   });
 
   it('should render exactly one nav', () => {
@@ -68,9 +68,9 @@ describe('<Breadcrumbs>', () => {
 
     const navElem = tree.find('nav');
 
-    expect(navElem.find({ className: 'va-nav-breadcrumbs' })).to.have.length(1);
-    expect(navElem.find({ 'aria-label': 'Breadcrumb' })).to.have.length(1);
-    expect(navElem.find({ 'aria-live': 'polite' })).to.have.length(1);
+    expect(navElem.props().className).to.equal('va-nav-breadcrumbs');
+    expect(navElem.props()['aria-label']).to.equal('Breadcrumb');
+    expect(navElem.props()['aria-live']).to.equal('polite');
   });
 
   it('should render exactly one unordered list', () => {
@@ -94,7 +94,7 @@ describe('<Breadcrumbs>', () => {
 
     const listElem = tree.find('ul');
 
-    expect(listElem.find({ className: 'row va-nav-breadcrumbs-list columns' })).to.have.length(1);
+    expect(listElem.props().className).to.equal('row va-nav-breadcrumbs-list columns');
   });
 
   it('should render exactly three list items', () => {
@@ -162,7 +162,7 @@ describe('<Breadcrumbs>', () => {
       expect(node.text()).to.equal(`Link ${i + 1}`);
     });
 
-    expect(linkElem).to.not.be.undefined;
+    expect(linkElem).to.exist;
     expect(linkElem.length).to.equal(3);
   });
 
@@ -179,7 +179,7 @@ describe('<Breadcrumbs>', () => {
       expect(node.text()).to.equal(`Link ${i + 1}`);
     });
 
-    expect(linkElem).to.not.be.undefined;
+    expect(linkElem).to.exist;
     expect(linkElem.length).to.equal(3);
   });
 

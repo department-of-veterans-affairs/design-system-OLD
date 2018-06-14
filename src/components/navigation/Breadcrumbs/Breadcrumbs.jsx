@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import _debounce from '../../../helpers/debounce';
-import uniqueId from 'lodash';
+import classNames from 'classnames';
+import uniqueId from 'lodash.uniqueid';
 
 class Breadcrumbs extends React.Component {
   constructor(props) {
@@ -28,6 +29,15 @@ class Breadcrumbs extends React.Component {
 
     this.toggleDisplay(mobileWidth);
   }, 500);
+
+  classNames() {
+    const customClass = this.props.customClasses;
+
+    return classNames(
+      'va-nav-breadcrumbs',
+      customClass
+    );
+  }
 
   toggleDisplay = breakpoint => {
     if (window.innerWidth <= breakpoint) {
@@ -95,8 +105,8 @@ class Breadcrumbs extends React.Component {
       <nav
         aria-label="Breadcrumb"
         aria-live="polite"
-        className="va-nav-breadcrumbs"
-        data-id={this.props.mobileWidth}
+        className={this.classNames()}
+        data-mobile-width={this.props.mobileWidth}
         id={breadcrumbId}>
         { shownList }
       </nav>
