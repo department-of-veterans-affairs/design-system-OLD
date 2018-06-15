@@ -49,6 +49,7 @@ The `<Breadcrumbs />` component has been tested for accessibility. It is fully k
 * MacOS + Chrome + VoiceOver
 * iOS + Safari + VoiceOver
 * Windows 7/10 + Firefox + NVDA
+* Windows 10 + Chrome + NVDA
 * Windows 7/10 + IE11 + JAWS
 * Windows 10 + Chrome + JAWS
 
