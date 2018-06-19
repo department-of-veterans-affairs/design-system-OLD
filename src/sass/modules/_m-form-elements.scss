@@ -22,50 +22,7 @@
       }
     }
   }
-}
 
-.form-required-span {
-  color: $color-secondary-dark;
-  margin: 0 0.35em;
-}
-
-
-button.form-button-green {
-  background: $color-green;
-}
-
-button.form-button-disabled {
-  pointer-events: none;
-}
-
-.form-datefield-month,
-.form-datefield-day {
-  clear: none;
-  float: left;
-  margin-right: 1.5rem;
-
-  & select {
-    padding-top: 0.85rem;
-    padding-bottom: 0.85rem;
-  }
-}
-
-.form-alert-body {
-  padding: 0 3.5rem;
-}
-
-.form-datefield-month {
-  width: 10rem;
-}
-
-.form-datefield-day {
-  width: 8rem;
-}
-
-.form-radio-buttons {
-  label {
-    margin-top: 1em;
-  }
   > input[type="radio"] + label::before {
     display: block;
     float: left;
@@ -82,6 +39,26 @@ button.form-button-disabled {
 .form-required-span {
   color: $color-secondary-dark;
   margin: 0 0.35em;
+}
+
+.form-datefield-month,
+.form-datefield-day {
+  clear: none;
+  float: left;
+  margin-right: 1.5rem;
+
+  & select {
+    padding-top: 0.85rem;
+    padding-bottom: 0.85rem;
+  }
+}
+
+.form-datefield-month {
+  width: 10rem;
+}
+
+.form-datefield-day {
+  width: 8rem;
 }
 
 .form-checkbox {
@@ -107,18 +84,8 @@ button.form-button-disabled {
   }
 }
 
-.form-field-alert label {
-  margin-top: 0.5em;
-}
-
 .form-error-date {
   margin-top: 0;
-}
-
-@include media($medium-large-screen) {
-  .form-select-medium {
-    max-width: 12rem;
-  }
 }
 
 .form-expanding-group-active-radio {
@@ -197,18 +164,4 @@ button.form-button-disabled {
 
 .form-expanding-group-open.form-expanding-group-plus::after {
     content: "-";
-}
-
-.form-errorable-group {
-  > .usa-input-error {
-    label {
-      margin-top: 3rem;
-    }
-    .usa-input-error-label {
-      margin-top: 0;
-    }
-    .usa-input-error-message {
-      margin-bottom: -2rem;
-    }
-  }
 }
