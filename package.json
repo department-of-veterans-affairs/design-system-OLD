@@ -26,7 +26,6 @@
     "foundation-sites": "5",
     "is-docker": "^1.1.0",
     "lodash": "^4.5.1",
-    "lodash.uniqueid": "^4.0.1",
     "moment": "^2.21.0",
     "prop-types": "^15.6.0",
     "react-transition-group": "^1.x",
