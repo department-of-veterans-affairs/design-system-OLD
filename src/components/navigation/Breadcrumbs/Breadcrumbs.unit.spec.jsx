@@ -18,6 +18,16 @@ const routerCrumbs = [
   <Link to="/test2" key="3">Link 3</Link>,
 ];
 
+const test = shallow(
+  <Breadcrumbs>
+    <a href="/" key="1">Link 1</a>
+    <a href="/test1" key="2">Link 2</a>
+    <a href="/test2" key="3">Link 3</a>
+  </Breadcrumbs>
+);
+
+test.setState({ mobileShow: true });
+
 describe('<Breadcrumbs>', () => {
   it('should render', () => {
     const tree = shallow(
@@ -186,9 +196,61 @@ describe('<Breadcrumbs>', () => {
     expect(linkElem.length).to.equal(3);
   });
 
-  it('should pass aXe check', () => {
+  it('should render mobile breadcrumb when state is updated', () => {
+    const tree = shallow(
+      <Breadcrumbs>
+        {crumbs}
+      </Breadcrumbs>
+    );
+
+    const linkElem = tree.find('a');
+
+    expect(linkElem.at(0).props()['aria-current']).to.be.undefined;
+    expect(linkElem.at(1).props()['aria-current']).to.be.undefined;
+    expect(linkElem.at(2).props()['aria-current']).to.equal('page');
+
+    tree.setState({ mobileShow: true });
+
+    const linkElemMobile = tree.find('a');
+
+    expect(linkElemMobile.length).to.equal(1);
+    expect(linkElemMobile.at(0).props()['aria-current']).to.be.undefined;
+    expect(linkElemMobile.props().className).to.equal('va-nav-breadcrumbs-list__mobile-link');
+  });
+
+  it('should render mobile breadcrumb when mobileFirstProp is true', () => {
+    const tree = shallow(
+      <Breadcrumbs>
+        {crumbs}
+      </Breadcrumbs>
+    );
+
+    const linkElem = tree.find('a');
+
+    expect(linkElem.at(0).props()['aria-current']).to.be.undefined;
+    expect(linkElem.at(1).props()['aria-current']).to.be.undefined;
+    expect(linkElem.at(2).props()['aria-current']).to.equal('page');
+
+    tree.setProps({ mobileFirstProp: true });
+
+    const linkElemMobile = tree.find('a');
+
+    expect(linkElemMobile.length).to.equal(1);
+    expect(linkElemMobile.at(0).props()['aria-current']).to.be.undefined;
+    expect(linkElemMobile.props().className).to.equal('va-nav-breadcrumbs-list__mobile-link');
+  });
+
+  it('should pass aXe check when showing full breadcrumb', () => {
     return axeCheck(
       <Breadcrumbs>
+        {crumbs}
+      </Breadcrumbs>
+    );
+  });
+
+  it('should pass aXe check when showing mobile breadcrumb', () => {
+    return axeCheck(
+      <Breadcrumbs mobileFirstProp>
         {crumbs}
       </Breadcrumbs>
     );

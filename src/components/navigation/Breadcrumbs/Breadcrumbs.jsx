@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import _debounce from '../../../helpers/debounce';
 import classNames from 'classnames';
-import uniqueId from 'lodash.uniqueid';
+import { uniqueId } from 'lodash';
 
 class Breadcrumbs extends React.Component {
   constructor(props) {
@@ -94,11 +94,12 @@ class Breadcrumbs extends React.Component {
   render() {
     const {
       id,
-      listId
+      listId,
+      mobileFirstProp,
     } = this.props;
     const breadcrumbId = id || uniqueId('va-breadcrumbs-');
     const breadcrumbListId = listId || uniqueId('va-breadcrumbs-list-');
-    const mobileShow = this.state.mobileShow;
+    const mobileShow = mobileFirstProp || this.state.mobileShow;
     const shownList = mobileShow
       ? (
         <ul
@@ -119,6 +120,7 @@ class Breadcrumbs extends React.Component {
         aria-label={this.props.ariaLabel}
         aria-live="polite"
         className={this.classNames()}
+        data-mobile-first={this.props.mobileFirstProp}
         data-mobile-width={this.props.mobileWidth}
         id={breadcrumbId}>
         { shownList }
@@ -133,10 +135,17 @@ Breadcrumbs.defaultProps = {
 };
 
 Breadcrumbs.propTypes = {
+  /* Adds an aria-label attribute to the <nav> element for screen reader devices. Defaults to string "Breadcrumb". */
   ariaLabel: PropTypes.string.isRequired,
+  /* Adds one or more custom classes to the <nav> element */
   customClasses: PropTypes.string,
+  /* Adds a custom id attribute to the <nav> element */
   id: PropTypes.string,
+  /* Adds a custom id attribute to the <ul> element */
   listId: PropTypes.string,
+  /* Causes the mobile back by one link to be shown while TRUE */
+  mobileFirstProp: PropTypes.bool,
+  /* Changes the viewport width that will toggle full and mobile breadcrumb UI. Defauls to 481 device pixels. */
   mobileWidth: PropTypes.number.isRequired,
 };
 
