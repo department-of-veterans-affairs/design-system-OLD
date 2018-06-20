@@ -22,50 +22,7 @@
       }
     }
   }
-}
 
-.form-required-span {
-  color: $color-secondary-dark;
-  margin: 0 0.35em;
-}
-
-
-button.form-button-green {
-  background: $color-green;
-}
-
-button.form-button-disabled {
-  pointer-events: none;
-}
-
-.form-datefield-month,
-.form-datefield-day {
-  clear: none;
-  float: left;
-  margin-right: 1.5rem;
-
-  & select {
-    padding-top: 0.85rem;
-    padding-bottom: 0.85rem;
-  }
-}
-
-.form-alert-body {
-  padding: 0 3.5rem;
-}
-
-.form-datefield-month {
-  width: 10rem;
-}
-
-.form-datefield-day {
-  width: 8rem;
-}
-
-.form-radio-buttons {
-  label {
-    margin-top: 1em;
-  }
   > input[type="radio"] + label::before {
     display: block;
     float: left;
@@ -82,6 +39,26 @@ button.form-button-disabled {
 .form-required-span {
   color: $color-secondary-dark;
   margin: 0 0.35em;
+}
+
+.form-datefield-month,
+.form-datefield-day {
+  clear: none;
+  float: left;
+  margin-right: 1.5rem;
+
+  & select {
+    padding-top: 0.85rem;
+    padding-bottom: 0.85rem;
+  }
+}
+
+.form-datefield-month {
+  width: 10rem;
+}
+
+.form-datefield-day {
+  width: 8rem;
 }
 
 .form-checkbox {
@@ -107,18 +84,8 @@ button.form-button-disabled {
   }
 }
 
-.form-field-alert label {
-  margin-top: 0.5em;
-}
-
 .form-error-date {
   margin-top: 0;
-}
-
-@include media($medium-large-screen) {
-  .form-select-medium {
-    max-width: 12rem;
-  }
 }
 
 .form-expanding-group-active-radio {
@@ -199,16 +166,81 @@ button.form-button-disabled {
     content: "-";
 }
 
-.form-errorable-group {
-  > .usa-input-error {
-    label {
-      margin-top: 3rem;
+// Overriding the accordion button styles that are too broad
+.form-review-panel {
+  button:not(.usa-button-unstyled) {
+    background-image: none;
+    background-color: $color-primary;
+    padding: 1rem 2rem;
+    color: $color-white;
+    width: auto;
+    &:hover {
+      color: $color-white;
+      background-color: $color-primary-darker;
     }
-    .usa-input-error-label {
-      margin-top: 0;
+    &:active {
+      background-color: $color-primary-darkest;
     }
-    .usa-input-error-message {
-      margin-bottom: -2rem;
+    &:focus {
+      outline: initial;
     }
+  }
+  button.usa-button-secondary {
+    color: $color-primary;
+    background-color: $color-white;
+    &:hover {
+      background-color: $color-white;
+      color: $color-primary-darker;
+    }
+    &:active {
+      background-color: $color-white;
+      color: $color-primary-darkest;
+    }
+  }
+  .edit-btn {
+    background-color: $color-primary;
+    color: $color-white;
+    &:hover {
+      background-color: $color-primary-darker;
+      color: $color-white;
+    }
+  }
+  .edit-btn {
+    &.primary-outline {
+      background-color: transparent;
+      border: 2px solid $color-primary;
+      color: $color-primary;
+      &:hover {
+        background-color: transparent;
+        border: 2px solid $color-primary-darker;
+        color: $color-primary-darker;
+      }
+    }
+  }
+  .accordion-header > button {
+    min-height: 7rem;
+    padding: 2.5rem 6.5rem 2.5rem 3rem;
+    font-size: 1.15em;
+    line-height: 1.5;
+    font-weight: bold;
+  }
+  .section-label {
+    padding-bottom: 1rem;
+  }
+  legend.hide-for-small-only {
+    display: none !important;
+  }
+  table.review {
+    margin: 1em 0;
+    td {
+      padding-left: 0;
+      padding-right: 0;
+    }
+    td:first-child {
+      padding-right: 1em;
+    }
+  }
+  .usa-accordion-content {
+    padding: 1em;
   }
 }
