@@ -1,12 +1,21 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import _debounce from '../../../helpers/debounce';
 import classNames from 'classnames';
-import { uniqueId } from 'lodash';
+import { debounce, uniqueId } from 'lodash';
 
+/**
+ * React component to dynamically build breadcrumb links.
+ * The Breadcrumbs component accepts an array of HTML A tags,
+ * React Router LINK components, or a combination of the two.
+ * The component also accepts hard-coded A or LINK elements
+ * as props.children.
+ */
 class Breadcrumbs extends React.Component {
   constructor(props) {
     super(props);
+
+    this.breadcrumbId = this.props.id || uniqueId('va-breadcrumbs-');
+    this.breadcrumbListId = this.props.listId || uniqueId('va-breadcrumbs-list-');
 
     this.state = {
       mobileShow: false,
@@ -24,7 +33,7 @@ class Breadcrumbs extends React.Component {
     window.removeEventListener('resize', this.debouncedToggleDisplay);
   }
 
-  debouncedToggleDisplay = _debounce(() => {
+  debouncedToggleDisplay = debounce(() => {
     const mobileWidth = this.props.mobileWidth;
 
     this.toggleDisplay(mobileWidth);
@@ -47,11 +56,7 @@ class Breadcrumbs extends React.Component {
    * just the mobile "Back by one" link
    */
   toggleDisplay = breakpoint => {
-    if (window.innerWidth <= breakpoint) {
-      this.setState({ mobileShow: true });
-    } else {
-      this.setState({ mobileShow: false });
-    }
+    this.setState({ mobileShow: window.innerWidth <= breakpoint });
   }
 
   /**
@@ -92,25 +97,18 @@ class Breadcrumbs extends React.Component {
   }
 
   render() {
-    const {
-      id,
-      listId,
-      mobileFirstProp,
-    } = this.props;
-    const breadcrumbId = id || uniqueId('va-breadcrumbs-');
-    const breadcrumbListId = listId || uniqueId('va-breadcrumbs-list-');
-    const mobileShow = mobileFirstProp || this.state.mobileShow;
+    const mobileShow = this.props.mobileFirstProp || this.state.mobileShow;
     const shownList = mobileShow
       ? (
         <ul
           className="row va-nav-breadcrumbs-list columns"
-          id={`${breadcrumbListId}-clone`}>
+          id={`${this.breadcrumbListId}-clone`}>
           {this.renderMobileLink()}
         </ul>
       ) : (
         <ul
           className="row va-nav-breadcrumbs-list columns"
-          id={breadcrumbListId}>
+          id={this.breadcrumbListId}>
           {this.renderBreadcrumbLinks()}
         </ul>
       );
@@ -122,7 +120,7 @@ class Breadcrumbs extends React.Component {
         className={this.classNames()}
         data-mobile-first={this.props.mobileFirstProp}
         data-mobile-width={this.props.mobileWidth}
-        id={breadcrumbId}>
+        id={this.breadcrumbId}>
         { shownList }
       </nav>
     );
@@ -135,17 +133,34 @@ Breadcrumbs.defaultProps = {
 };
 
 Breadcrumbs.propTypes = {
-  /* Adds an aria-label attribute to the <nav> element for screen reader devices. Defaults to string "Breadcrumb". */
+  /**
+   * Adds an aria-label attribute to the <nav> element.
+   * The aria-label will be read out when users navigate the
+   * <Breadcrumbs/> component using a screen reader.
+   */
   ariaLabel: PropTypes.string.isRequired,
-  /* Adds one or more custom classes to the <nav> element */
+  /**
+   * Optionally adds one or more CSS classes to the NAV element
+   */
   customClasses: PropTypes.string,
-  /* Adds a custom id attribute to the <nav> element */
+  /**
+   * Adds a custom id attribute to the NAV element
+   */
   id: PropTypes.string,
-  /* Adds a custom id attribute to the <ul> element */
+  /**
+   * Adds a custom id attribute to the UL element
+   */
   listId: PropTypes.string,
-  /* Causes the mobile back by one link to be shown while TRUE */
+  /**
+   * Overrides the state object Boolean state.mobileShow.
+   * The mobile breadcrumb will always be rendered while
+   * mobileFirstProp is True.
+   */
   mobileFirstProp: PropTypes.bool,
-  /* Changes the viewport width that will toggle full and mobile breadcrumb UI. Defauls to 481 device pixels. */
+  /**
+   * Changes viewport width to update state.mobileShow
+   * and toggle breadcrumb UI change
+   */
   mobileWidth: PropTypes.number.isRequired,
 };
 
