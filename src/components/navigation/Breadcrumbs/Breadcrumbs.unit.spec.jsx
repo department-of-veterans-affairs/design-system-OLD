@@ -44,8 +44,7 @@ describe('<Breadcrumbs>', () => {
       <Breadcrumbs
         customClasses="foo test"
         id="foo"
-        listId="foo-list"
-        mobileWidth={375}>
+        listId="foo-list">
         {crumbs}
       </Breadcrumbs>
     );
@@ -56,7 +55,6 @@ describe('<Breadcrumbs>', () => {
     expect(navElem.props().className).to.include('va-nav-breadcrumbs');
     expect(navElem.props().className).to.include('foo test');
     expect(navElem.props().id).to.equal('foo');
-    expect(navElem.props()['data-mobile-width']).to.equal(375);
     expect(listElem.props().id).to.equal('foo-list');
   });
 
@@ -196,48 +194,16 @@ describe('<Breadcrumbs>', () => {
     expect(linkElem.length).to.equal(3);
   });
 
-  it('should render mobile breadcrumb when state is updated', () => {
+  it('should add mobile-only class when mobileFirstProp is true', () => {
     const tree = shallow(
-      <Breadcrumbs>
+      <Breadcrumbs mobileFirstProp>
         {crumbs}
       </Breadcrumbs>
     );
 
-    const linkElem = tree.find('a');
+    const navElem = tree.find('nav');
 
-    expect(linkElem.at(0).props()['aria-current']).to.be.undefined;
-    expect(linkElem.at(1).props()['aria-current']).to.be.undefined;
-    expect(linkElem.at(2).props()['aria-current']).to.equal('page');
-
-    tree.setState({ mobileShow: true });
-
-    const linkElemMobile = tree.find('a');
-
-    expect(linkElemMobile.length).to.equal(1);
-    expect(linkElemMobile.at(0).props()['aria-current']).to.be.undefined;
-    expect(linkElemMobile.props().className).to.equal('va-nav-breadcrumbs-list__mobile-link');
-  });
-
-  it('should render mobile breadcrumb when mobileFirstProp is true', () => {
-    const tree = shallow(
-      <Breadcrumbs>
-        {crumbs}
-      </Breadcrumbs>
-    );
-
-    const linkElem = tree.find('a');
-
-    expect(linkElem.at(0).props()['aria-current']).to.be.undefined;
-    expect(linkElem.at(1).props()['aria-current']).to.be.undefined;
-    expect(linkElem.at(2).props()['aria-current']).to.equal('page');
-
-    tree.setProps({ mobileFirstProp: true });
-
-    const linkElemMobile = tree.find('a');
-
-    expect(linkElemMobile.length).to.equal(1);
-    expect(linkElemMobile.at(0).props()['aria-current']).to.be.undefined;
-    expect(linkElemMobile.props().className).to.equal('va-nav-breadcrumbs-list__mobile-link');
+    expect(navElem.props().className).to.equal('va-nav-breadcrumbs va-nav-breadcrumbs--mobile');
   });
 
   it('should pass aXe check when showing full breadcrumb', () => {
