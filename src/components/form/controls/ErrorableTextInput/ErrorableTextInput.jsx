@@ -1,9 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import _ from 'lodash';
-
-import ToolTip from '../../../Tooltip/Tooltip';
-
 import { makeField } from '../../../../helpers/fields';
 
 /**
@@ -14,7 +11,6 @@ import { makeField } from '../../../../helpers/fields';
  *                  When defined, indicates input has a validation error.
  * `label` - String for the input field label.
  * `name` - String for the input name attribute.
- * `toolTipText` - String with help text for user.
  * `tabIndex` - Number for keyboard tab order.
  * `autocomplete` - String for the input autocomplete attribute.
  * `placeholder` - placeholder string for input field.
@@ -36,7 +32,9 @@ class ErrorableTextInput extends React.Component {
   }
 
   handleChange(domEvent) {
-    this.props.onValueChange(makeField(domEvent.target.value, this.props.field.dirty));
+    this.props.onValueChange(
+      makeField(domEvent.target.value, this.props.field.dirty)
+    );
   }
 
   handleBlur() {
@@ -61,16 +59,6 @@ class ErrorableTextInput extends React.Component {
       labelErrorClass = 'usa-input-error-label';
     }
 
-    // Addes ToolTip if text is provided.
-    let toolTip;
-    if (this.props.toolTipText) {
-      toolTip = (
-        <ToolTip
-          tabIndex={this.props.tabIndex}
-          toolTipText={this.props.toolTipText}/>
-      );
-    }
-
     // Calculate max characters and display '(Max. XX characters)' when max is hit.
     if (this.props.field.value) {
       if (this.props.charMax === this.props.field.value.length) {
@@ -86,9 +74,7 @@ class ErrorableTextInput extends React.Component {
 
     return (
       <div className={inputErrorClass}>
-        <label
-          className={labelErrorClass}
-          htmlFor={this.inputId}>
+        <label className={labelErrorClass} htmlFor={this.inputId}>
           {this.props.label}
           {requiredSpan}
         </label>
@@ -107,7 +93,6 @@ class ErrorableTextInput extends React.Component {
           onChange={this.handleChange}
           onBlur={this.handleBlur}/>
         {maxCharacters}
-        {toolTip}
       </div>
     );
   }
@@ -158,7 +143,7 @@ ErrorableTextInput.propTypes = {
    */
   onValueChange: PropTypes.func.isRequired,
   /**
-   * type attribute for ijput field
+   * type attribute for input field
    */
   type: PropTypes.string
 };

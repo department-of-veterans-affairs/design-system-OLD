@@ -1,9 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import _ from 'lodash';
-
-import ToolTip from '../../../Tooltip/Tooltip';
-
 import { makeField } from '../../../../helpers/fields';
 
 /**
@@ -32,16 +29,13 @@ class ErrorableSelect extends React.Component {
     let errorSpanId = undefined;
     if (this.props.errorMessage) {
       errorSpanId = `${this.selectId}-error-message`;
-      errorSpan = <span className="usa-input-error-message" id={`${errorSpanId}`} role="alert">{this.props.errorMessage}</span>;
-    }
-
-    // Addes ToolTip if text is provided.
-    let toolTip;
-    if (this.props.toolTipText) {
-      toolTip = (
-        <ToolTip
-          tabIndex={this.props.tabIndex}
-          toolTipText={this.props.toolTipText}/>
+      errorSpan = (
+        <span
+          className="usa-input-error-message"
+          id={`${errorSpanId}`}
+          role="alert">
+          {this.props.errorMessage}
+        </span>
       );
     }
 
@@ -55,7 +49,7 @@ class ErrorableSelect extends React.Component {
     let reactKey = 0;
     // TODO(awong): Remove this hack to handle options prop and use invariants instead.
     const options = _.isArray(this.props.options) ? this.props.options : [];
-    const optionElements = options.map((obj) => {
+    const optionElements = options.map(obj => {
       let label;
       let value;
       if (_.isString(obj)) {
@@ -65,13 +59,21 @@ class ErrorableSelect extends React.Component {
         label = obj.label;
         value = obj.value;
       }
-      return <option key={++reactKey} value={value}>{label}</option>;
+      return (
+        <option key={++reactKey} value={value}>
+          {label}
+        </option>
+      );
     });
 
     return (
       <div className={this.props.errorMessage ? 'usa-input-error' : undefined}>
         <label
-          className={this.props.errorMessage !== undefined ? 'usa-input-error-label' : this.props.labelClass}
+          className={
+            this.props.errorMessage !== undefined
+              ? 'usa-input-error-label'
+              : this.props.labelClass
+          }
           htmlFor={this.selectId}>
           {this.props.label}
           {requiredSpan}
@@ -84,11 +86,13 @@ class ErrorableSelect extends React.Component {
           name={this.props.name}
           autoComplete={this.props.autocomplete}
           value={selectedValue}
+          onKeyDown={this.props.onKeyDown}
           onChange={this.handleChange}>
-          {this.props.includeBlankOption && <option value="">{this.props.emptyDescription}</option>}
+          {this.props.includeBlankOption && (
+            <option value="">{this.props.emptyDescription}</option>
+          )}
           {optionElements}
         </select>
-        {toolTip}
       </div>
     );
   }
@@ -106,23 +110,26 @@ ErrorableSelect.propTypes = {
   autocomplete: PropTypes.string,
 
   // Select field label.
-  label: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.element,
-  ]).isRequired,
+  label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
 
+  /*
+   * KeyDown handler
+   */
+  onKeyDown: PropTypes.func,
   // Array of options to populate select.
-  options: PropTypes.arrayOf(PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.shape({
-      label: PropTypes.string,
-      value: PropTypes.number
-    }),
-    PropTypes.shape({
-      label: PropTypes.string,
-      value: PropTypes.string
-    }),
-  ])).isRequired,
+  options: PropTypes.arrayOf(
+    PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.shape({
+        label: PropTypes.string,
+        value: PropTypes.number
+      }),
+      PropTypes.shape({
+        label: PropTypes.string,
+        value: PropTypes.string
+      })
+    ])
+  ).isRequired,
 
   // Render marker indicating field is required.
   required: PropTypes.bool,
@@ -147,7 +154,6 @@ ErrorableSelect.propTypes = {
 
   // Additional css class that is added to the select element.
   additionalClass: PropTypes.string
-
 };
 
 ErrorableSelect.defaultProps = {

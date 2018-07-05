@@ -10,7 +10,7 @@ function createWebpackBundle(logger, fractalComponents, watch = true) {
     .filter(item => item.context.componentSourcePath)
     .map((item, index) => {
       return `
-        import component${index} from './${path.relative(__dirname, item.viewPath)}'; 
+        import component${index} from './${path.relative(__dirname, item.viewPath)}';
         registry['${item.handle}'] = component${index};
       `;
     });
@@ -27,14 +27,18 @@ function createWebpackBundle(logger, fractalComponents, watch = true) {
 
   fs.writeFileSync('./fractalEntry.js', output);
 
+  const componentCSS = new ExtractTextPlugin('[name].css');
+  const fractalCSS = new ExtractTextPlugin('[name]-styles.css');
+
   const compiler = webpack({
     entry: {
       components: './fractalEntry.js',
-      styles: './sass/site.scss'
+      styles: './src/sass/site/site.scss',
+      fractal: './src/sass/site/style.fractal.scss'
     },
     output: {
       filename: '[name].bundle.js',
-      path: path.join(__dirname, 'dist')
+      path: path.join(__dirname, 'public/dist')
     },
     resolve: {
       extensions: ['.js', '.json', '.jsx']
@@ -82,21 +86,23 @@ function createWebpackBundle(logger, fractalComponents, watch = true) {
         },
         {
           test: /\.scss$/,
-          use: ExtractTextPlugin.extract({
+          exclude: /\.fractal.scss/,
+          use: componentCSS.extract({
             fallback: 'style-loader',
             use: [
               { loader: 'css-loader' },
-              { loader: 'resolve-url-loader' },
-              {
-                loader: 'sass-loader',
-                options: {
-                  includePaths: [
-                    '~/uswds/src/stylesheets&sourceMap'
-                  ],
-                  sourceMap: true,
-                }
-              }
-            ],
+              { loader: 'sass-loader' }
+            ]
+          })
+        },
+        {
+          test: /\.fractal.scss$/,
+          use: fractalCSS.extract({
+            fallback: 'style-loader',
+            use: [
+              { loader: 'css-loader' },
+              { loader: 'sass-loader' }
+            ]
           })
         },
         {
@@ -130,16 +136,17 @@ function createWebpackBundle(logger, fractalComponents, watch = true) {
       ]
     },
     plugins: [
-      new ExtractTextPlugin({
-        filename: '[name].css',
-      })
+      fractalCSS,
+      componentCSS
     ]
   });
 
   if (watch) {
     logger.log('Starting webpack build...');
     const buildHashes = [];
-    compiler.watch({}, (err, stats) => {
+    compiler.watch({
+      progress: true
+    }, (err, stats) => {
       if (err || stats.hasErrors()) {
         const info = stats.toJson();
         logger.error(info.errors);
@@ -161,6 +168,7 @@ function createWebpackBundle(logger, fractalComponents, watch = true) {
         logger.error(info.errors);
         throw new Error('Webpack compilation error');
       }
+      logger.log(stats.toString('minimal'));
     });
   }
 }

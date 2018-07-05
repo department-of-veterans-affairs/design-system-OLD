@@ -1,20 +1,23 @@
+/* eslint-disable no-console */
 const rimraf = require('rimraf');
 const mkdirp = require('mkdirp');
 const glob = require('glob');
 const fs = require('fs');
-const babel = require("babel-core");
+const babel = require('babel-core');
 const recast = require('recast');
 const path = require('path');
-const colors = require('colors');
+const { ncp } = require('ncp');
 
-console.log('Starting build'.blue);
-console.log('Cleaning old build'.white);
-rimraf.sync('./dist/jean-pants');
-mkdirp.sync('./dist/jean-pants');
+console.log('Starting build');
+console.log('Cleaning old build');
+rimraf.sync('./dist/formation');
+mkdirp.sync('./dist/formation');
+mkdirp.sync('./dist/formation/sass');
 
 // this comes from gulp-flatten-requires
 // https://github.com/insin/gulp-flatten-requires/blob/master/index.js
 // Flattens paths given to require
+/* eslint-disable */
 function flattenRequires(bufferString) {
   return new Buffer(recast.print(recast.visit(recast.parse(bufferString), {
     visitCallExpression: function(path) {
@@ -32,6 +35,8 @@ function flattenRequires(bufferString) {
     }
   })).code);
 }
+/* eslint-enable */
+/* eslint-disable no-console */
 
 // get a flat array of file paths
 const fileNames = [].concat.apply([], [
@@ -44,15 +49,25 @@ fileNames.forEach(fileName => {
   const fileBuffer = fs.readFileSync(fileName);
   // transform the buffer with babel using babelrc
   const babelTransformedBuffer = babel
-    .transform(fileBuffer, { extends: './.babelrc' })
+    .transform(fileBuffer, { 'extends': './.babelrc' })
     .code;
   // flatten paths given to all requires
   const requireFlattenedBuffer = flattenRequires(babelTransformedBuffer.toString());
   const newFileName = `${path.parse(fileName).name}.js`;
 
   // write file to dist/build
-  fs.writeFileSync(`./dist/jean-pants/${newFileName}`, requireFlattenedBuffer);
-  console.log(`${newFileName} built`.cyan);
+  fs.writeFileSync(`./dist/formation/${newFileName}`, requireFlattenedBuffer);
+  console.log(`${newFileName} built`);
 });
 
-console.log('Build complete'.blue);
+ncp('./src/sass',
+  './dist/formation/sass',
+  { filter: (filename) => !filename.includes('/site') },
+  (err) => {
+    if (err) {
+      throw new Error(`Failed to copy styles: ${err}`);
+    }
+    console.log('Build complete');
+  }
+);
+

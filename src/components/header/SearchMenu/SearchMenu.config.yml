@@ -1,5 +1,6 @@
 label: Search Menu
 status: wip
+preview: '@uswds'
 
 context:
   componentSourcePath: 'SearchMenu.jsx'

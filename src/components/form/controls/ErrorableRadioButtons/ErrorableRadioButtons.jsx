@@ -3,7 +3,6 @@ import React from 'react';
 import _ from 'lodash';
 import classNames from 'classnames';
 
-import ToolTip from '../../../Tooltip/Tooltip';
 import ExpandingGroup from '../ExpandingGroup/ExpandingGroup';
 
 import { makeField } from '../../../../helpers/fields';
@@ -18,7 +17,6 @@ import { makeField } from '../../../../helpers/fields';
  * `errorMessage' - String Error message for the radio button group
  * `label` - String for the group field label.
  * `name` - String for the name attribute.
- * `toolTipText` - String with help text for user.
  * `tabIndex` - Number for keyboard tab order.
  * `options` - Array of options to populate group.
  * `required` - is this field required.
@@ -38,8 +36,12 @@ class ErrorableRadioButtons extends React.Component {
 
   getMatchingSubSection(checked, optionValue) {
     if (checked && this.props.children) {
-      const children = _.isArray(this.props.children) ? this.props.children : [this.props.children];
-      const subsections = children.filter((child) => child.props.showIfValueChosen === optionValue);
+      const children = _.isArray(this.props.children)
+        ? this.props.children
+        : [this.props.children];
+      const subsections = children.filter(
+        child => child.props.showIfValueChosen === optionValue
+      );
       return subsections.length > 0 ? subsections[0] : null;
     }
 
@@ -64,16 +66,6 @@ class ErrorableRadioButtons extends React.Component {
       );
     }
 
-    // Addes ToolTip if text is provided.
-    let toolTip;
-    if (this.props.toolTipText) {
-      toolTip = (
-        <ToolTip
-          tabIndex={this.props.tabIndex}
-          toolTipText={this.props.toolTipText}/>
-      );
-    }
-
     // Calculate required.
     let requiredSpan = undefined;
     if (this.props.required) {
@@ -82,38 +74,51 @@ class ErrorableRadioButtons extends React.Component {
 
     const options = _.isArray(this.props.options) ? this.props.options : [];
     const storedValue = this.props.value.value;
-    const optionElements = options.map((obj, index) => {
+    const optionElements = options.map((option, optionIndex) => {
       let optionLabel;
       let optionValue;
       let optionAdditional;
-      if (_.isString(obj)) {
-        optionLabel = obj;
-        optionValue = obj;
+      if (_.isString(option)) {
+        optionLabel = option;
+        optionValue = option;
       } else {
-        optionLabel = obj.label;
-        optionValue = obj.value;
-        if (obj.additional) {
-          optionAdditional = (<div>{obj.additional}</div>);
+        optionLabel = option.label;
+        optionValue = option.value;
+        if (option.additional) {
+          optionAdditional = <div>{option.additional}</div>;
         }
       }
       const checked = optionValue === storedValue ? 'checked=true' : '';
-      const matchingSubSection = this.getMatchingSubSection(optionValue === storedValue, optionValue);
+      const matchingSubSection = this.getMatchingSubSection(
+        optionValue === storedValue,
+        optionValue
+      );
+
       const radioButton = (
-        <div key={optionAdditional ? undefined : index} className="form-radio-buttons">
-          <input
-            autoComplete="false"
-            checked={checked}
-            id={`${this.inputId}-${index}`}
-            name={this.props.name}
-            type="radio"
-            value={optionValue}
-            onChange={this.handleChange}/>
-          <label
-            name={`${this.props.name}-${index}-label`}
-            htmlFor={`${this.inputId}-${index}`}>
-            {optionLabel}
-          </label>
-          {matchingSubSection}
+        <div
+          key={optionAdditional ? undefined : optionIndex}
+          className="form-radio-buttons">
+          <div className="errorable-radio-button">
+            <input
+              autoComplete="false"
+              checked={checked}
+              id={`${this.inputId}-${optionIndex}`}
+              name={this.props.name}
+              type="radio"
+              onMouseDown={this.props.onMouseDown}
+              onKeyDown={this.props.onKeyDown}
+              value={optionValue}
+              onChange={this.handleChange}/>
+
+            <label
+              name={`${this.props.name}-${optionIndex}-label`}
+              htmlFor={`${this.inputId}-${optionIndex}`}>
+
+              {optionLabel}
+            </label>
+            {matchingSubSection}
+            {option.content}
+          </div>
         </div>
       );
 
@@ -125,7 +130,7 @@ class ErrorableRadioButtons extends React.Component {
           <ExpandingGroup
             additionalClass="form-expanding-group-active-radio"
             open={!!checked}
-            key={index}>
+            key={optionIndex}>
             {radioButton}
             <div>{optionAdditional}</div>
           </ExpandingGroup>
@@ -147,14 +152,12 @@ class ErrorableRadioButtons extends React.Component {
 
     return (
       <fieldset className={fieldsetClass}>
-        <legend
-          className={legendClass}>
+        <legend className={legendClass}>
           {this.props.label}
           {requiredSpan}
         </legend>
         {errorSpan}
         {optionElements}
-        {toolTip}
       </fieldset>
     );
   }
@@ -176,53 +179,49 @@ ErrorableRadioButtons.propTypes = {
   /**
    * radio button group field label
    */
-  label: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.element,
-  ]).isRequired,
+  label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
   /**
    * name attribute
    */
   name: PropTypes.string,
   id: PropTypes.string,
   /**
-   * help text for user
-   */
-  toolTipText: PropTypes.string,
-  /**
    * keyboard tab order for radio button group
    */
   tabIndex: PropTypes.number,
   /**
+   * Mouse Down handler
+   */
+  onMouseDown: PropTypes.func,
+  /**
+   * Key Down handler
+   */
+  onKeyDown: PropTypes.func,
+  /**
    * array of options to populate group- each item is a string or an object representing an Expanding Group
    *
    */
-  options: PropTypes.arrayOf(PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.shape({
-      label: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.element,
-      ]).isRequired,
-      value: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.bool
-      ]).isRequired,
-      additional: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.element
-      ])
-    })
-  ])).isRequired,
+  options: PropTypes.arrayOf(
+    PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.shape({
+        label: PropTypes.oneOfType([PropTypes.string, PropTypes.element])
+          .isRequired,
+        value: PropTypes.oneOfType([PropTypes.string, PropTypes.bool])
+          .isRequired,
+        additional: PropTypes.oneOfType([PropTypes.string, PropTypes.element])
+      })
+    ])
+  ).isRequired,
   /**
    * value object for selected field <br/>
    * value: string value that matches radio button value </br>
    * dirty: indicates if form is dirty; should be true after any user input
    */
   value: PropTypes.shape({
-  /**
-   * value of the select field.
-   */
+    /**
+     * value of the select field.
+     */
     value: PropTypes.string,
     dirty: PropTypes.bool
   }).isRequired,
@@ -233,7 +232,7 @@ ErrorableRadioButtons.propTypes = {
   /**
    * toggles required field indicator
    */
-  required: PropTypes.bool,
+  required: PropTypes.bool
 };
 
 export default ErrorableRadioButtons;

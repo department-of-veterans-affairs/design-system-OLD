@@ -1,5 +1,8 @@
 label: Grid
 status: ready
+order: 3
+preview: '@uswds-framed'
+collated: true
 
 variants:
   - name: default
