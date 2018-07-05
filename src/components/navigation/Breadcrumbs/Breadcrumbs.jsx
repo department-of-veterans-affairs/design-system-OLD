@@ -11,15 +11,6 @@ import { uniqueId } from 'lodash';
  * as props.children.
  */
 class Breadcrumbs extends React.Component {
-  // /** Experimenting with a speed boost that could be gleaned by only
-  //  * re-rendering when absolutely necessary
-  //  */
-  // shouldComponentUpdate(nextProps) {
-  //   const differentChildren = this.props.children !== nextProps.children;
-  //   const mobileWidth = this.props.mobileFirstProp !== nextProps.mobileFirstProp;
-  //   return differentChildren || mobileWidth;
-  // }
-
   /**
    * Provide a means to add overriding classes
    */
