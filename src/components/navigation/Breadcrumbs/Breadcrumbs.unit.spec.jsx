@@ -18,16 +18,6 @@ const routerCrumbs = [
   <Link to="/test2" key="3">Link 3</Link>,
 ];
 
-const test = shallow(
-  <Breadcrumbs>
-    <a href="/" key="1">Link 1</a>
-    <a href="/test1" key="2">Link 2</a>
-    <a href="/test2" key="3">Link 3</a>
-  </Breadcrumbs>
-);
-
-test.setState({ mobileShow: true });
-
 describe('<Breadcrumbs>', () => {
   it('should render', () => {
     const tree = shallow(
@@ -42,6 +32,7 @@ describe('<Breadcrumbs>', () => {
   it('should render custom props', () => {
     const tree = shallow(
       <Breadcrumbs
+        ariaLabel="Breadcrumb foo"
         customClasses="foo test"
         id="foo"
         listId="foo-list">
@@ -52,6 +43,7 @@ describe('<Breadcrumbs>', () => {
     const navElem = tree.find('nav');
     const listElem = tree.find('ul');
 
+    expect(navElem.props()['aria-label']).to.equal('Breadcrumb foo');
     expect(navElem.props().className).to.include('va-nav-breadcrumbs');
     expect(navElem.props().className).to.include('foo test');
     expect(navElem.props().id).to.equal('foo');
@@ -161,7 +153,7 @@ describe('<Breadcrumbs>', () => {
   it('should render individual children correctly', () => {
     const tree = shallow(
       <Breadcrumbs>
-        <a href="/" key="1">Link 1</a>
+        <a href="/" onClick={() => { const result = {}; return result; }} key="1">Link 1</a>
         <a href="/test1" key="2">Link 2</a>
         <a href="/test2" key="3">Link 3</a>
       </Breadcrumbs>
