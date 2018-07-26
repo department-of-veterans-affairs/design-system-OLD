@@ -7,21 +7,6 @@
 // See vets.gov-team#1047
 //=============================================================
 
-// TODO: Safe to delete this now? Nothing seems to actually have the
-// `.va-overlay-close--icon` class applied to it.
-.va-overlay-close {
-  &--icon {
-    display: inline;
-    margin: 0;
-    padding: 1rem;
-    width: auto;
-
-    &:hover {
-      background: transparent;
-    }
-  }
-}
-
 .va-overlay {
   background: $color-va-modal-bg;
   height: 100%;
