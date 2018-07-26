@@ -4,9 +4,11 @@
 //
 // When the differences between our modals are
 // squared-away, we can remove this chunk.
-// See vets.gov-team#1047 
+// See vets.gov-team#1047
 //=============================================================
 
+// TODO: Safe to delete this now? Nothing seems to actually have the
+// `.va-overlay-close--icon` class applied to it.
 .va-overlay-close {
   &--icon {
     display: inline;
