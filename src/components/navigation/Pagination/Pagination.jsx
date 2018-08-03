@@ -108,7 +108,9 @@ class Pagination extends React.Component {
   }
 
   handleKeyDown = (e, pageNumber) => {
-    if ((e.which || e.keyCode) === 13) {
+
+    const keyCode = e.which || e.keyCode;
+    if (keyCode === 13 || keyCode === 32) {
       e.preventDefault();
       this.props.onPageSelect(pageNumber)
     }
