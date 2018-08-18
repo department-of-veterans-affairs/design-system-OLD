@@ -1,11 +1,10 @@
 import React from 'react';
-import LeftRailNav from './LeftRailNav'
-import SubLevel from '../SubLevel/SubLevel';
+import SubLevel from './SubLevel';
 
-export default class LeftRailNavExample extends React.Component {
+export default class SubLevelExample extends React.Component {
   render() {
     return (
-      <LeftRailNav title={this.props.title}>
+      <ul className="usa-sidenav-list">
         <SubLevel
           title="VA Health Care Coverage"
           href="/health-care/health-conditions/substance-use-problems">
@@ -42,7 +41,7 @@ export default class LeftRailNavExample extends React.Component {
             </a>
           </li>
         </SubLevel>
-      </LeftRailNav>
+      </ul>
     );
   };
 };

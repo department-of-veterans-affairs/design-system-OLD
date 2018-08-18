@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export default class SubLevel extends React.Component {
   constructor() {
@@ -57,3 +58,9 @@ export default class SubLevel extends React.Component {
     );
   }
 }
+
+SubLevel.propTypes = {
+  stuff: PropTypes.string,
+};
+
+SubLevel.defaultProps = {};
