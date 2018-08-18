@@ -1,0 +1,48 @@
+import React from 'react';
+import LeftRailNav from './LeftRailNav'
+import SubLevel from './SubLevel';
+
+export default class LeftRailNavExample extends React.Component {
+  render() {
+    return (
+      <LeftRailNav>
+        <SubLevel
+          title="VA Health Care Coverage"
+          href="/health-care/health-conditions/substance-use-problems">
+        </SubLevel>
+        <SubLevel title="Health Needs and Conditions">
+          <li>
+            <a href="/health-care/health-conditions/conditions-related-to-service-era">
+                Concerns Related to Service History
+            </a>
+          </li>
+          <li>
+            <a href="/health-care/health-conditions/mental-health">
+                Mental Health
+            </a>
+          </li>
+          <li>
+            <a href="/health-care/health-conditions/military-sexual-trauma">
+                Military Sexual Trauma
+            </a>
+          </li>
+          <li>
+            <a href="/health-care/health-conditions/womens-health-care-needs">
+                Women’s Health Care
+            </a>
+          </li>
+          <li>
+            <a href="/health-care/health-conditions/exposure-to-hazardous-materials">
+                Exposure to Hazardous Materials
+            </a>
+          </li>
+          <li>
+            <a href="/health-care/health-conditions/substance-use-problems">
+                Substance Use Problems
+            </a>
+          </li>
+        </SubLevel>
+      </LeftRailNav>
+    );
+  };
+};
