@@ -92,4 +92,20 @@
       margin-right: 1.6rem;
     }
   }
+
+  .usa-sidenav-list {
+    & > li {
+      &:last-child {
+        border-bottom: 1px solid $color-gray-lighter;
+      }
+
+      &:first-child {
+        border-top: 1px solid $color-gray-lighter;
+      }
+
+      .active-menu {
+        border-bottom: none;
+      }
+    }
+  }
 }

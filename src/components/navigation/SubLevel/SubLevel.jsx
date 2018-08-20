@@ -10,12 +10,20 @@ export default class SubLevel extends React.Component {
     };
   }
 
-  getClassNames() {
+  getLinkClassNames() {
     if (this.state.hidden) {
       return '';
     }
 
     return 'usa-current';
+  }
+
+  getLiClassNames() {
+    if (this.state.hidden) {
+      return '';
+    }
+
+    return 'active-menu';
   }
 
   getLinkTag() {
@@ -29,7 +37,7 @@ export default class SubLevel extends React.Component {
 
     return (
       <a
-        className={this.getClassNames()}
+        className={this.getLinkClassNames()}
         role="button"
         tabIndex={0}
         onClick={() => this.toggleMenu()}>
@@ -46,7 +54,7 @@ export default class SubLevel extends React.Component {
 
   render() {
     return (
-      <li>
+      <li className={this.getLiClassNames()}>
         {this.getLinkTag()}
 
         {
