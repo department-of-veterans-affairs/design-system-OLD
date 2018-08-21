@@ -92,19 +92,85 @@
       margin-right: 1.6rem;
     }
   }
+}
 
-  .usa-sidenav-list {
-    & > li {
-      &:last-child {
-        border-bottom: 1px solid $color-gray-lighter;
+.merger {
+  .va-sidebarnav {
+    .usa-sidenav-list {
+      & > li {
+        &:last-child {
+          border-bottom: 1px solid $color-gray-lighter;
+        }
+
+        &:first-child {
+          border-top: 1px solid $color-gray-lighter;
+        }
+
+        .active-menu {
+          border-bottom: none;
+        }
+
+        a {
+          display: inline-block;
+          vertical-align: middle;
+          width: 75%;
+        }
+
+        i {
+          color: $color-black;
+          vertical-align: middle;
+          font-size: 15px;
+          padding-left: 0;
+        }
       }
 
-      &:first-child {
-        border-top: 1px solid $color-gray-lighter;
+      & .menu-item-container {
+        & > a {
+          font-weight: bold;
+        }
+
+        &:hover {
+          background-color: $color-gray-lightest;
+          color: $color-blue;
+        }
+
+        &:focus {
+          outline: 2px solid $color-gold;
+          outline-offset: 3px;
+        }
       }
 
-      .active-menu {
-        border-bottom: none;
+
+    }
+
+    .fa {
+      position: relative;
+      color: $color-white;
+      border-radius: 50%;
+
+      &.icon-small {
+        vertical-align: middle;
+        padding-left: initial;
+        height: 32px;
+        width: 32px;
+        margin-right: 5px;
+
+        &::before {
+          position: absolute;
+          margin-top: 6.5px;
+          margin-left: 8.47px;
+        }
+      }
+
+      &.fa-medkit {
+        background-color: $color-primary;
+
+        &.icon-small {
+          &::before {
+            margin-top: 6px;
+            margin-left: 8px;
+          }
+        }
       }
     }
   }
