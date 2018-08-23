@@ -96,6 +96,15 @@
 
 .merger {
   .va-sidebarnav {
+    h4 {
+      display: inline-block;
+      width: 75%;
+    }
+
+    .left-side-nav-title {
+      padding-bottom: 35px;
+    }
+
     .usa-sidenav-list {
       & > li {
         &:last-child {
@@ -139,8 +148,19 @@
           outline-offset: 3px;
         }
       }
+    }
 
+    .usa-sidenav-list {
+      a.usa-current {
+        border-left: 0.4rem solid #0071BB;
+        padding-left: 8px;
+        margin-left: 16px;
 
+        &.level-one {
+          padding-left: 14px;
+          margin-left: 0;
+        }
+      }
     }
 
     .fa {

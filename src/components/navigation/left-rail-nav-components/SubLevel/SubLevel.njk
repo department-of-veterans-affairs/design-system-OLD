@@ -1,0 +1,53 @@
+import React from 'react';
+import SubLevel from './SubLevel';
+
+export default class SubLevelExample extends React.Component {
+  render() {
+    return (
+      <div className="merger">
+        <div className="usa-grid">
+          <nav className="usa-width-one-fourth va-sidebarnav" id="va-detailpage-sidebar">
+            <ul className="usa-sidenav-list">
+              <SubLevel
+                title="VA Health Care Coverage"
+                href="/health-care/health-conditions/substance-use-problems">
+              </SubLevel>
+              <SubLevel title="Health Needs and Conditions">
+                <li>
+                  <a href="/health-care/health-conditions/conditions-related-to-service-era">
+                      Concerns Related to Service History
+                  </a>
+                </li>
+                <li>
+                  <a href="/health-care/health-conditions/mental-health">
+                      Mental Health
+                  </a>
+                </li>
+                <li>
+                  <a href="/health-care/health-conditions/military-sexual-trauma">
+                      Military Sexual Trauma
+                  </a>
+                </li>
+                <li>
+                  <a href="/health-care/health-conditions/womens-health-care-needs">
+                      Women’s Health Care
+                  </a>
+                </li>
+                <li>
+                  <a href="/health-care/health-conditions/exposure-to-hazardous-materials">
+                      Exposure to Hazardous Materials
+                  </a>
+                </li>
+                <li>
+                  <a href="/health-care/health-conditions/substance-use-problems">
+                      Substance Use Problems
+                  </a>
+                </li>
+              </SubLevel>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    );
+  };
+};

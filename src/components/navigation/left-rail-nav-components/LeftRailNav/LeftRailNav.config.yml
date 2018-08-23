@@ -1,0 +1,21 @@
+label: Left Rail Nav
+status: wip
+
+context:
+  componentSourcePath: './LeftRailNav.jsx'
+  title: 'Health Care'
+  icon: 'fa-medkit'
+  currentPage: 'first-link/'
+  data:
+    - text: Health Care Stuff
+      href: 'first-link/'
+    - title: Other Health Care
+      links:
+        - text: Health Care Stuff
+          href: 'first-link/'
+        - text: Health Care Stuff
+          href: 'second-link/'
+        - text: Health Care Stuff
+          href: 'third-link/'
+        - text: Health Care Stuff
+          href: 'fourth-link/'
