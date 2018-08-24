@@ -30,7 +30,7 @@ export default class SubLevel extends React.Component {
     if (this.props.href) {
       return (
         <div className="menu-item-container">
-          <a className={`level-one ${this.props.isCurrentPage(this.props) ? ' usa-current' : ''}`} href={`/${this.props.href}`}>
+          <a className={`level-one ${this.props.isCurrentPage(this.props) ? ' usa-current' : ''}`} href={`${this.props.href}`}>
             {this.props.title}
           </a>
         </div>

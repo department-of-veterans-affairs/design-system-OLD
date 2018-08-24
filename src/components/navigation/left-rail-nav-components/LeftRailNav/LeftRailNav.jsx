@@ -14,9 +14,31 @@ export default class LeftRailNav extends React.Component {
           isCurrentPage={(link) => this.props.isCurrentPage(link)}>
           {
             section.links.map((link, j) => {
+              if (link.links) {
+                return (
+                  <SubLevel
+                    key={`${link.title} ${j}`}
+                    title={link.title}
+                    hidden={this.props.hidden(link.links)}
+                    isCurrentPage={(sublink) => this.props.isCurrentPage(sublink)}>
+                    {
+                      link.links.map((subLink, k) => {
+                        return (
+                          <li key={`${subLink.text} ${k}`}>
+                            <a className={this.props.isCurrentPage(subLink) && 'usa-current'} href={`${subLink.href}`}>
+                              {subLink.text}
+                            </a>
+                          </li>
+                        );
+                      })
+                    }
+                  </SubLevel>
+                );
+              }
+
               return (
                 <li key={`${link.text} ${j}`}>
-                  <a className={this.props.isCurrentPage(link) && 'usa-current'} href={`/${link.href}`}>
+                  <a className={this.props.isCurrentPage(link) && 'usa-current'} href={`${link.href}`}>
                     {link.text}
                   </a>
                 </li>
