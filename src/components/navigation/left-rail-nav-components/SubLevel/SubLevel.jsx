@@ -52,6 +52,12 @@ export default class SubLevel extends React.Component {
   }
 
   getIconElement() {
+    if (this.props.icon ===  false) {
+      return (
+        <i></i>
+      );
+    }
+
     if (this.state.hidden) {
       return (
         <i className="icon-small fa fa-plus"></i>
