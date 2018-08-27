@@ -1,0 +1,26 @@
+import React from 'react';
+import LeftRailNav from './LeftRailNav'
+
+export default class LeftRailNavExample extends React.Component {
+  isHidden(links) {
+    return !links.some((link) => {
+      return link.href === this.props.currentPage ;
+    })
+  }
+
+  isCurrentPage(page) {
+    return this.props.currentPage === page.href || this.props.title === page.text;
+  }
+
+  render() {
+    return (
+      <div className="merger">
+        <div className="usa-grid">
+          <nav className="usa-width-one-fourth va-sidebarnav" id="va-detailpage-sidebar">
+            <LeftRailNav {...this.props} isCurrentPage={(href) => this.isCurrentPage(href)} hidden={(links) => this.isHidden(links)}></LeftRailNav>
+          </nav>
+        </div>
+      </div>
+    );
+  };
+};
