@@ -57,7 +57,7 @@ class SearchMenu extends React.Component {
       'va-dropdown-trigger'
     );
 
-    const icon = <IconSearch color="#fff"/>;
+    const icon = <IconSearch color="#fff" focusable={false} role="img"/>;
 
     return (
       <DropDownPanel
