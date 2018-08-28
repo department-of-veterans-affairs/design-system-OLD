@@ -6,7 +6,7 @@ import IconHelp from '../../svgicons/IconHelp/IconHelp';
 
 class HelpMenu extends React.Component {
   render() {
-    const icon = <IconHelp color="#fff" focusable={false} role="img"/>;
+    const icon = <IconHelp color="#fff" focusable={false} role="presentation"/>;
 
     return (
       <DropDownPanel
