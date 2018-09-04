@@ -32,7 +32,7 @@ If the `fractal watch` task fails, remove the `dist` directory and try running `
 
 ## Previewing Changes
 
-As you make changes to this design system, you'll likely want to see how your changes look in a consuming app. Follow these instructions to see your changes locally in the Vets Website.
+As you make changes to this design system, you'll likely want to see how your changes look in a consuming app, such as the `vets-website` app. Follow these instructions to see your changes locally in the Vets Website.
 
 ### 1. Build the components:
 
@@ -92,6 +92,10 @@ Submit a PR that includes all of your code changes, including the version bump, 
 * Publish changes to NPM: `npm publish`.
 
 > As mentioned above, you must be registered with NPM and have the proper rights to publish the `@department-of-veterans-affairs/formation` package.
+
+### 4. Update consuming apps
+
+The last step is to update the `package.json` files of consuming apps to use the new version of `@department-of-veterans-affairs/formation`.
 
 ## Deployment
 
