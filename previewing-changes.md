@@ -31,7 +31,7 @@ When you are done testing `formation` locally, you'll want to get your consuming
 
 In the consuming app:
 1. run `yalc remove @department-of-veterans-affairs/formation` to remove the link from the consuming app's `node_modules` dir to the local version of `formation`.
-2. **NOTE:** There seems to be an issue with Yalc not cleaning up after itself properly, so you'll have to also run `unlink node_modules/@department-of-veterans-affairs/formation`
+2. **NOTE:** There seems to be [an issue](https://github.com/whitecolor/yalc/issues/37) with Yalc not cleaning up after itself properly, so you'll have to also run `unlink node_modules/@department-of-veterans-affairs/formation`
 3. Run `yarn install --check-files` to reinstall `formation` from NPM. (If you're curious about why you need to `--check-files` flag, [check out this issue](https://github.com/yarnpkg/yarn/issues/2240).)
 
 Your consuming app should be back to normal!
