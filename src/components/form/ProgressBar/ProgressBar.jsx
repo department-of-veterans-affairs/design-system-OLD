@@ -1,17 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ProgressBar from './ProgressBar.bs';
 
-export default function ProgressBar({ percent }) {
+export default function ProgressBarComponent({ percent, percentNumber }) {
   return (
-    <div className="progress-bar" role="progressbar" aria-valuenow={percent} aria-valuemin="0" aria-valuemax="100" tabIndex="0">
-      <div className="progress-bar-inner" style={{ width: `${percent}%` }}/>
-    </div>
+    <ProgressBar percent={percent} percentNumber={percentNumber}/>
   );
 }
 
-ProgressBar.propTypes = {
+ProgressBarComponent.propTypes = {
   /**
    * Percent of progress made
    */
-  percent: PropTypes.number.isRequired,
+  percent: PropTypes.string.isRequired,
+  percentNumber: PropTypes.number.isRequired,
+
 };
