@@ -1,6 +1,8 @@
 import _ from 'lodash';
 import moment from 'moment';
 
+import isValidPartialDate from './validations.bs';
+
 function dateToMoment(dateField) {
   return moment({
     year: dateField.year.value,
@@ -127,14 +129,6 @@ function isValidAnyDate(day, month, year) {
     month: month ? parseInt(month, 10) - 1 : month,
     year
   }).isValid();
-}
-
-function isValidPartialDate(day, month, year) {
-  if (year && !isValidYear(year)) {
-    return false;
-  }
-
-  return true;
 }
 
 function isValidDateField(field) {
