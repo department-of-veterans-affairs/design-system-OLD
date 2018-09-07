@@ -11,6 +11,7 @@
     "prestart": "node prebuild.js",
     "export-components": "node ./scripts/build-node-modules.js",
     "start": "fractal watch",
+    "magic": "bsb -make-world -w",
     "test": "karma start --single-run",
     "build-site": "fractal build-site",
     "site": "fractal build-site && gh-pages -d build",
@@ -29,12 +30,14 @@
     "moment": "^2.21.0",
     "prop-types": "^15.6.0",
     "react-transition-group": "^1.x",
+    "reason-react": "^0.5.3",
     "window-or-global": "^1.0.1"
   },
   "devDependencies": {
     "@frctl/fractal": "^1.1.7",
     "@frctl/mandelbrot": "^1.2.0",
     "@frctl/nunjucks": "^1.0.3",
+    "add": "^2.0.6",
     "axe-core": "^2.4.2",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.0.2",
@@ -43,6 +46,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "babel-register": "^6.26.0",
+    "bs-platform": "^4.0.5",
     "chai": "^4.1.2",
     "chai-as-promised": "^7.1.1",
     "colors": "^1.1.2",
@@ -66,6 +70,7 @@
     "ncp": "^2.0.0",
     "node-sass": "^4.8.3",
     "nunjucks": "^3.0.1",
+    "or": "^0.2.0",
     "promisify-node": "^0.4.0",
     "react": "^15.5.4",
     "react-docgen": "^2.19.0",
@@ -82,7 +87,8 @@
     "svg-url-loader": "^2.3.0",
     "url-loader": "^0.6.2",
     "uswds": "1.4.2",
-    "webpack": "2"
+    "webpack": "2",
+    "yarn": "^1.9.4"
   },
   "peerDependencies": {
     "react": "^15.5.4",

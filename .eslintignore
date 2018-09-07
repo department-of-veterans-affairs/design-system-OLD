@@ -8,3 +8,5 @@ src/js/*
 fractalEntry.js
 vets-sketchapp/*
 /src/utils/*
+**/*.bs.js
+lib/

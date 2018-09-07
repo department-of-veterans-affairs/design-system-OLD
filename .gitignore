@@ -7,3 +7,6 @@ dist/
 .DS_Store
 npm-debug.log
 public/dist
+lib/
+.bsb.lock
+.merlin
