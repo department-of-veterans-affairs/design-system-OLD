@@ -42,7 +42,7 @@ class SearchMenu extends React.Component {
             name="query"
             type="text"/>
           <button type="submit">
-            <IconSearch color="#fff" focusable={false} role="presentation"/>
+            <IconSearch color="#fff" role="presentation"/>
             <span className="usa-sr-only">Search</span>
           </button>
         </div>
@@ -57,7 +57,7 @@ class SearchMenu extends React.Component {
       'va-dropdown-trigger'
     );
 
-    const icon = <IconSearch color="#fff" focusable={false} role="presentation"/>;
+    const icon = <IconSearch color="#fff" role="presentation"/>;
 
     return (
       <DropDownPanel
