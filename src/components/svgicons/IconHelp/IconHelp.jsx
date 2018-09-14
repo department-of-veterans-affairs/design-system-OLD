@@ -16,6 +16,7 @@ class IconHelp extends React.Component {
         className={cssClass}
         height="63"
         id={id}
+        pointerEvents="none"
         role={role}
         viewBox="0 0 62 63"
         width="62">

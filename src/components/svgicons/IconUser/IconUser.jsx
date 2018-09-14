@@ -18,8 +18,8 @@ class IconUser extends React.Component {
         id={id}
         pointerEvents="none"
         role={role}
-        width="57"
-        viewBox="308 246 57 63">
+        viewBox="308 246 57 63"
+        width="57">
         <path fill={color}
           d="M364.571429,297.736607 C364.571429,300.950909 363.59376,303.48883
             361.638393,305.350446 C359.683026,307.212063 357.084838,308.142857
