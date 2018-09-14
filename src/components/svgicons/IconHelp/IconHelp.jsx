@@ -31,7 +31,7 @@ class IconHelp extends React.Component {
 IconHelp.propTypes = {
   color: PropTypes.string, /* Should be a CSS color */
   cssClass: PropTypes.string,
-  id: PropTypes.string,
+  id: PropTypes.string
 };
 
 export default IconHelp;
