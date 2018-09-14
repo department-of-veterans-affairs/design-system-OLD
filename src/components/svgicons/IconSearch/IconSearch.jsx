@@ -39,9 +39,7 @@ class IconSearch extends React.Component {
 IconSearch.propTypes = {
   color: PropTypes.string, /* Should be a CSS color */
   cssClass: PropTypes.string,
-  focusable: PropTypes.bool,
   id: PropTypes.string,
-  role: PropTypes.string,
   title: PropTypes.string
 };
 
