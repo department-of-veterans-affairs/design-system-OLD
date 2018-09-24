@@ -13,8 +13,18 @@ const defaultSection = (sections) => {
 };
 
 export default class MegaMenu extends React.Component {
+  constructor() {
+    super();
+    this.originalSize = window.innerWidth;
+  }
+
   componentDidMount() {
+    if (window.innerWidth < 768) {
+      this.props.toggleDisplayHidden(true);
+    }
+
     window.addEventListener('resize', this.resetDefaultState.bind(this));
+    document.body.addEventListener('click', this.handleDocumentClick, false);
   }
 
   /**
@@ -22,9 +32,70 @@ export default class MegaMenu extends React.Component {
    */
   componentWillUnmount() {
     window.removeEventListener('resize', this.resetDefaultState.bind(this));
+    document.body.removeEventListener('click', this.handleDocumentClick, false);
+  }
+
+  getSubmenu(item, currentSection) {
+    if (window.innerWidth < 768) {
+      const menuSections = [
+        item.menuSections.mainColumn,
+        item.menuSections.columnOne,
+        item.menuSections.columnTwo,
+      ].reduce((acc, column) => {
+        acc.push({
+          title: column.title,
+          links: {
+            columnOne: {
+              title: '',
+              links: column.links,
+            },
+            columnTwo: {
+              title: '',
+              links: [],
+            }
+          }
+        });
+
+        return acc;
+      }, []);
+
+      return menuSections.map((section, i) => {
+        return (
+          <MenuSection
+            key={`${section}-${i}`}
+            title={section.title}
+            defaultSection={defaultSection(item.menuSections)}
+            currentSection={currentSection}
+            updateCurrentSection={() => this.updateCurrentSection(section.title)}
+            links={section.links}></MenuSection>
+        );
+      });
+    }
+
+    return (
+      <SubMenu
+        data={item.menuSections}
+        navTitle={item.title}
+        handleBackToMenu={() => this.toggleDropDown('')}
+        show={this.props.currentDropdown !== ''}></SubMenu>
+    );
+  }
+  handleDocumentClick = (event) => {
+    if (this.props.currentDropdown && !this.menuRef.contains(event.target)) {
+      this.props.toggleDropDown('');
+    }
+
   }
 
   resetDefaultState() {
+    if (this.originalSize !== window.innerWidth) {
+      if (window.innerWidth > 768) {
+        this.props.toggleDisplayHidden(false);
+      } else {
+        this.props.toggleDisplayHidden(true);
+      }
+    }
+
     this.props.updateCurrentSection('');
     this.props.toggleDropDown('');
   }
@@ -52,11 +123,14 @@ export default class MegaMenu extends React.Component {
       currentDropdown,
       currentSection,
       data,
+      display,
     } = this.props;
 
     return (
-      <div className="login-container">
-        <div className="row va-flex">
+      <div
+        className="login-container"
+        {...display}>
+        <div className="row va-flex" ref={el => {this.menuRef = el;}}>
           <div id="vetnav" role="navigation">
             <ul id="vetnav-menu" role="menubar">
               <li><a href="/" className="vetnav-level1" role="menuitem">Home</a></li>
@@ -87,11 +161,7 @@ export default class MegaMenu extends React.Component {
                                     updateCurrentSection={() => this.updateCurrentSection(section.title)}
                                     links={section.links}></MenuSection>
                                 );
-                              }) : <SubMenu
-                                data={item.menuSections}
-                                navTitle={item.title}
-                                handleBackToMenu={() => this.toggleDropDown('')}
-                                show={this.props.currentDropdown !== ''}></SubMenu>
+                              }) : this.getSubmenu(item,  currentSection)
                             }
                           </ul>
                         }
@@ -132,16 +202,24 @@ MegaMenu.propTypes = {
    */
   toggleDropDown: PropTypes.func.isRequired,
   /**
-   * String value of current dropdown
+   * Function to update if the MegaMenu is displayed or not
    */
+  toggleDisplayHidden: PropTypes.func.isRequired,
+  /**
+    * String value of current dropdown
+    */
   currentDropdown: PropTypes.string,
   /**
    * String value of current dropdown section
    */
   currentSection: PropTypes.string,
+  display: PropTypes.shape({
+    hidden: PropTypes.boolean
+  }),
 };
 
 MegaMenu.defaultProps = {
   currentDropdown: '',
   currentSection: '',
+  display: {},
 };
