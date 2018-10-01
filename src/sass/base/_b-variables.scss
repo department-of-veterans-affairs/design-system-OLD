@@ -56,10 +56,11 @@ $color-green-darker:         #195c27;
 $color-va-accent:            #988530; // New gold "metal" acccent
 $color-gold:                 #fdb81e;
 $color-warning-message:      #fac922; // Used for Disability benefits
-$color-gray-light-alt:       #eee;
+$color-gray-light-alt:       #f1f1f1; // Emily just replaced the #eee that was here before
 $color-va-modal-bg:          rgba($color-gray-dark, .8);
 //$color-va-modal-bg--gi:      rgba($color-gray-dark, .8);
 $color-va-modal-close:       rgba($color-base, .8);
+$color-red-dark:			 #CD2026;
 
 $color-inset-bg:             #e0f3f8;
 $color-gibill-accent:        #fff1d2; // TODO: Replace with $color-gold-lightest;

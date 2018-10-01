@@ -59,6 +59,10 @@
   }
 }
 
+// New styles that deviate from the USDS system
+.usa-alert-success, .usa-alert-info, .usa-alert-warning, .usa-alert-error {
+  background-color: $color-gray-light-alt;
+}
 .usa-alert-heading {
   margin-top: .3em;
 }
