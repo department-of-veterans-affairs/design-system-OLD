@@ -68,18 +68,12 @@ $color-white-alpha70:        rgba(255,255,255,.7);
 
 $color-sidebar-nav-bg:   rgba($color-black, 0.25);
 
-//===================================
-// Deprecated Colors;
-// Please avoid using.
-//===================================
 
-$polar:       #E8F5FA;
-$wild-sand:   #f6f6f6;
-$green-white: #eff0e6;
-$olso-gray:   #849097;
-$light-blue:  #e1f3f8;
-$mm-gray:     #f1f1f1;
-
+$color-orange: #EB7F29;
+$color-gold-darker: #988530;
+$color-light-blue: #0071bb;
+$color-old-browser-background-start: #0071bb;
+$color-old-browser-background-end: #112e51;
 
 //===================================
 // Hub Icon colors for BC
@@ -97,9 +91,15 @@ $gold-50: #8e704f;
 $green-warm-50: #6f7a41;
 $blue-50: #357ab2;
 $violet-warm-60: #864381;
-$color-orange: #EB7F29;
-$color-gold-darker: #988530;
-$color-light-blue: #0071bb;
-$color-old-browser-background-start: #0071bb;
-$color-old-browser-background-end: #112e51;
-$color-white: #fff; 
+
+//===================================
+// Deprecated Colors;
+// Please avoid using.
+//===================================
+
+$polar:       #E8F5FA;
+$wild-sand:   #f6f6f6;
+$green-white: #eff0e6;
+$olso-gray:   #849097;
+$light-blue:  #e1f3f8;
+$mm-gray:     #f1f1f1;
