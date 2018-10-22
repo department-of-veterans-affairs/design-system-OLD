@@ -4,14 +4,90 @@
   width: 100%;
   z-index: 2;
 
+  .panel-bottom-link {
+    position: unset;
+    height: 25px;
+    margin-left: 10px;
+    margin-bottom: 3px;
+    border: none;
+
+    a {
+      padding: 20px 25px 20px 7px;
+      font-weight: bold;
+      width: 111%;
+
+      img {
+        width: 15px;
+      }
+    }
+  }
+
+  .column-three {
+    display: none;
+  }
+
+  .vetnav-level2 {
+    width: 100%;
+  }
+
+  .panel-top-link {
+    &:nth-of-type(1) {
+      display: block;
+      font-weight: bold;
+      padding-top: 15px;
+    }
+  }
+
+  .vetnav-panel--submenu:not([hidden]) {
+    position: static;
+    h3 {
+      display: none;
+    }
+  }
+
+  .back-button {
+    display: block;
+  }
+
+  .vetnav-panel {
+    height: auto;
+  }
+
+  .mm-link-container-small {
+    background: $color-primary-darkest;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    z-index: 200;
+  }
+
+  .all-link-arrow {
+    display: none;
+  }
+
+  .vetnav-level1 {
+    &:active, &:visited, &:focus, &:hover {
+      color: $color-white;
+    }
+  }
+
+  .mm-links {
+    white-space: pre-wrap;
+  }
+
   @include media($medium-large-screen) {
+    min-height: 51px;
+
     .vetnav-panel--submenu:not([hidden]) {
+      position: absolute;
       box-shadow: none;
       width: 26rem;
-      padding: 28px 0px 0px 28px;
+      padding: 72px 0px 0px 28px;
       white-space: normal;
 
       h3 {
+        display: initial;
         color: $color-black;
         font-family: Source Sans Pro, sans serif;
         font-size: 1.6rem;
@@ -19,10 +95,17 @@
         margin-top: 4px;
         padding: 0;
       }
+
+      &.panel-white {
+        padding-top: 22px;
+      }
     }
 
     .vetnav-level1[aria-expanded="true"] {
       border-top-color: $color-va-accent;
+      &:active, &:visited, &:focus, &:hover {
+        color: $color-base;
+      }
     }
 
     .vetnav-level2[aria-expanded="true"] {
@@ -31,12 +114,12 @@
 
     .vetnav-panel {
       box-shadow: 0 7px 25px -11px $color-black;
-      height: 470px;
+      height: 460px;
       width: 1008px;
       left: 0;
 
       .mm-links {
-        padding: 0;
+        padding: 5px 0px;
       }
 
       .mm-link-container {
@@ -71,13 +154,14 @@
       white-space: normal;
 
       &.vetnav-panel--submenu:not([hidden]) {
-        padding: 28px 20px 20px 14px;
+        padding: 86px 20px 20px 14px;
         width: 24rem;
-      }
 
-      &.panel-white {
-        background-color: $color-white;
-        border-left: none;
+        &.panel-white {
+          padding-top: 30px;
+          background-color: $color-white;
+          border-left: none;
+        }
       }
 
       a {
@@ -85,15 +169,27 @@
         padding: 14px 0px 0px 0px;
       }
     }
+
+    .panel-bottom-link {
+      margin: 0;
+    }
+
+    .all-link-arrow {
+      display: initial;
+    }
+
+    .panel-top-link {
+      display: none !important;
+    }
+
+    .vetnav-level2 {
+      width: 24.3rem;
+    }
   }
 
   .panel-title {
     font-weight: bold;
     color: $color-black;
-  }
-
-  .vetnav-level2 {
-    width: 24.3rem;
   }
 
   a.vetnav-level1 {
@@ -108,45 +204,17 @@
     }
   }
 
-  .panel-bottom-link {
-    position: absolute;
-    bottom: 0px;
-    height: 60px;
-    width: 100%;
-    left: 0;
-    margin-left: 14px;
-    border-top: 1px solid #d0d0d0;
-    z-index: 3;
-
-    &:nth-child(2) {
-      width: 87%;
-    }
-
-    a {
-      background: transparent url(/img/arrow-right-blue.svg) right 1rem center no-repeat;
-      background-size: 13px;
-      font-weight: bold;
-      padding: 20px 0px;
-      display: inline-block;
-      padding-right: 25px;
-    }
-  }
-
-  .panel-top-link {
-    display: none;
-  }
-
-  .back-button {
-    display: none;
-  }
-
   .mm-marketing-container {
-    background-color: $light-blue;
-    padding: 20px;
+    background-color: $color-white;
     height: 350px;
+    overflow: hidden;
 
-    img {
-      margin-bottom: 20px;
+    &.mm-marketing-gray {
+      background-color: $mm-gray;
+    }
+
+    .mm-marketing-text {
+      padding: 20px;
     }
 
     p {
@@ -154,50 +222,122 @@
     }
   }
 
-  @media (max-width: 768px) {
+  #vetnav-column-one-col {
+    .panel-bottom-link {
+      width: 200%;
+    }
+  }
+
+  @include media($medium-large-screen) {
+    .panel-top-link {
+      display: none;
+    }
+
+    .back-button {
+      display: none;
+    }
+
+    .vetnav-panel--submenu:not([hidden]) {
+      h3 {
+        font-family: Source Sans Pro, sans serif;
+        font-size: 1.6rem;
+      }
+    }
+  }
+
+  #vetnav-menu, #vetnav {
+    margin-top: 0;
+  }
+
+  .my-va-top-nav {
+    margin-left: auto;
+
+    &.current-page {
+      margin-left: auto;
+    }
+  }
+
+  .mm-marketing-container {
+    height: 350px;
+
+    p {
+      margin-top: 5px;
+    }
+  }
+
+
+  @include media($medium-large-screen) {
+    .current-page {
+      box-shadow: inset 0 -5px 0 $color-blue;
+      margin-left: 1.6rem;
+      margin-right: 1.6rem;
+      a {
+        padding: 1.6rem 0;
+      }
+    }
+
+    .vetnav-panel {
+      width: $medium-large-screen;
+      height: 380px;
+    }
+
+    .column-one {
+      width: 39rem;
+    }
+
+    .column-two {
+      width: 39rem;
+    }
+
     .column-three {
       display: none;
     }
 
-    .vetnav-level2 {
-      width: 100%;
-    }
-
-    .panel-top-link {
-      &:nth-of-type(1) {
-        display: block;
-        font-weight: bold;
-        padding-top: 15px;
-      }
-    }
-
-    .vetnav-panel--submenu:not([hidden]) {
-      position: initial;
-
-      h3 {
-        display: none;
-      }
-
-      .panel-bottom-link {
-        display: none;
-      }
-    }
-
-    .back-button {
-      display: block;
-    }
-
-    .vetnav-panel {
-      height: auto;
-    }
-
-    .mm-link-container-small {
-      background: $color-primary-darkest;
-      height: 100%;
+    .panel-bottom-link {
       position: absolute;
-      width: 100%;
+      height: 60px;
+      width: $medium-large-screen - 297px;
+      left: 28rem;
+      border-bottom: 1px solid #d0d0d0;
+      z-index: 3;
       top: 0;
-      z-index: 200;
+
+      a {
+        background-size: 13px;
+        padding: 20px 0px;
+        display: inline-block;
+        padding-right: 25px;
+
+        img {
+          width: 11px;
+          margin-left: 5px;
+        }
+      }
+    }
+
+  }
+
+  @include media($small-desktop-screen) {
+    .vetnav-panel {
+      width: $small-desktop-screen;
+      height: 460px;
+    }
+
+    .panel-bottom-link {
+      position: absolute;
+      width: $small-desktop-screen - 297px;
+    }
+
+    .column-one {
+      width: 26rem;
+    }
+
+    .column-two {
+      width: 26rem;
+    }
+
+    .column-three {
+      display: block;
     }
   }
 }

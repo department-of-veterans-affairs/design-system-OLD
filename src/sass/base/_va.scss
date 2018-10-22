@@ -211,8 +211,7 @@ table {
 // Adds external icon to all links that begin
 // with http (including https)
 // Using this selector makes it easier for the content team to write content
-[href^="http"],
-[rel="external"] {
+a[href^="http"]:not([href*="va.gov"], [href*="vets.gov"]):not(.no-external-icon) {
   @include exit-icon;
 }
 
@@ -241,7 +240,6 @@ table {
   }
 
   .login-container {
-    z-index: 2;
     background: $color-primary-darkest;
     flex-wrap: wrap;
     white-space: nowrap;
@@ -764,12 +762,18 @@ li {
   @include media($medium-large-screen) {
     background: $color-gray-lightest;
     .usa-banner-inner {
-      padding-left: 0;
+      padding-left: 1.5rem;
     }
 
     .usa-banner-content {
       padding-left: 0;
       padding-right: 0;
+    }
+  }
+
+  @include media($small-desktop-screen) {
+    .usa-banner-inner {
+      padding-left: 0rem;
     }
   }
 

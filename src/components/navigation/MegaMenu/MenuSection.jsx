@@ -21,7 +21,7 @@ class MenuSection extends React.Component {
   }
 
   updateCurrentSection() {
-    if (window.innerWidth === 768) {
+    if (document.body.clientWidth < 768) {
       this.setState({
         title: {
           hidden: true,
@@ -35,7 +35,7 @@ class MenuSection extends React.Component {
   handleBackToMenu() {
     this.updateCurrentSection('');
 
-    if (window.innerWidth === 768) {
+    if (document.body.clientWidth < 768) {
       this.setState({
         title: {},
       });
@@ -60,7 +60,9 @@ class MenuSection extends React.Component {
           data={this.props.links}
           navTitle={this.props.title}
           show={show}
-          handleBackToMenu={() => this.handleBackToMenu()}>
+          handleBackToMenu={() => this.handleBackToMenu()}
+          linkClicked={this.props.linkClicked}
+          columnThreeLinkClicked={this.props.columnThreeLinkClicked}>
         </SubMenu>
       </li>
     );
@@ -106,6 +108,8 @@ MenuSection.propTypes = {
     }),
   }).isRequired,
   defaultSection: PropTypes.string.isRequired,
+  linkClicked: PropTypes.func.isRequired,
+  columnThreeLinkClicked: PropTypes.func.isRequired
 };
 
 export default MenuSection;

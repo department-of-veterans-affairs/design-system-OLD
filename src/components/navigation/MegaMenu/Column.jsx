@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import _ from 'lodash';
 
 const isPanelWhite = (panelWhite) => {
-  if (window.innerWidth < 768) {
+  if (document.body.clientWidth < 768) {
     return '';
   }
 
@@ -11,41 +11,40 @@ const isPanelWhite = (panelWhite) => {
 };
 
 const Column = (props) => {
-  const { data, keyName, panelWhite } = props;
+  const { data, keyName, panelWhite, columnThreeLinkClicked, linkClicked, hidden } = props;
 
   if (keyName === 'columnThree') {
     return (
       <div
+        aria-hidden={hidden ? 'true' : 'false'}
         className={`vetnav-panel vetnav-panel--submenu ${_.kebabCase(keyName)}${isPanelWhite(panelWhite)}`}
         aria-label={keyName}>
-        <div className="mm-marketing-container">
+        <div className={`${panelWhite ? 'mm-marketing-container mm-marketing-gray' : 'mm-marketing-container'}`}>
           <img src={data.img.src} alt={data.img.alt}></img>
-          <a className="mm-links" href={data.link.href} target={data.link.target || '_self'}>
-            {data.link.text}
-          </a>
-          <p>{data.description}</p>
+          <div className="mm-marketing-text">
+            <a className="mm-links" href={data.link.href} onClick={columnThreeLinkClicked.bind(null, data.link)} target={data.link.target || '_self'}>
+              {data.link.text}
+            </a>
+            <p>{data.description}</p>
+          </div>
         </div>
-
-        <li className="panel-bottom-link"></li>
       </div>
     );
   }
 
   return (
-    <div className={`vetnav-panel vetnav-panel--submenu ${_.kebabCase(keyName)}${isPanelWhite(panelWhite)}`}>
+    <div aria-hidden={hidden ? 'true' : 'false'} className={`vetnav-panel vetnav-panel--submenu ${_.kebabCase(keyName)}${isPanelWhite(panelWhite)}`}>
       <h3 id={`vetnav-${_.kebabCase(keyName)}-header`}>{data.title}</h3>
       <ul id={`vetnav-${_.kebabCase(keyName)}-col`} aria-labelledby={`vetnav-${_.kebabCase(keyName)}-header`}>
         <li className="panel-top-link">{props.children}</li>
 
         { data.links.map((link, i) => (
           <li className="mm-link-container" key={`${link.href}-${i}`}>
-            <a className="mm-links" href={link.href} target={link.target || '_self'}>
+            <a className="mm-links" href={link.href} onClick={linkClicked.bind(null, link)} target={link.target || '_self'}>
               {link.text}
             </a>
           </li>
         ))}
-
-        <li className="panel-bottom-link">{props.children}</li>
       </ul>
     </div>
   );
@@ -74,6 +73,8 @@ Column.propTypes = {
   keyName: PropTypes.string.isRequired,
   navTitle: PropTypes.string.isRequired,
   panelWhite: PropTypes.bool.isRequired,
+  linkClicked: PropTypes.func.isRequired,
+  columnThreeLinkClicked: PropTypes.func.isRequired
 };
 
 export default Column;

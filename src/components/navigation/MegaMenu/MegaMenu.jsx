@@ -5,7 +5,7 @@ import SubMenu from './SubMenu';
 import _ from 'lodash';
 
 const defaultSection = (sections) => {
-  if (window.innerWidth < 768) {
+  if (document.body.clientWidth < 768) {
     return '';
   }
 
@@ -15,11 +15,11 @@ const defaultSection = (sections) => {
 export default class MegaMenu extends React.Component {
   constructor() {
     super();
-    this.originalSize = window.innerWidth;
+    this.originalSize = document.body.clientWidth;
   }
 
   componentDidMount() {
-    if (window.innerWidth < 768) {
+    if (document.body.clientWidth < 768) {
       this.props.toggleDisplayHidden(true);
     }
 
@@ -36,7 +36,7 @@ export default class MegaMenu extends React.Component {
   }
 
   getSubmenu(item, currentSection) {
-    if (window.innerWidth < 768) {
+    if (document.body.clientWidth < 768) {
       const menuSections = [
         item.menuSections.mainColumn,
         item.menuSections.columnOne,
@@ -67,7 +67,9 @@ export default class MegaMenu extends React.Component {
             defaultSection={defaultSection(item.menuSections)}
             currentSection={currentSection}
             updateCurrentSection={() => this.updateCurrentSection(section.title)}
-            links={section.links}></MenuSection>
+            links={section.links}
+            linkClicked={this.props.linkClicked}
+            columnThreeLinkClicked={this.props.columnThreeLinkClicked}></MenuSection>
         );
       });
     }
@@ -77,7 +79,9 @@ export default class MegaMenu extends React.Component {
         data={item.menuSections}
         navTitle={item.title}
         handleBackToMenu={() => this.toggleDropDown('')}
-        show={this.props.currentDropdown !== ''}></SubMenu>
+        show={this.props.currentDropdown !== ''}
+        linkClicked={this.props.linkClicked}
+        columnThreeLinkClicked={this.props.columnThreeLinkClicked}></SubMenu>
     );
   }
   handleDocumentClick = (event) => {
@@ -88,16 +92,16 @@ export default class MegaMenu extends React.Component {
   }
 
   resetDefaultState() {
-    if (this.originalSize !== window.innerWidth) {
-      if (window.innerWidth > 768) {
+    if (this.originalSize !== document.body.clientWidth) {
+      if (document.body.clientWidth > 768) {
         this.props.toggleDisplayHidden(false);
       } else {
         this.props.toggleDisplayHidden(true);
       }
+      this.props.updateCurrentSection('');
+      this.props.toggleDropDown('');
+      this.originalSize = document.body.clientWidth;
     }
-
-    this.props.updateCurrentSection('');
-    this.props.toggleDropDown('');
   }
 
   toggleDropDown(title) {
@@ -111,7 +115,7 @@ export default class MegaMenu extends React.Component {
   updateCurrentSection(title) {
     let sectionTitle = title;
 
-    if (window.innerWidth < 768) {
+    if (document.body.clientWidth < 768) {
       sectionTitle = this.props.currentSection === title ? '' : title;
     }
 
@@ -124,6 +128,8 @@ export default class MegaMenu extends React.Component {
       currentSection,
       data,
       display,
+      linkClicked,
+      columnThreeLinkClicked
     } = this.props;
 
     return (
@@ -147,7 +153,7 @@ export default class MegaMenu extends React.Component {
                           aria-haspopup="true"
                           className="vetnav-level1"
                           onClick={() => this.toggleDropDown(item.title)}>{item.title}</button>
-                          : <a href={item.href} className="vetnav-level1" target={item.target || null}>{item.title}</a>
+                          : <a href={item.href} onClick={linkClicked.bind(null, item)} className="vetnav-level1" target={item.target || null}>{item.title}</a>
                       }
                       <div id={`vetnav-${_.kebabCase(item.title)}`} className="vetnav-panel" role="none" hidden={currentDropdown !== item.title}>
                         {
@@ -161,7 +167,9 @@ export default class MegaMenu extends React.Component {
                                     defaultSection={defaultSection(item.menuSections)}
                                     currentSection={currentSection}
                                     updateCurrentSection={() => this.updateCurrentSection(section.title)}
-                                    links={section.links}></MenuSection>
+                                    links={section.links}
+                                    linkClicked={linkClicked}
+                                    columnThreeLinkClicked={columnThreeLinkClicked}/>
                                 );
                               }) : this.getSubmenu(item,  currentSection)
                             }
@@ -215,6 +223,17 @@ MegaMenu.propTypes = {
    * String value of current dropdown section
    */
   currentSection: PropTypes.string,
+
+  /**
+   * Optional function to intercept links clicked
+   */
+  linkClicked: PropTypes.func,
+
+  /**
+   * Optional function to intercept links clicked at column three
+   */
+  columnThreeLinkClicked: PropTypes.func,
+
   display: PropTypes.shape({
     hidden: PropTypes.boolean
   }),
@@ -224,4 +243,6 @@ MegaMenu.defaultProps = {
   currentDropdown: '',
   currentSection: '',
   display: {},
+  linkClicked() {},
+  columnThreeLinkClicked() {}
 };

@@ -4,15 +4,19 @@ import Column from './Column';
 import _ from 'lodash';
 
 const onSmallScreen = () => {
-  if (window.innerWidth < 768) {
+  if (document.body.clientWidth < 768) {
     return true;
   }
 
   return false;
 };
 
+const onSmallDesktopOrLargeTablet = () => {
+  return !onSmallScreen() && document.body.clientWidth < 1008;
+};
+
 const getColumns = (columns) => {
-  if (window.innerWidth < 768) {
+  if (onSmallScreen()) {
     return {
       columnOne: {
         title: columns.columnOne.title,
@@ -27,7 +31,7 @@ const getColumns = (columns) => {
   return columns;
 };
 
-const SubMenu = ({ data, show, navTitle, handleBackToMenu }) => {
+const SubMenu = ({ data, show, navTitle, handleBackToMenu, linkClicked, columnThreeLinkClicked }) => {
   const { seeAllLink, ...columns } = data;
 
   if (show) {
@@ -44,6 +48,15 @@ const SubMenu = ({ data, show, navTitle, handleBackToMenu }) => {
           </button>
         </div>
 
+        {
+          seeAllLink && <div className="panel-bottom-link">
+            <a href={seeAllLink.href} onClick={linkClicked.bind(null, seeAllLink)}>
+              View All in {seeAllLink.text}
+              <img className="all-link-arrow" src="/img/arrow-right-blue.svg" alt="right-arrow"></img>
+            </a>
+          </div>
+        }
+
         {Object.keys(filteredColumns).map((keyName) => {
           return (
             <Column
@@ -51,14 +64,10 @@ const SubMenu = ({ data, show, navTitle, handleBackToMenu }) => {
               data={filteredColumns[keyName]}
               keyName={keyName}
               navTitle={navTitle}
-              panelWhite={Object.prototype.hasOwnProperty.call(filteredColumns, 'mainColumn')}>
-              {
-                keyName === 'columnOne' && <div>
-                  {
-                    seeAllLink && <a href={seeAllLink.href}>View All in {seeAllLink.text}</a>
-                  }
-                </div>
-              }
+              panelWhite={Object.prototype.hasOwnProperty.call(filteredColumns, 'mainColumn')}
+              linkClicked={linkClicked}
+              hidden={keyName === 'columnThree' && onSmallDesktopOrLargeTablet()}
+              columnThreeLinkClicked={columnThreeLinkClicked}>
             </Column>
           );
         })}
@@ -75,6 +84,8 @@ SubMenu.propTypes = {
   data: PropTypes.object.isRequired,
   show: PropTypes.bool.isRequired,
   navTitle: PropTypes.string.isRequired,
+  linkClicked: PropTypes.func.isRequired,
+  columnThreeLinkClicked: PropTypes.func.isRequired
 };
 
 export default SubMenu;
