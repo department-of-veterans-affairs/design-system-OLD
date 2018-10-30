@@ -16,7 +16,7 @@
   }
 
   // &-body would not have had high enough precedence.
-  & .usa-alert-body {
+  .usa-alert-body {
     display: table-cell;
     padding-left: 0;
     padding-right: 0;
