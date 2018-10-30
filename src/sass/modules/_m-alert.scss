@@ -57,39 +57,69 @@
 
   &-info {
     border-left-color: $color-primary-alt-dark;
+
     &::before {
       content: "\f05a";
+    }
+
+    &.background-color-only {
+      background-color: $color-primary-alt-lightest;
     }
   }
 
   &-error {
     border-left-color: $color-secondary-dark;
+
     &::before {
       color: $color-secondary-dark;
       content: "\f06a"
+    }
+
+    &.background-color-only {
+      background-color: $color-secondary-lightest;
     }
   }
 
   &-success {
     border-left-color: $color-green;
+
     &::before {
       color: $color-green;
       content: "\f00c";
+    }
+
+    &.background-color-only {
+      background-color: $color-green-lightest;
     }
   }
 
   &-warning {
     border-left-color: $color-gold;
+
     &::before {
       content: "\f071";
+    }
+
+    &.background-color-only {
+      background-color: $color-gold-lightest;
     }
   }
 
   &-continue {
     border-left-color: $color-green;
+
     &::before {
       color: $color-green;
       content: "\f023";
+    }
+  }
+
+  &.background-color-only {
+    border-left: none;
+    padding: 2rem;
+
+    &::before {
+      content: none;
     }
   }
 }
