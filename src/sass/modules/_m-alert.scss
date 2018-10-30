@@ -4,26 +4,22 @@
   border-left-style: solid;
   border-left-width: 10px;
   display: table;
-  min-height: 74px;
-  padding: 2rem;
-  padding-left: 4rem;
+  padding: 2rem 2rem 2rem 1.5rem;
   width: 100%;
 
   &::before {
     background: none;
     font-family: "FontAwesome";
     font-size: 2rem;
-    height: auto;
-    left: 1rem;
-    text-align: center;
-    top: 2rem;
-    width: 4rem;
+    margin-right: 1.5rem;
+    position: static;
   }
 
   &-body {
     display: table-cell;
     padding-left: 0;
     padding-right: 0;
+    width: 100%;
     vertical-align: middle;
   }
 
@@ -38,7 +34,6 @@
 
     &:only-child {
       margin: 0;
-      margin-top: 0.2rem;
       padding: 0;
     }
 
