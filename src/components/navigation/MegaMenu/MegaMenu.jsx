@@ -20,7 +20,7 @@ export default class MegaMenu extends React.Component {
       this.props.toggleDisplayHidden(true);
     }
 
-    mobileMediaQuery.addListener(this.resetDefaultState.bind(this));
+    mobileMediaQuery.addListener(this.resetDefaultState);
     document.body.addEventListener('click', this.handleDocumentClick, false);
   }
 
@@ -28,7 +28,7 @@ export default class MegaMenu extends React.Component {
    * Remove event listener
    */
   componentWillUnmount() {
-    mobileMediaQuery.removeListener(this.resetDefaultState.bind(this));
+    mobileMediaQuery.removeListener(this.resetDefaultState);
     document.body.removeEventListener('click', this.handleDocumentClick, false);
   }
 
@@ -88,7 +88,7 @@ export default class MegaMenu extends React.Component {
 
   }
 
-  resetDefaultState() {
+  resetDefaultState = () => {
     if (mobileMediaQuery.matches) {
       this.props.toggleDisplayHidden(true);
     } else {
