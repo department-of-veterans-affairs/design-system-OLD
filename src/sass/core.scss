@@ -63,3 +63,9 @@
 // ----- VA GENERAL (MAIN FILE/OTHER) ---- //
 @import "base/va";
 @import "base/focus";
+
+// ----- VA UTILITIES (UTILITIY OOCSS) ---- //
+@import "utilities/display";
+@import "utilities/margins";
+@import "utilities/padding";
+@import "utilities/visibility";
