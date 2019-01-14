@@ -25,7 +25,7 @@ pipeline {
           },
           'test': {
             sh 'npm run test'
-          }
+          },
           'build': {
             sh 'npm run build'
           }
