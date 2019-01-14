@@ -5,7 +5,7 @@ const fullCSS = new ExtractTextPlugin('formation.min.css');
 
 module.exports = {
   entry: {
-    formation: './src/sass/full.scss',
+    formation: './sass/full.scss',
   },
   output: {
     filename: '[name].js',
