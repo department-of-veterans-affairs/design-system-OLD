@@ -9,7 +9,7 @@ module.exports = {
   },
   output: {
     filename: '[name].js',
-    path: path.join(__dirname, 'dist/formation/dist')
+    path: path.join(__dirname, 'packages/formation/dist')
   },
   resolve: {
     extensions: ['.js', '.json', '.jsx']

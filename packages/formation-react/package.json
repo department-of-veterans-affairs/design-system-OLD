@@ -1,6 +1,6 @@
 {
   "name": "@department-of-veterans-affairs/formation-react",
-  "version": "2.0.0",
+  "version": "1.17.0",
   "description": "React implementation of patterns in Formation",
   "keywords": [
     "react",
@@ -9,7 +9,6 @@
     "va",
     "vads"
   ],
-  "author": "Jeff Balboni <jeff@adhocteam.us>",
   "homepage": "http://design.va.gov",
   "license": "CC0-1.0",
   "main": "lib/formation-react.js",
@@ -25,7 +24,7 @@
     "url": "git+https://github.com/department-of-veterans-affairs/design-system.git"
   },
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "test": "karma start --single-run"
   },
   "bugs": {
     "url": "https://github.com/department-of-veterans-affairs/design-system/issues"
@@ -34,11 +33,13 @@
     "classnames": "^2.2.6",
     "font-awesome": "4",
     "lodash": "^4.17.11",
+    "moment": "^2.23.0",
     "prop-types": "^15.6.2",
-    "react-transition-group": "^2.5.2",
+    "react-transition-group": "1",
     "window-or-global": "^1.0.1"
   },
   "peerDependencies": {
+    "@department-of-veterans-affairs/formation": "^1.17.0",
     "react": "^15.5.4||^16.7.0"
   }
 }

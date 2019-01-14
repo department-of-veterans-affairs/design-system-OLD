@@ -11,15 +11,12 @@
   "scripts": {
     "prestart": "node prebuild.js",
     "export-components": "node ./scripts/build-node-modules.js",
-    "start": "fractal watch",
-    "test": "karma start --single-run",
-    "build-site": "fractal build-site",
-    "site": "fractal build-site && gh-pages -d build",
+    "test": "karma start packages/formation-react/karma.conf.js --single-run",
     "pre-publish": "npm run-script export-components && cp package.json dist/formation/package.json && cp module-readme.md dist/formation/README.md && echo && echo Pre-publish complete. Change directory to dist/formation and check package.json before publishing.",
     "test-publish": "cp package.json dist/formation/package.json && cd dist/formation && yalc publish && cd ../../",
     "test-watch": "karma start --auto-watch",
-    "lint:js": "eslint --quiet --ext .js --ext .jsx .",
-    "test-debug": "karma start --browsers Chrome"
+    "lint:js": "eslint --quiet --ext .js --ext .jsx ./packages/formation-react/src",
+    "test-debug": "karma start packages/formation-react/karma.conf.js --browsers Chrome"
   },
   "dependencies": {},
   "devDependencies": {
@@ -51,6 +48,7 @@
     "fs-extra": "^7.0.1",
     "gh-pages": "^1.1.0",
     "glob": "^7.1.2",
+    "is-docker": "^1.1.0",
     "karma": "1.6",
     "karma-chrome-launcher": "^2.2.0",
     "karma-mocha": "^1.3.0",
@@ -82,8 +80,5 @@
   "peerDependencies": {
     "react": "^15.5.4||^16.7.0",
     "uswds": "^1.4.2"
-  },
-  "workspaces": [
-    "packages/*"
-  ]
+  }
 }

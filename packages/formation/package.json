@@ -1,6 +1,6 @@
 {
   "name": "@department-of-veterans-affairs/formation",
-  "version": "2.0.0",
+  "version": "1.17.0",
   "description": "The VA design system",
   "keywords": [
     "va",
@@ -11,7 +11,6 @@
     "formation",
     "vads"
   ],
-  "author": "Jeff Balboni <jeff@adhocteam.us>",
   "homepage": "http://design.va.gov",
   "license": "CC0-1.0",
   "main": "lib/formation.js",
