@@ -4,7 +4,7 @@ import {
   shallow,
   mount
 } from 'enzyme';
-import { axeCheck } from '../../../../testing/helpers';
+import { axeCheck } from '../../../../helpers/test-helpers';
 import ErrorableRadioButtons from './ErrorableRadioButtons.jsx';
 import { makeField } from '../../../../helpers/fields.js';
 

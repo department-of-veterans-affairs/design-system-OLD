@@ -24,7 +24,7 @@
     "url": "git+https://github.com/department-of-veterans-affairs/design-system.git"
   },
   "scripts": {
-    "test": "karma start --single-run"
+    "test": "karma start testing/karma.conf.js --single-run"
   },
   "bugs": {
     "url": "https://github.com/department-of-veterans-affairs/design-system/issues"

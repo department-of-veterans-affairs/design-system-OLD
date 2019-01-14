@@ -2,7 +2,7 @@ import React from 'react';
 import { mount,  shallow } from 'enzyme';
 import chaiAsPromised from 'chai-as-promised';
 import chai, { expect } from 'chai';
-import { axeCheck } from '../../../../testing/helpers';
+import { axeCheck } from '../../../../helpers/test-helpers';
 
 import ErrorableSelect from './ErrorableSelect.jsx';
 import { makeField } from '../../../../helpers/fields.js';

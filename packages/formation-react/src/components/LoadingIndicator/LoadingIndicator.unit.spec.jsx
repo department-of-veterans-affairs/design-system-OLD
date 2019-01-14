@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import React from 'react';
-import { axeCheck, mountToDiv } from '../../testing/helpers';
+import { axeCheck, mountToDiv } from '../../helpers/test-helpers';
 
 import LoadingIndicator from './LoadingIndicator.jsx';
 

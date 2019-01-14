@@ -2,7 +2,7 @@ import React from 'react';
 // import SkinDeep from 'skin-deep';
 import { expect } from 'chai';
 import { shallow } from 'enzyme';
-import { axeCheck } from '../../../../testing/helpers';
+import { axeCheck } from '../../../../helpers/test-helpers';
 import ErrorableDate from './ErrorableDate';
 import { makeField } from '../../../../helpers/fields.js';
 

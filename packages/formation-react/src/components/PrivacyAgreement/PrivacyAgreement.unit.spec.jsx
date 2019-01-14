@@ -1,7 +1,7 @@
 import React from 'react';
 import { expect } from 'chai';
 import { mount } from 'enzyme';
-import { axeCheck } from '../../testing/helpers';
+import { axeCheck } from '../../helpers/test-helpers';
 import PrivacyAgreement from './PrivacyAgreement.jsx';
 
 describe('<PrivacyAgreement/>', () => {

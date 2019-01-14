@@ -2,7 +2,7 @@ import React from 'react';
 import sinon from 'sinon';
 import { mount } from 'enzyme';
 import { expect } from 'chai';
-import { axeCheck } from '../../testing/helpers';
+import { axeCheck } from '../../helpers/test-helpers';
 
 import Modal from './Modal.jsx';
 
