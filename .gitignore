@@ -8,3 +8,4 @@ dist/
 npm-debug.log
 public/dist
 *.js
+lerna-debug.log

@@ -24,7 +24,11 @@
     "url": "git+https://github.com/department-of-veterans-affairs/design-system.git"
   },
   "scripts": {
-    "test": "karma start testing/karma.conf.js --single-run"
+    "build": "node ./scripts/build-node-modules.js",
+    "lint": "eslint --quiet --ext .js --ext .jsx ./src",
+    "test-watch": "karma start testing/karma.conf.js --auto-watch",
+    "test": "karma start testing/karma.conf.js --single-run",
+    "test-debug": "karma start testing/karma.conf.js --browsers Chrome"
   },
   "bugs": {
     "url": "https://github.com/department-of-veterans-affairs/design-system/issues"

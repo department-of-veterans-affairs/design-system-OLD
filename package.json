@@ -10,13 +10,14 @@
   "main": "dist/formation",
   "scripts": {
     "prestart": "node prebuild.js",
-    "export-components": "node ./scripts/build-node-modules.js",
-    "test": "karma start packages/formation-react/testing/karma.conf.js --single-run",
+    "test": "lerna run test",
     "pre-publish": "npm run-script export-components && cp package.json dist/formation/package.json && cp module-readme.md dist/formation/README.md && echo && echo Pre-publish complete. Change directory to dist/formation and check package.json before publishing.",
     "test-publish": "cp package.json dist/formation/package.json && cd dist/formation && yalc publish && cd ../../",
-    "test-watch": "karma start --auto-watch",
-    "lint:js": "eslint --quiet --ext .js --ext .jsx ./packages/formation-react/src",
-    "test-debug": "karma start packages/formation-react/karma.conf.js --browsers Chrome"
+    "test-debug": "lern run test-watch --scope=@department-of-veterans-affairs/formation-react",
+    "lint": "lerna run lint",
+    "lint:js": "lerna run lint",
+    "build": "lerna run build",
+    "test-debug": "lern run test-debug --scope=@department-of-veterans-affairs/formation-react"
   },
   "dependencies": {},
   "devDependencies": {
