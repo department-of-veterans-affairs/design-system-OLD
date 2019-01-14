@@ -7,23 +7,18 @@
     "url": "git+https://github.com/department-of-veterans-affairs/design-system.git"
   },
   "private": true,
-  "main": "dist/formation",
   "scripts": {
     "prestart": "node prebuild.js",
     "test": "lerna run test",
-    "pre-publish": "npm run-script export-components && cp package.json dist/formation/package.json && cp module-readme.md dist/formation/README.md && echo && echo Pre-publish complete. Change directory to dist/formation and check package.json before publishing.",
-    "test-publish": "cp package.json dist/formation/package.json && cd dist/formation && yalc publish && cd ../../",
-    "test-debug": "lern run test-watch --scope=@department-of-veterans-affairs/formation-react",
+    "bootstrap": "lerna bootstrap",
     "lint": "lerna run lint",
     "lint:js": "lerna run lint",
     "build": "lerna run build",
-    "test-debug": "lern run test-debug --scope=@department-of-veterans-affairs/formation-react"
+    "test-debug": "lerna run test-debug --scope=@department-of-veterans-affairs/formation-react",
+    "test-watch": "lerna run test-watch --scope=@department-of-veterans-affairs/formation-react"
   },
   "dependencies": {},
   "devDependencies": {
-    "@frctl/fractal": "^1.1.7",
-    "@frctl/mandelbrot": "^1.2.0",
-    "@frctl/nunjucks": "^1.0.3",
     "axe-core": "^2.4.2",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.0.2",
@@ -47,7 +42,6 @@
     "eslint-plugin-react": "7.2.1",
     "extract-text-webpack-plugin": "2",
     "fs-extra": "^7.0.1",
-    "gh-pages": "^1.1.0",
     "glob": "^7.1.2",
     "is-docker": "^1.1.0",
     "karma": "1.6",
@@ -59,7 +53,6 @@
     "mocha": "^4.0.1",
     "ncp": "^2.0.0",
     "node-sass": "^4.8.3",
-    "nunjucks": "^3.0.1",
     "promisify-node": "^0.4.0",
     "react": "^16.7.0",
     "react-docgen": "^2.19.0",
@@ -77,9 +70,5 @@
     "url-loader": "^0.6.2",
     "uswds": "1.4.2",
     "webpack": "2"
-  },
-  "peerDependencies": {
-    "react": "^15.5.4||^16.7.0",
-    "uswds": "^1.4.2"
   }
 }

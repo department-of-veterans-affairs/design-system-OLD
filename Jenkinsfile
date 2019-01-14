@@ -13,6 +13,7 @@ pipeline {
     stage('setup') {
       steps {
         sh 'yarn install --production=false'
+        sh 'yarn bootstrap'
       }
     }
 
