@@ -1,0 +1,43 @@
+{
+  "name": "@department-of-veterans-affairs/formation",
+  "version": "2.0.0",
+  "description": "The VA design system",
+  "keywords": [
+    "va",
+    "sass",
+    "css",
+    "html",
+    "js",
+    "formation",
+    "vads"
+  ],
+  "author": "Jeff Balboni <jeff@adhocteam.us>",
+  "homepage": "http://design.va.gov",
+  "license": "CC0-1.0",
+  "main": "lib/formation.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/department-of-veterans-affairs/design-system.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/department-of-veterans-affairs/design-system/issues"
+  },
+  "dependencies": {
+    "font-awesome": "4",
+    "foundation-sites": "5",
+    "moment": "^2.23.0"
+  },
+  "peerDependencies": {
+    "uswds": "^1.4.2"
+  }
+}
