@@ -11,14 +11,6 @@
   ],
   "homepage": "http://design.va.gov",
   "license": "CC0-1.0",
-  "main": "lib/formation-react.js",
-  "directories": {
-    "lib": "lib",
-    "test": "__tests__"
-  },
-  "files": [
-    "lib"
-  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/department-of-veterans-affairs/design-system.git"
