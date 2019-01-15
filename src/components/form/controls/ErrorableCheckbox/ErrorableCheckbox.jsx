@@ -51,7 +51,6 @@ class ErrorableCheckbox extends React.Component {
           {this.props.labelAboveCheckbox}
         </span>}
         <input
-          autoComplete="false"
           aria-describedby={errorSpanId}
           checked={this.props.checked}
           id={this.inputId}

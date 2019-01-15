@@ -46,7 +46,13 @@ describe('<ErrorableFileInput>', () => {
   });
 
   it('passes aXe check', () => {
-    const check = axeCheck(<ErrorableFileInput buttonText="my label"/>);
+    const check = axeCheck(
+      <form id="screenReaderPathDescription">
+        <ErrorableFileInput
+          buttonText="my label"
+          aria-describedby="screenReaderPathDescription"/>
+      </form>
+    );
     return check;
   });
 });

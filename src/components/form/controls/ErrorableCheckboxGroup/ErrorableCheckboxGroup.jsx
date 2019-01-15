@@ -82,7 +82,6 @@ class ErrorableCheckboxGroup extends React.Component {
       const checkboxButton = (
         <div key={optionAdditional ? undefined : index} className="form-checkbox-buttons">
           <input
-            autoComplete="false"
             checked={checked}
             id={`${this.inputId}-${index}`}
             name={this.props.name}
