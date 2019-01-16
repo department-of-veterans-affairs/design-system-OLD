@@ -1,6 +1,7 @@
 # Formation (VA design system)
 
 Legacy URL: https://department-of-veterans-affairs.github.io/design-system
+
 Work in progress URL: https://department-of-veterans-affairs.github.io/vets-design-system-documentation/
 
 This repo contains styles and assets for the VA design system, as well as React implementations of some of the patterns. It is managed by Lerna, a tool for managing versioning and publishing for multiple modules located in a single repo.
