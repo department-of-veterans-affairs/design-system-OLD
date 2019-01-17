@@ -50,8 +50,8 @@ Once your changes are approved, merge them to master. Releases should not necess
 ### 3. Build and publish
 
 * Run `npm run build`
-* If you have made a major version update, check to see if peerDependencies need to be updated in any of the modules, and make those changes if they do.
-* Run `npx lerna publish`
+* If you have made a major version update, check to see if peerDependencies need to be updated in any of the modules, and make those changes if they do. You'll need to commit them before running the next step.
+* Run `npm run publish`. This will publish to npm and also commit and push the version changes to Github.
 
 You'll be asked to choose what version to update:
 
