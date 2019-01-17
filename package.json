@@ -8,12 +8,13 @@
   },
   "private": true,
   "scripts": {
-    "prestart": "node prebuild.js",
+    "prebootstrap": "node prebuild.js",
     "test": "lerna run test",
     "bootstrap": "lerna bootstrap",
     "lint": "lerna run lint",
     "lint:js": "lerna run lint",
     "build": "lerna run build",
+    "publish": "lerna publish",
     "test-debug": "lerna run test-debug --scope=@department-of-veterans-affairs/formation-react",
     "test-watch": "lerna run test-watch --scope=@department-of-veterans-affairs/formation-react"
   },
