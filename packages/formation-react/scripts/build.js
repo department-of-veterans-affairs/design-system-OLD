@@ -51,7 +51,7 @@ fileNames.forEach(fileName => {
   const requireFlattenedBuffer = flattenRequires(babelTransformedBuffer.toString());
   const newFileName = `${path.parse(fileName).name}.js`;
 
-  // write file to dist/build
+  // write file to main package folder
   fs.writeFileSync(`./${newFileName}`, requireFlattenedBuffer);
   console.log(`${newFileName} built`);
 });
