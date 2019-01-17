@@ -19,6 +19,15 @@ You can put the repo anywhere on your computer, but as a suggestion:
 - In Terminal, navigate to your desktop: `cd ~/desktop`
 - Clone the Github repo by running: `git clone https://github.com/department-of-veterans-affairs/design-system.git`
 - Then: `cd design-system`
+- Run `yarn` and `yarn bootstrap` to install dependencies for each module
+
+## Commands
+
+Available npm scripts:
+
+- `build`: Builds the code in each repo and outputs it to the appropriate locations for publishing
+- `test`: Runs the tests in each repo
+- `lint`: Runs the linter in each repo
 
 ## Previewing Changes
 
@@ -41,7 +50,8 @@ Once your changes are approved, merge them to master. Releases should not necess
 ### 3. Build and publish
 
 * Run `npm run build`
-* After the build succeeds, run `npx lerna publish`
+* If you have made a major version update, check to see if peerDependencies need to be updated in any of the modules, and make those changes if they do.
+* Run `npx lerna publish`
 
 You'll be asked to choose what version to update:
 
