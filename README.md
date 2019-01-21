@@ -45,7 +45,9 @@ Submit a PR that includes all of your code changes, without the version bump, an
 
 ### 2. Merge your PR to master
 
-Once your changes are approved, merge them to master. Releases should not necessarily happen after every PR is merged, it's up to you and the needs of the consuming applications.
+Once your changes are approved, squash merge them to master. Also, if your change is a breaking change, please prefix your commit message with `BREAKING CHANGE: `. Also keep in mind that your commit messages will be in a changelog that people use to figure out what has changed between releases, so make sure it accurately describes your changes.
+
+Releases should not necessarily happen after every PR is merged, it's up to you and the needs of the consuming applications.
 
 ### 3. Build and publish
 
