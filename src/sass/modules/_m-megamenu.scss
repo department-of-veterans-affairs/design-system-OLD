@@ -118,7 +118,7 @@ $marketing-container-height: 380px;
 
     .vetnav-panel {
       box-shadow: 0 7px 25px -11px $color-black;
-      height: 490px;
+      height: $vetnav-panel-height-desktop;
       width: 1008px;
       left: 0;
 
