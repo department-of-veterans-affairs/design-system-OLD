@@ -16,22 +16,69 @@
 @import "~@fortawesome/fontawesome-free/scss/core";
 @import "~@fortawesome/fontawesome-free/scss/icons";
 @import "~@fortawesome/fontawesome-free/scss/animated";
+// @import "~@fortawesome/fontawesome-free/scss/solid";
+// @import "~@fortawesome/fontawesome-free/scss/brands";
+// @import "~@fortawesome/fontawesome-free/scss/regular"
 
+// ============Font Awesome 5 Solid Start============
 @font-face {
-  font-family: "Font Awesome 5 Free";
-  src: url("~@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2") format("woff2"),
-       url("~@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff") format("woff"),
-       url("~@fortawesome/fontawesome-free/webfonts/fa-solid-900.eot") format("eot");
-  font-weight: normal;
+  font-family: 'Font Awesome 5 Free';
   font-style: normal;
+  font-weight: 900;
+  src: url('~@fortawesome/fontawesome-free/webfonts/fa-solid-900.eot') format("eot");
+  src: url('~@fortawesome/fontawesome-free/webfonts/fa-solid-900.eot?#iefix') format('embedded-opentype'),
+  url('~@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2') format('woff2'),
+  url('~@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff') format('woff'),
+  url('~@fortawesome/fontawesome-free/webfonts/fa-solid-900.ttf') format('truetype'),
+  // url('~@fortawesome/fontawesome-free/webfonts/fa-solid-900.svg#fontawesome') format('svg'), This breaks everything
 }
 
 .fa,
-.fab,
 .fas {
   font-family: 'Font Awesome 5 Free';
   font-weight: 900;
 }
+// ============Font Awesome 5 Solid End============
+
+
+// ============Font Awesome 5 Brands Start===========
+@font-face {
+  font-family: 'Font Awesome 5 Brands';
+  font-style: normal;
+  font-weight: normal;
+  src: url('~@fortawesome/fontawesome-free/webfonts/fa-brands-400.eot');
+  src: url('~@fortawesome/fontawesome-free/webfonts/fa-brands-400.eot?#iefix') format('embedded-opentype'),
+  url('~@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff2') format('woff2'),
+  url('~@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff') format('woff'),
+  url('~@fortawesome/fontawesome-free/webfonts/fa-brands-400.ttf') format('truetype'),
+  // url('~@fortawesome/fontawesome-free/webfonts/fa-brands-400.svg#fontawesome') format('svg'); This breaks everything
+}
+
+.fab {
+  font-family: 'Font Awesome 5 Brands';
+}
+// ============Font Awesome 5 Brands End============
+
+
+// ============Font Awesome 5 Regular Start============
+
+// @font-face {
+//   font-family: "Font Awesome 5 Free";
+//   src: url("~@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff2") format("woff2"),
+//        url("~@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff") format("woff"),
+//        url("~@fortawesome/fontawesome-free/webfonts/fa-regular-400.eot") format("eot");
+//   font-weight: 400;
+//   font-style: normal;
+// }
+
+
+// .far {
+//   font-family: 'Font Awesome 5 Free';
+//   font-weight: 400;
+// }
+
+// ============Font Awesome 5 Regular End============
+
 
 // ============ SETTINGS ============//
 // Order matters here! Please don't change it.
