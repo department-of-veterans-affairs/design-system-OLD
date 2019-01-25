@@ -65,7 +65,7 @@
 
 // Overriding the accordion button styles that are too broad
 .form-review-panel {
-  @include media-maxwidth($medium-screen) {
+  @media (max-width: $medium-screen) {
     .form-review-array {
       .edit-btn {
         width: 100%;
