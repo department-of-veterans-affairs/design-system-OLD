@@ -10,10 +10,7 @@
 @import "~foundation-sites/scss/foundation/components/block-grid";
 @import "~foundation-sites/scss/foundation/components/visibility";
 
-// Font Awesome WOFF/WOFF2 fonts only
-$fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
-
-@import "~@fortawesome/fontawesome-free/scss/fontawesome.scss";
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
 @import "~@fortawesome/fontawesome-free/scss/solid";
 @import "~@fortawesome/fontawesome-free/scss/brands";
 @import "~@fortawesome/fontawesome-free/scss/regular";
