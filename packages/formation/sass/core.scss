@@ -55,6 +55,9 @@
 @import "base/va";
 @import "base/focus";
 
+// ----- Layout ---- //
+@import "layout/flex-grid";
+
 // ----- VA UTILITIES (UTILITIY OOCSS) ---- //
 @import "utilities/display";
 @import "utilities/margins";
