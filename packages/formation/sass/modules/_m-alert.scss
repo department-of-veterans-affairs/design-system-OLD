@@ -13,6 +13,7 @@
     font-size: 2rem;
     margin-right: 1.5rem;
     position: static;
+    font-weight: 900;
   }
 
   // &-body would not have had high enough precedence.
@@ -99,6 +100,7 @@
 
     &::before {
       font-family: "Font Awesome 5 Free";
+      font-weight: 900;
       content: "\f071";
     }
 
