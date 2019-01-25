@@ -39,11 +39,11 @@ module.exports = {
       {
         test: /\.svg/,
         use: {
-          loader: 'svg-url-loader'
+          loader: 'svg-url-loader?limit=1024'
         }
       },
       {
-        test: /\.(ttf|eot|woff|woff2)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        test: /\.(ttf|eot|woff|woff2|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         use: {
           loader: 'file-loader',
           options: {
