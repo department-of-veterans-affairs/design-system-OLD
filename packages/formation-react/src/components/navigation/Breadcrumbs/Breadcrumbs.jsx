@@ -24,12 +24,14 @@ class Breadcrumbs extends React.Component {
   }
 
   /**
-   * Build the breadcrumb links. Check the array length
-   * and add an `aria-current` attribute to the last link.
+   * Build the breadcrumb links. Count the overall number of
+   * children and add aria-current="page" to the last link.
    */
   renderBreadcrumbLinks = () => {
     return React.Children.map(this.props.children, (child, i) => {
-      if (i === this.props.children.length - 1) {
+      const children = this.props.children;
+
+      if (i === React.Children.count(children) - 1) {
         return (
           <li>
             {React.cloneElement(child, {
