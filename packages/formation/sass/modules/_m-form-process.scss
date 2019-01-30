@@ -120,6 +120,10 @@
       }
     }
   }
+  .edit-btn.edit-btn-disabled {
+    color: $color-gray-lightest;
+    border-color: $color-gray-lightest;
+  }
   .accordion-header > button {
     min-height: 7rem;
     padding: 2.5rem 6.5rem 2.5rem 3rem;
