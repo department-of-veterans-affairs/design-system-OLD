@@ -113,16 +113,16 @@
       background-color: transparent;
       border: 2px solid $color-primary;
       color: $color-primary;
+      &:disabled {
+        color: $color-gray-lightest;
+        border-color: $color-gray-lightest;
+      }
       &:hover {
         background-color: transparent;
         border: 2px solid $color-primary-darker;
         color: $color-primary-darker;
       }
     }
-  }
-  .edit-btn.edit-btn-disabled {
-    color: $color-gray-lightest;
-    border-color: $color-gray-lightest;
   }
   .accordion-header > button {
     min-height: 7rem;
