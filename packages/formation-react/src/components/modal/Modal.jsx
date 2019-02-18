@@ -159,7 +159,6 @@ Modal.propTypes = {
   cssClass: PropTypes.string,
   /**
    * Id of the modal, used for aria attributes.
-   * It will be auto-generated if not provided.
    */
   id: PropTypes.string,
   /**
