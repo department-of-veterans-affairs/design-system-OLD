@@ -1,6 +1,6 @@
 .usa-alert {
   background: none;
-  background-color: $color-gray-lightest;
+  background-color: $color-va-alert-bg;
   border-left-style: solid;
   border-left-width: 10px;
   display: table;
@@ -99,7 +99,6 @@
     border-left-color: $color-gold;
 
     &::before {
-      font-family: "Font Awesome 5 Free";
       content: "\f071";
     }
 
