@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
-import _ from 'lodash';
 
 const ESCAPE_KEY = 27;
 
@@ -12,7 +11,6 @@ class Modal extends React.Component {
   }
 
   componentDidMount() {
-    this.id = this.props.id || _.uniqueId('va-modal-');
     if (this.props.visible) this.setupModal();
   }
 
@@ -97,11 +95,12 @@ class Modal extends React.Component {
   };
 
   render() {
-    const { status, title, visible } = this.props;
+    if (!this.props.visible) return null;
 
-    if (!visible) { return <div/>; }
+    const { id, status, title } = this.props;
+    const titleId = title && `${id || 'va-modal'}-title`;
 
-    const modalCss = classNames(
+    const modalClass = classNames(
       'va-modal',
       { 'va-modal-alert': status },
       { [`va-modal-${status}`]: status },
@@ -120,11 +119,11 @@ class Modal extends React.Component {
     }
 
     return (
-      <div className={modalCss} id={this.id} role="alertdialog" aria-labelledby={`${this.id}-title`}>
+      <div className={modalClass} id={id} role="alertdialog" aria-labelledby={titleId}>
         <div className="va-modal-inner" ref={el => { this.element = el; }}>
           {closeButton}
           <div className="va-modal-body" role="document">
-            {title && <h3 id={`${this.id}-title`} className="va-modal-title">{title}</h3>}
+            {title && <h3 id={titleId} className="va-modal-title">{title}</h3>}
             <div>
               {this.props.contents || this.props.children}
             </div>
