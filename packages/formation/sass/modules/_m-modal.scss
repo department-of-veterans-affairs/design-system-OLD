@@ -161,11 +161,11 @@
 
 button.va-modal-close {
   background-color: transparent;
-  color: $color-va-modal-close;
-  font-size: 2.5rem;
-  padding: 0.5rem 1rem;
+  color: $color-primary;
+  font-size: 2.25rem;
+  padding: 0;
   position: absolute;
-  margin: 0.25rem;
+  margin: 2rem;
   right: 0;
   top: 0;
   width: auto;
@@ -173,6 +173,11 @@ button.va-modal-close {
 
   &:hover {
     background-color: transparent;
-    color: $color-base;
+    color: $color-primary-darker;
+  }
+
+  &:active {
+    background-color: transparent;
+    color: $color-primary-darkest;
   }
 }

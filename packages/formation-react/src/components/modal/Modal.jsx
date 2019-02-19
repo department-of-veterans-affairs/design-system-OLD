@@ -114,7 +114,7 @@ class Modal extends React.Component {
         type="button"
         aria-label="Close this modal"
         onClick={this.handleClose}>
-        <i className="fas fa-times" aria-hidden="true"></i>
+        <i className="fas fa-times-circle" aria-hidden="true"></i>
       </button>);
     }
 
@@ -158,7 +158,7 @@ Modal.propTypes = {
    */
   cssClass: PropTypes.string,
   /**
-   * Id of the modal, used for aria attributes.
+   * Id of the modal, used for aria attributes
    */
   id: PropTypes.string,
   /**
