@@ -2,6 +2,14 @@ import React from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
+/**
+ * Read the contents from the compressed file.
+ *
+ * @async
+ * @params {String} filename
+ * @params {Function} callback
+ */
+
 class AcceptTermsPrompt extends React.Component {
   constructor(props) {
     super(props);
@@ -130,7 +138,7 @@ AcceptTermsPrompt.propTypes = {
   /**
    * content shown as the actual terms and conditions
    */
-  user: PropTypes.object,
+  user: PropTypes.object.isRequired,
   /**
    * cancel button click handler
    */
