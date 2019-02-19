@@ -1,0 +1,36 @@
+{
+  "name": "@department-of-veterans-affairs/formation",
+  "version": "4.0.0",
+  "description": "The VA design system",
+  "keywords": [
+    "va",
+    "sass",
+    "css",
+    "html",
+    "js",
+    "formation",
+    "vads"
+  ],
+  "homepage": "http://design.va.gov",
+  "license": "CC0-1.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/department-of-veterans-affairs/design-system.git"
+  },
+  "scripts": {
+    "build": "node ./scripts/build.js"
+  },
+  "bugs": {
+    "url": "https://github.com/department-of-veterans-affairs/design-system/issues"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.6.3",
+    "foundation-sites": "5",
+    "moment": "^2.23.0"
+  },
+  "peerDependencies": {
+    "@fortawesome/fontawesome-free": "^5.6.3",
+    "foundation-sites": "5",
+    "uswds": "^1.4.2"
+  }
+}
